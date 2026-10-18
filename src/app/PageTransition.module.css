@@ -1,0 +1,9 @@
+.viewport {
+  position: relative;
+  width: 100%;
+  overflow: clip;
+}
+
+.page {
+  width: 100%;
+}

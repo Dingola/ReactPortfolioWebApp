@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 
 import { App } from './App';
+import { primaryNavigationItems } from './navigation';
 import { useLocale } from './providers/locale/useLocale';
 
 const HomePage = lazy(() => import('@/pages/HomePage'));
@@ -32,14 +33,16 @@ export const router = createBrowserRouter([
           </Suspense>
         ),
       },
-      ...(['/work', '/resume', '/about', '/contact'] as const).map((path) => ({
-        path: path.slice(1),
-        element: (
-          <Suspense fallback={<RouteFallback />}>
-            <RoutePlaceholderPage path={path} />
-          </Suspense>
-        ),
-      })),
+      ...primaryNavigationItems
+        .filter((item) => item.path !== '/')
+        .map((item) => ({
+          path: item.path.slice(1),
+          element: (
+            <Suspense fallback={<RouteFallback />}>
+              <RoutePlaceholderPage path={item.path} />
+            </Suspense>
+          ),
+        })),
       {
         path: '*',
         element: (

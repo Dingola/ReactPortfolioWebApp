@@ -1,7 +1,6 @@
 import { NavLink } from 'react-router-dom';
 
-import { germanPortfolioContent } from '@/content/portfolio.de';
-
+import { primaryNavigationItems } from '../navigation';
 import { useLocale } from '../providers/locale/useLocale';
 import styles from './PrimaryNavigation.module.css';
 
@@ -25,7 +24,7 @@ export function PrimaryNavigation({ id, onNavigate, variant = 'desktop' }: Prima
       aria-label={translate('Primary navigation')}
     >
       <ol className={styles.list}>
-        {germanPortfolioContent.navigation.map((item) => {
+        {primaryNavigationItems.map((item) => {
           const label = translate(item.label);
 
           return (
