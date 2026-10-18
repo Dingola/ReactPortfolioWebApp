@@ -13,12 +13,12 @@ describe('LanguageToggle', () => {
     const unavailableLabel = translateMessage('de', 'English version in preparation');
 
     expect(document.documentElement).toHaveAttribute('lang', 'de');
-    expect(screen.getByRole('button', { name: germanLabel })).toHaveAttribute(
+    expect(screen.getByRole('button', { name: `DE – ${germanLabel}` })).toHaveAttribute(
       'aria-pressed',
       'true',
     );
     expect(
-      screen.getByRole('button', { name: `${englishLabel}: ${unavailableLabel}` }),
+      screen.getByRole('button', { name: `EN – ${englishLabel}: ${unavailableLabel}` }),
     ).toBeDisabled();
     expect(window.localStorage.getItem('locale-preference')).toBe('"de"');
   });

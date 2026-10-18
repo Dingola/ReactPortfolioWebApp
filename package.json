@@ -2,8 +2,7 @@
   "name": "reactportfoliowebapp",
   "version": "0.1.0",
   "private": true,
-
-  "description": "A modern developer portfolio built with React und TypeScript.",
+  "description": "A modern developer portfolio built with React and TypeScript.",
   "author": "Dingola",
   "type": "module",
   "engines": {
@@ -13,7 +12,6 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-
     "lint": "eslint . --max-warnings 0",
     "lint:styles": "stylelint \"src/**/*.css\"",
     "format": "prettier --write .",
@@ -27,8 +25,9 @@
     "check": "npm run format:check && npm run lint && npm run lint:styles && npm run typecheck && npm run test && npm run docs:api && npm run build"
   },
   "dependencies": {
+    "@fontsource-variable/geist": "^5.3.0",
+    "@fontsource-variable/jetbrains-mono": "^5.3.0",
     "clsx": "^2.1.1",
-
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
     "react-router-dom": "^7.18.3",
@@ -41,7 +40,6 @@
     "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.3",
     "@testing-library/user-event": "^14.6.7",
-
     "@types/node": "^24.3.0",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",

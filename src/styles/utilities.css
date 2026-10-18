@@ -9,3 +9,17 @@
   clip-path: inset(50%);
   white-space: nowrap;
 }
+
+.technical-label {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+}
+
+.layout-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
+  gap: var(--grid-gap);
+}

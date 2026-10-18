@@ -20,13 +20,15 @@ export function LanguageToggle() {
         const isAvailable = availableLocales.includes(option);
         const isActive = locale === option;
         const label = translate(localeLabels[option]);
+        const abbreviation = option.toUpperCase();
+        const accessibleLabel = isAvailable
+          ? `${abbreviation} – ${label}`
+          : `${abbreviation} – ${label}: ${translate('English version in preparation')}`;
 
         return (
           <Button
             key={option}
-            aria-label={
-              isAvailable ? label : `${label}: ${translate('English version in preparation')}`
-            }
+            aria-label={accessibleLabel}
             aria-pressed={isActive}
             className={`${styles.option} ${isActive ? styles.active : ''}`}
             disabled={!isAvailable}
@@ -34,7 +36,7 @@ export function LanguageToggle() {
             title={isAvailable ? label : translate('English version in preparation')}
             variant="secondary"
           >
-            {option.toUpperCase()}
+            {abbreviation}
           </Button>
         );
       })}

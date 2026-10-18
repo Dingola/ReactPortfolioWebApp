@@ -8,16 +8,18 @@ export function ThemeToggle() {
   const { translate } = useLocale();
   const { resolvedTheme, setPreference } = useTheme();
   const nextTheme = resolvedTheme === 'dark' ? 'light' : 'dark';
+  const visibleLabel = translate(resolvedTheme === 'dark' ? 'Light' : 'Dark');
+  const actionLabel = translate(
+    nextTheme === 'dark' ? 'Switch to dark theme' : 'Switch to light theme',
+  );
 
   return (
     <Button
-      aria-label={translate(
-        nextTheme === 'dark' ? 'Switch to dark theme' : 'Switch to light theme',
-      )}
+      aria-label={`${visibleLabel} – ${actionLabel}`}
       onClick={() => setPreference(nextTheme)}
       variant="secondary"
     >
-      {translate(resolvedTheme === 'dark' ? 'Light' : 'Dark')}
+      {visibleLabel}
     </Button>
   );
 }

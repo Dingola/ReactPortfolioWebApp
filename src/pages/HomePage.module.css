@@ -7,16 +7,17 @@
 }
 
 .hero h1 {
-  font-size: clamp(2.5rem, 8vw, 5rem);
-  line-height: 1;
-  letter-spacing: -0.04em;
+  font-size: var(--font-size-heading-large);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
 }
 
 .eyebrow {
-  color: var(--color-primary);
-  font-size: var(--font-size-small);
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  color: var(--color-accent);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  letter-spacing: var(--letter-spacing-label);
   text-transform: uppercase;
 }
 

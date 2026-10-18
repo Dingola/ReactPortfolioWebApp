@@ -5,9 +5,8 @@
 }
 
 .main {
-  width: min(100% - 2 * var(--space-4), var(--content-width));
-  margin-inline: auto;
-  padding-block: var(--space-12);
+  width: 100%;
+  padding-block: clamp(var(--space-12), 8vw, var(--space-24));
 }
 
 .skipLink {
@@ -16,10 +15,12 @@
   inset-block-start: var(--space-2);
   inset-inline-start: var(--space-2);
   padding: var(--space-2) var(--space-4);
+  border: var(--border-width) solid var(--color-border-strong);
   border-radius: var(--radius-medium);
   background: var(--color-text);
   color: var(--color-background);
   transform: translateY(-200%);
+  transition: transform var(--motion-duration-fast) var(--motion-easing-standard);
 }
 
 .skipLink:focus {

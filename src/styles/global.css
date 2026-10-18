@@ -2,7 +2,11 @@ html {
   background: var(--color-background);
   color: var(--color-text);
   font-family: var(--font-family-sans);
-  line-height: 1.6;
+  font-size: var(--font-size-body);
+  font-synthesis: none;
+  line-height: var(--line-height-body);
+  scroll-behavior: smooth;
+  text-rendering: optimizelegibility;
 }
 
 body {
@@ -11,9 +15,35 @@ body {
   background: var(--color-background);
 }
 
+::selection {
+  background: var(--color-selection);
+  color: var(--color-text);
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 650;
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-heading);
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
 a {
-  color: var(--color-primary);
+  color: var(--color-accent);
+  text-decoration-thickness: 1px;
   text-underline-offset: 0.2em;
+  transition:
+    color var(--motion-duration-fast) var(--motion-easing-standard),
+    text-decoration-color var(--motion-duration-fast) var(--motion-easing-standard);
+}
+
+a:hover {
+  color: var(--color-accent-hover);
 }
 
 :focus-visible {
@@ -22,15 +52,22 @@ a {
 }
 
 .fatal-error {
-  width: min(100% - 2rem, 40rem);
+  width: min(100% - 2 * var(--page-gutter), 40rem);
   margin: 15vh auto;
+  padding: var(--space-8);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-medium);
+  background: var(--color-surface);
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   *,
   *::before,
   *::after {
-    scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
