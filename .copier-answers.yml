@@ -1,0 +1,15 @@
+# Changes here will be overwritten by Copier.
+_commit: 1.0.0
+_src_path: gh:Dingola/ReactWebTemplate
+author_name: Dingola
+default_theme: system
+deployment: vercel
+display_name: ReactPortfolioWebApp
+html_lang: de
+include_docker: false
+include_express: false
+package_manager: npm
+package_name: reactportfoliowebapp
+project_description: A modern developer portfolio built with React und TypeScript.
+project_name: ReactPortfolioWebApp
+repository_owner: Dingola

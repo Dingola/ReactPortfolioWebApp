@@ -10,17 +10,11 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
-{% if deployment == 'github_pages' %}
-  base: process.env.GITHUB_ACTIONS ? '/{{ project_name }}/' : '/',
-{% endif %}
+
   server: {
     port: 5173,
     strictPort: true,
-{% if include_express %}
-    proxy: {
-      '/api': 'http://localhost:3000',
-    },
-{% endif %}
+
   },
   preview: {
     port: 4173,

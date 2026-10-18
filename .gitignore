@@ -1,12 +1,27 @@
-# Generated-project smoke tests
-_build/
-_build_*/
+# Dependencies
+node_modules/
 
-# Python / Copier
-__pycache__/
-*.py[cod]
-.npm-prefix/
+# Builds and reports
+dist/
+dist-server/
+coverage/
+docs/api/
+playwright-report/
+test-results/
+*.tsbuildinfo
+
+# Local environment files
+.env
+.env.local
+.env.*.local
 
 # Editors and operating systems
+.idea/
+.vs/
 .DS_Store
 Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*

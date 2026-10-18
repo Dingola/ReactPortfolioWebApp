@@ -10,7 +10,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: {% raw %}${{ github.workflow }}-${{ github.ref }}{% endraw %}
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -23,33 +23,21 @@ jobs:
         # v4 supports older self-hosted/GHES runners. v5+ requires runner 2.327.1.
         uses: actions/checkout@v4
 
-{% if package_manager == 'pnpm' %}
-      - name: Set up pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10.33.4
 
-{% endif %}
       - name: Set up Node.js
         # v4 supports older self-hosted/GHES runners. v5+ requires runner 2.327.1.
         uses: actions/setup-node@v4
         with:
           node-version: 24
-          cache: {{ package_manager }}
+          cache: npm
 
-{% if package_manager == 'pnpm' %}
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
 
-      - name: Check project
-        run: pnpm check
-{% else %}
       - name: Install dependencies
         run: npm ci
 
       - name: Check project
         run: npm run check
-{% endif %}
+
 
   browser:
     name: Browser Smoke Test
@@ -60,33 +48,15 @@ jobs:
         # v4 supports older self-hosted/GHES runners. v5+ requires runner 2.327.1.
         uses: actions/checkout@v4
 
-{% if package_manager == 'pnpm' %}
-      - name: Set up pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10.33.4
 
-{% endif %}
       - name: Set up Node.js
         # v4 supports older self-hosted/GHES runners. v5+ requires runner 2.327.1.
         uses: actions/setup-node@v4
         with:
           node-version: 24
-          cache: {{ package_manager }}
+          cache: npm
 
-{% if package_manager == 'pnpm' %}
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
 
-      - name: Install Chromium
-        run: pnpm exec playwright install --with-deps chromium
-
-      - name: Build application
-        run: pnpm build
-
-      - name: Run browser test
-        run: pnpm test:e2e
-{% else %}
       - name: Install dependencies
         run: npm ci
 
@@ -98,4 +68,4 @@ jobs:
 
       - name: Run browser test
         run: npm run test:e2e
-{% endif %}
+

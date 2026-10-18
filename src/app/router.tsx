@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { {% if deployment == 'github_pages' %}createHashRouter{% else %}createBrowserRouter{% endif %} } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
 
 import { App } from './App';
 
@@ -16,7 +16,7 @@ function RouteFallback() {
  * Route-level components are loaded lazily to keep the initial JavaScript bundle
  * focused on the application shell.
  */
-export const router = {% if deployment == 'github_pages' %}createHashRouter{% else %}createBrowserRouter{% endif %}([
+export const router = createBrowserRouter([
   {
     element: <App />,
     children: [

@@ -11,7 +11,7 @@ export type ThemeProviderProps = {
 };
 
 const storageKey = 'theme-preference';
-const defaultPreference: ThemePreference = '{{ default_theme }}';
+const defaultPreference: ThemePreference = 'system';
 
 function isThemePreference(value: unknown): value is ThemePreference {
   return value === 'light' || value === 'dark' || value === 'system';
