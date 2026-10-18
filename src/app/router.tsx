@@ -2,12 +2,15 @@ import { lazy, Suspense } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 
 import { App } from './App';
+import { useLocale } from './providers/locale/useLocale';
 
 const HomePage = lazy(() => import('@/pages/HomePage'));
 const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'));
 
 function RouteFallback() {
-  return <p role="status">Loading…</p>;
+  const { translate } = useLocale();
+
+  return <p role="status">{translate('Loading…')}</p>;
 }
 
 /**

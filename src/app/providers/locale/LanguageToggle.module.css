@@ -1,0 +1,14 @@
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.option {
+  min-width: 2.75rem;
+  padding-inline: var(--space-2);
+}
+
+.active {
+  border-color: currentcolor;
+}

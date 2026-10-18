@@ -1,8 +1,7 @@
+import type { Locale } from '@/i18n/locales';
+
 /** Primary routes shown in the portfolio navigation. */
 export type PortfolioRoute = '/' | '/work' | '/resume' | '/about' | '/contact';
-
-/** Locales supported by the portfolio content model. */
-export type SupportedLocale = 'de' | 'en';
 
 /** A numbered entry in the primary portfolio navigation. */
 export interface NavigationItem {
@@ -100,7 +99,7 @@ export interface ContactLink {
 
 /** Localized portfolio content independent from its visual presentation. */
 export interface PortfolioContent {
-  readonly locale: SupportedLocale;
+  readonly locale: Locale;
   readonly profile: {
     readonly name: string;
     readonly role: string;

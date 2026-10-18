@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import styles from './App.module.css';
 import { Footer } from './layout/Footer';
 import { Header } from './layout/Header';
+import { useLocale } from './providers/locale/useLocale';
 
 /**
  * Provides the persistent application shell shared by all routes.
@@ -11,11 +12,13 @@ import { Header } from './layout/Header';
  * the current route.
  */
 export function App() {
+  const { translate } = useLocale();
+
   return (
     <div className={styles.app}>
       {/* Allows keyboard users to bypass the primary navigation. */}
       <a className={styles.skipLink} href="#main-content">
-        Skip to main content
+        {translate('Skip to main content')}
       </a>
       <Header />
       <main id="main-content" className={styles.main} tabIndex={-1}>

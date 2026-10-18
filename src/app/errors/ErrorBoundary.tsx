@@ -1,5 +1,18 @@
 import { Component, type ErrorInfo, type ReactNode } from 'react';
 
+import { useLocale } from '../providers/locale/useLocale';
+
+function LocalizedErrorFallback() {
+  const { translate } = useLocale();
+
+  return (
+    <main className="fatal-error" role="alert">
+      <h1>{translate('Something went wrong')}</h1>
+      <p>{translate('Reload the page and try again.')}</p>
+    </main>
+  );
+}
+
 /** Props accepted by {@link ErrorBoundary}. */
 export type ErrorBoundaryProps = {
   /** Application subtree protected by the boundary. */
@@ -34,12 +47,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
   /** Renders the protected subtree or the fatal-error fallback. */
   public render() {
     if (this.state.hasError) {
-      return (
-        <main className="fatal-error" role="alert">
-          <h1>Something went wrong</h1>
-          <p>Reload the page and try again.</p>
-        </main>
-      );
+      return <LocalizedErrorFallback />;
     }
 
     return this.props.children;
