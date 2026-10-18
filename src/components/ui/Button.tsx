@@ -1,4 +1,4 @@
-import type { ButtonHTMLAttributes } from 'react';
+import { forwardRef, type ButtonHTMLAttributes } from 'react';
 
 import clsx from 'clsx';
 
@@ -16,8 +16,16 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
  * The default `type` is `button` so placing the component inside a form does not
  * submit that form unintentionally.
  */
-export function Button({ className, type = 'button', variant = 'primary', ...props }: ButtonProps) {
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
+  { className, type = 'button', variant = 'primary', ...props },
+  ref,
+) {
   return (
-    <button className={clsx(styles.button, styles[variant], className)} type={type} {...props} />
+    <button
+      ref={ref}
+      className={clsx(styles.button, styles[variant], className)}
+      type={type}
+      {...props}
+    />
   );
-}
+});

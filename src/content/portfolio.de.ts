@@ -11,11 +11,11 @@ export const germanPortfolioContent = {
       'Ich entwickle Desktop-Anwendungen mit C++ und Qt und beschäftige mich daneben mit weiteren Technologien und eigenen Projekten.',
   },
   navigation: [
-    { id: 'home', index: 1, label: 'Start', path: '/' },
-    { id: 'work', index: 2, label: 'Projekte', path: '/work' },
-    { id: 'resume', index: 3, label: 'Lebenslauf', path: '/resume' },
-    { id: 'about', index: 4, label: 'Über mich', path: '/about' },
-    { id: 'contact', index: 5, label: 'Kontakt', path: '/contact' },
+    { id: 'home', index: 1, label: 'Home', path: '/' },
+    { id: 'work', index: 2, label: 'Work', path: '/work' },
+    { id: 'resume', index: 3, label: 'Resume', path: '/resume' },
+    { id: 'about', index: 4, label: 'About', path: '/about' },
+    { id: 'contact', index: 5, label: 'Contact', path: '/contact' },
   ],
   projects: [
     {

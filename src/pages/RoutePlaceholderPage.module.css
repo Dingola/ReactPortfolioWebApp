@@ -1,0 +1,18 @@
+.page {
+  display: grid;
+  align-content: center;
+  gap: var(--space-5);
+}
+
+.page h1 {
+  max-width: 16ch;
+  font-size: var(--font-size-heading-large);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.page p:last-child {
+  max-width: 42rem;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-lead);
+}

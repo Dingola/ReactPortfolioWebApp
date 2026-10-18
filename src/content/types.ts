@@ -1,4 +1,5 @@
 import type { Locale } from '@/i18n/locales';
+import type { SourceMessage } from '@/i18n/messages';
 
 /** Primary routes shown in the portfolio navigation. */
 export type PortfolioRoute = '/' | '/work' | '/resume' | '/about' | '/contact';
@@ -7,7 +8,7 @@ export type PortfolioRoute = '/' | '/work' | '/resume' | '/about' | '/contact';
 export interface NavigationItem {
   readonly id: string;
   readonly index: number;
-  readonly label: string;
+  readonly label: SourceMessage;
   readonly path: PortfolioRoute;
 }
 

@@ -6,7 +6,7 @@ import type { PortfolioContent } from './types';
 
 describe('German portfolio content', () => {
   it('resolves primary navigation and project entries by stable keys', () => {
-    expect(getNavigationItemByPath(germanPortfolioContent, '/resume')?.label).toBe('Lebenslauf');
+    expect(getNavigationItemByPath(germanPortfolioContent, '/resume')?.label).toBe('Resume');
     expect(getProjectBySlug(germanPortfolioContent, 'qt-log-viewer')?.title).toBe('Qt Log Viewer');
     expect(getProjectBySlug(germanPortfolioContent, 'unknown-project')).toBeUndefined();
   });
