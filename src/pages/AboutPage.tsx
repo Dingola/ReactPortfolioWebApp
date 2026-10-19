@@ -3,10 +3,18 @@ import { Link } from 'react-router-dom';
 import { appConfig } from '@/app/config';
 import { useLocale } from '@/app/providers/locale/useLocale';
 import { Container } from '@/components/layout/Container';
+import { ResponsiveImage } from '@/components/media/ResponsiveImage';
 import { germanPortfolioContent } from '@/content/portfolio.de';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 
 import styles from './AboutPage.module.css';
+
+const workspaceSources = [
+  {
+    type: 'image/webp',
+    srcSet: '/images/about/workplace-450.webp 450w, /images/about/workplace-900.webp 900w',
+  },
+] as const;
 
 /** Presents the person and working principles behind the portfolio. */
 export default function AboutPage() {
@@ -53,11 +61,15 @@ export default function AboutPage() {
 
         <figure className={styles.workspace}>
           <div className={styles.imageFrame}>
-            <img
+            <ResponsiveImage
+              className={styles.workspaceMedia}
               src="/images/about/workplace.png"
+              sources={workspaceSources}
+              sizes="(max-width: 48rem) 82vw, 24rem"
               alt={translate("Adrian Helbig's workspace")}
-              width="900"
-              height="1200"
+              width={900}
+              height={1200}
+              loading="lazy"
             />
           </div>
           <figcaption>

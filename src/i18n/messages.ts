@@ -42,6 +42,7 @@ export type SourceMessage =
   | 'Other projects'
   | 'Source code'
   | 'Project preview'
+  | 'Image could not be loaded.'
   | 'Professional experience'
   | 'Education'
   | 'Skills'

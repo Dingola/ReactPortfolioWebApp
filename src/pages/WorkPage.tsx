@@ -3,6 +3,7 @@ import { useMemo, useState } from 'react';
 import { appConfig } from '@/app/config';
 import { useLocale } from '@/app/providers/locale/useLocale';
 import { Container } from '@/components/layout/Container';
+import { ResponsiveImage } from '@/components/media/ResponsiveImage';
 import { germanPortfolioContent } from '@/content/portfolio.de';
 import type { PortfolioProject, ProjectCategory } from '@/content/types';
 import type { SourceMessage } from '@/i18n/messages';
@@ -27,8 +28,11 @@ function ProjectCard({ project, index }: { project: PortfolioProject; index: num
     <article className={styles.card}>
       <div className={styles.preview}>
         {image ? (
-          <img
+          <ResponsiveImage
+            className={styles.previewMedia}
             src={image.src}
+            sources={image.sources ?? []}
+            sizes="(max-width: 48rem) calc(100vw - 3rem), 50vw"
             alt={image.alt}
             width={image.width}
             height={image.height}

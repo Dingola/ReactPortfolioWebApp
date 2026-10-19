@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
+import { preload } from 'react-dom';
 
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 
 import { useLocale } from '@/app/providers/locale/useLocale';
 import { Container } from '@/components/layout/Container';
+import { ResponsiveImage } from '@/components/media/ResponsiveImage';
 import { germanPortfolioContent } from '@/content/portfolio.de';
 
 import styles from './HomePage.module.css';
@@ -16,6 +18,23 @@ const technologyStack = [
   'GitHub Actions',
   'Docker',
 ] as const;
+
+const portraitSources = [
+  {
+    type: 'image/webp',
+    srcSet:
+      '/images/profile/adrian-helbig-448.webp 448w, /images/profile/adrian-helbig-896.webp 896w',
+  },
+] as const;
+const portraitSizes = '(max-width: 56rem) 30vw, 15rem';
+
+preload('/images/profile/adrian-helbig-896.webp', {
+  as: 'image',
+  fetchPriority: 'high',
+  imageSizes: portraitSizes,
+  imageSrcSet: portraitSources[0].srcSet,
+  type: 'image/webp',
+});
 
 /** Renders the portfolio landing page. */
 export default function HomePage() {
@@ -63,11 +82,15 @@ export default function HomePage() {
             </div>
 
             <figure className={styles.portrait}>
-              <img
+              <ResponsiveImage
+                className={styles.portraitMedia}
                 src="/images/profile/adrian-helbig.png"
+                sources={portraitSources}
+                sizes={portraitSizes}
                 alt={translate('Portrait of Adrian Helbig')}
-                width="896"
-                height="1111"
+                width={896}
+                height={1111}
+                loading="eager"
                 fetchPriority="high"
               />
             </figure>
@@ -104,8 +127,11 @@ export default function HomePage() {
         </div>
 
         <figure className={styles.projectImage}>
-          <img
+          <ResponsiveImage
+            className={styles.projectMedia}
             src={featuredImage.src}
+            sources={featuredImage.sources ?? []}
+            sizes="(max-width: 64rem) calc(100vw - 3rem), 60vw"
             alt={featuredImage.alt}
             width={featuredImage.width}
             height={featuredImage.height}

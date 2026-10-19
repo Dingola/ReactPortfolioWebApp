@@ -46,6 +46,10 @@
   object-position: center top;
 }
 
+.portraitMedia {
+  height: 100%;
+}
+
 .eyebrow {
   margin: 0;
   color: var(--color-accent);
@@ -222,10 +226,7 @@
   box-shadow: 1rem 1rem 0 var(--color-accent-soft);
 }
 
-.projectImage img {
-  display: block;
-  width: 100%;
-  height: auto;
+.projectMedia {
   border: var(--border-width) solid var(--color-border);
 }
 

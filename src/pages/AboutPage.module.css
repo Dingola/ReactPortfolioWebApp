@@ -103,10 +103,7 @@
   box-shadow: var(--space-4) var(--space-4) 0 var(--color-accent-soft);
 }
 
-.workspace img {
-  display: block;
-  width: 100%;
-  height: auto;
+.workspaceMedia {
   border: var(--border-width) solid var(--color-border);
 }
 

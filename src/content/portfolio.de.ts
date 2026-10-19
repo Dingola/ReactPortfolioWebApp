@@ -75,6 +75,13 @@ export const germanPortfolioContent = {
           alt: 'Qt Log Viewer mit geöffneter Logdatei, Filtern und Detailansicht',
           width: 2560,
           height: 1400,
+          sources: [
+            {
+              type: 'image/avif',
+              srcSet:
+                '/images/projects/qt-log-viewer/log-view-640.avif 640w, /images/projects/qt-log-viewer/log-view-1280.avif 1280w, /images/projects/qt-log-viewer/log-view-2560.avif 2560w',
+            },
+          ],
         },
       ],
       featured: true,

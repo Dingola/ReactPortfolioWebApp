@@ -42,6 +42,7 @@ export const germanTranslations = {
   'Other projects': 'Weitere Projekte',
   'Source code': 'Quellcode',
   'Project preview': 'Projektvorschau',
+  'Image could not be loaded.': 'Bild konnte nicht geladen werden.',
   'Professional experience': 'Berufserfahrung',
   Education: 'Ausbildung',
   Skills: 'Kenntnisse',

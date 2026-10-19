@@ -18,6 +18,10 @@ export interface PortfolioImage {
   readonly alt: string;
   readonly width: number;
   readonly height: number;
+  readonly sources?: readonly {
+    readonly type: 'image/avif' | 'image/webp';
+    readonly srcSet: string;
+  }[];
 }
 
 /** Supported project group used by the work-page filters. */
