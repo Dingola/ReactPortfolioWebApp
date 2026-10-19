@@ -55,10 +55,10 @@ function ProjectCard({ project, index }: { project: PortfolioProject; index: num
             <li key={technology}>{technology}</li>
           ))}
         </ul>
-        {project.sourceUrl ? (
+        {project.links?.repository ? (
           <a
             className={styles.sourceLink}
-            href={project.sourceUrl}
+            href={project.links.repository}
             rel="noreferrer"
             target="_blank"
           >

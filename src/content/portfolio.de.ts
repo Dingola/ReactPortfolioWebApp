@@ -68,11 +68,40 @@ export const germanPortfolioContent = {
         'Eine Qt-basierte Desktop-Anwendung zum Öffnen, Durchsuchen und Filtern großer Logdateien mit mehreren Ansichten, Sitzungen und wiederverwendbaren Parsing-Profilen.',
       categories: ['tool'],
       technologies: ['C++20', 'Qt 6', 'SQLite', 'CMake', 'GoogleTest'],
-      sourceUrl: 'https://github.com/Dingola/Qt-LogViewer',
+      details: {
+        goal: 'Eine leistungsfähige Desktop-Anwendung schaffen, mit der sich umfangreiche und unterschiedlich strukturierte Logdateien effizient untersuchen lassen.',
+        problem:
+          'Große Logdateien sind mit einfachen Texteditoren nur schwer auszuwerten. Unterschiedliche Formate, große Datenmengen und zusammengehörige Arbeitsschritte erschweren Suche, Filterung und Wiederaufnahme einer Analyse.',
+        solution:
+          'Der Qt Log Viewer kombiniert asynchrones Laden, persistente SQLite-Caches und konfigurierbare Parsing-Profile mit unabhängigen Ansichten, Filtern und speicherbaren Sitzungen.',
+        features: [
+          'Mehrere Ansichten mit eigenen Filtern, Suchmustern und Seitenzuständen',
+          'Konfigurierbare Parsing-Profile mit benutzerdefinierten Feldern und Importvorschau',
+          'Speicherbare Sitzungen, zuletzt verwendete Dateien und strukturierter Datei-Explorer',
+          'Live-Aktualisierung wachsender Logdateien einschließlich Rotationserkennung',
+        ],
+        technicalDecisions: [
+          'C++20 und Qt 6 für eine native, plattformübergreifende Desktop-Anwendung',
+          'Persistente SQLite-Caches für schnelle wiederholte Abfragen großer Dateien',
+          'Asynchrone Ladeprozesse und stapelweiser Modellaufbau für eine reaktionsfähige Oberfläche',
+          'Getrennte Modelle, Presenter, Controller und Services mit klaren Verantwortlichkeiten',
+        ],
+        qualityAssurance: [
+          'Umfangreiche automatisierte Tests mit GoogleTest',
+          'Build- und Test-Workflows für Windows, Linux und macOS',
+          'Code Coverage mit Codecov sowie statische Analyse mit Clang-Tidy',
+          'Sanitizer und Valgrind für die dynamische Laufzeitanalyse',
+        ],
+      },
+      links: {
+        repository: 'https://github.com/Dingola/Qt-LogViewer',
+        documentation: 'https://github.com/Dingola/Qt-LogViewer#readme',
+      },
       images: [
         {
           src: '/images/projects/qt-log-viewer/log-view.png',
           alt: 'Qt Log Viewer mit geöffneter Logdatei, Filtern und Detailansicht',
+          caption: 'Logansicht mit Filtern, Suche und Detailbereich',
           width: 2560,
           height: 1400,
           sources: [
@@ -93,8 +122,35 @@ export const germanPortfolioContent = {
       summary:
         'Eine wiederverwendbare Basisbibliothek mit Services, Hilfsfunktionen und UI-Komponenten für Qt-Widgets-Anwendungen.',
       categories: ['library'],
-      technologies: ['C++', 'Qt 6', 'CMake'],
-      sourceUrl: 'https://github.com/Dingola/QtWidgetsCommonLib',
+      technologies: ['C++20', 'Qt 6', 'CMake', 'GoogleTest'],
+      details: {
+        goal: 'Wiederkehrende Infrastruktur und Oberflächenbausteine für Qt-Widgets-Anwendungen zentral und wiederverwendbar bereitstellen.',
+        problem:
+          'Anwendungsrahmen, Fenstereinstellungen, Übersetzungen, Themes und allgemeine UI-Hilfen werden in Desktop-Projekten häufig mehrfach implementiert und entwickeln sich dadurch uneinheitlich weiter.',
+        solution:
+          'Die Bibliothek bündelt gemeinsame Services, Hilfsfunktionen und Widgets hinter stabilen Schnittstellen und lässt sich als statische Bibliothek in weitere Qt-Projekte integrieren.',
+        features: [
+          'Gemeinsame Anwendungsfenster und plattformspezifische Titelleisten',
+          'Persistenz von Fensterzustand und UI-Einstellungen',
+          'Theme-, Stylesheet- und Übersetzungsinfrastruktur',
+          'Wiederverwendbare Layouts, UI-Hilfen und Formatierungsfunktionen',
+        ],
+        technicalDecisions: [
+          'C++20 und Qt 6 als gemeinsame technische Basis',
+          'Schnittstellen für Theme-, Sprach- und UI-Einstellungen zur Entkopplung der Verbraucher',
+          'CMake-basierte Einbindung als statische Bibliothek',
+        ],
+        qualityAssurance: [
+          'Automatisierte Tests mit GoogleTest',
+          'Build- und Test-Workflows für Windows, Linux und macOS',
+          'Code Coverage mit Codecov sowie optionale Clang- und Sanitizer-Prüfungen',
+          'Generierbare API-Dokumentation mit Doxygen',
+        ],
+      },
+      links: {
+        repository: 'https://github.com/Dingola/QtWidgetsCommonLib',
+        documentation: 'https://github.com/Dingola/QtWidgetsCommonLib#readme',
+      },
       images: [],
       featured: true,
     },
@@ -103,10 +159,38 @@ export const germanPortfolioContent = {
       slug: 'react-portfolio-web-app',
       title: 'React Portfolio Web App',
       summary:
-        'Ein deutschsprachiges Developer-Portfolio mit typisierten Inhalten, automatisierten Qualitätsprüfungen und Vercel-Deployment.',
+        'Ein modernes Developer-Portfolio mit typisierten Inhalten, responsiver Darstellung und automatisierten Qualitätsprüfungen.',
       categories: ['web'],
       technologies: ['React', 'TypeScript', 'Vite', 'Vitest', 'Playwright'],
-      sourceUrl: 'https://github.com/Dingola/ReactPortfolioWebApp',
+      details: {
+        goal: 'Berufserfahrung, technische Schwerpunkte und eigene Softwareprojekte in einem modernen, zugänglichen Portfolio nachvollziehbar präsentieren.',
+        problem:
+          'Die bisherige Portfolio-Webseite bot keine ausreichend flexible Grundlage für ausführliche Projektvorstellungen, eine konsistente responsive Darstellung und eine langfristig wartbare Weiterentwicklung.',
+        solution:
+          'Die Anwendung trennt typisierte Inhalte, UI-Texte, wiederverwendbare Komponenten und Seitendarstellung und verbindet sie mit einem responsiven Designsystem.',
+        features: [
+          'Responsive Projekt-, Lebenslauf-, Über-mich- und Kontaktseiten',
+          'Filterbare Projektübersicht und strukturierte Lebenslaufdarstellung',
+          'Helles und dunkles Farbschema mit zugänglicher Tastaturbedienung',
+          'Optimierte responsive Bilder und clientseitige Seitennavigation',
+        ],
+        technicalDecisions: [
+          'React und striktes TypeScript für eine komponentenbasierte, typsichere Umsetzung',
+          'Zentrale Inhaltsmodelle unabhängig von ihrer visuellen Darstellung',
+          'CSS Modules und globale Design-Tokens für gekapselte, konsistente Gestaltung',
+          'Lazy geladene Routen und Vite für eine schlanke Entwicklungs- und Build-Umgebung',
+        ],
+        qualityAssurance: [
+          'Unit- und Komponententests mit Vitest und React Testing Library',
+          'Browser- und Barrierefreiheitsprüfungen mit Playwright und Axe',
+          'ESLint, Stylelint, Prettier und TypeScript als vollständige lokale Qualitätsprüfung',
+          'Automatisierte Prüfung über GitHub Actions',
+        ],
+      },
+      links: {
+        repository: 'https://github.com/Dingola/ReactPortfolioWebApp',
+        documentation: 'https://github.com/Dingola/ReactPortfolioWebApp#readme',
+      },
       images: [],
       featured: true,
     },

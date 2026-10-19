@@ -15,6 +15,25 @@ describe('German portfolio content', () => {
     expect(validatePortfolioContent(germanPortfolioContent)).toEqual([]);
   });
 
+  it('provides detail content and explicit public links for the initial projects', () => {
+    expect(germanPortfolioContent.projects).toHaveLength(3);
+
+    for (const project of germanPortfolioContent.projects) {
+      expect(project.details.goal).not.toHaveLength(0);
+      expect(project.details.problem).not.toHaveLength(0);
+      expect(project.details.solution).not.toHaveLength(0);
+      expect(project.details.features.length).toBeGreaterThan(0);
+      expect(project.details.technicalDecisions.length).toBeGreaterThan(0);
+      expect(project.details.qualityAssurance.length).toBeGreaterThan(0);
+      expect(project.links.repository).toMatch(/^https:\/\/github\.com\/Dingola\//);
+      expect(project.links.documentation).toContain('#readme');
+    }
+
+    expect(
+      getProjectBySlug(germanPortfolioContent, 'react-portfolio-web-app')?.links?.live,
+    ).toBeUndefined();
+  });
+
   it('reports duplicate identifiers, routes, and project slugs', () => {
     const invalidContent: PortfolioContent = {
       ...germanPortfolioContent,

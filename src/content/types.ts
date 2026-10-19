@@ -16,6 +16,7 @@ export interface NavigationItem {
 export interface PortfolioImage {
   readonly src: string;
   readonly alt: string;
+  readonly caption?: string;
   readonly width: number;
   readonly height: number;
   readonly sources?: readonly {
@@ -24,10 +25,27 @@ export interface PortfolioImage {
   }[];
 }
 
+/** Public destinations belonging to a portfolio project. */
+export interface ProjectLinks {
+  readonly repository?: string;
+  readonly documentation?: string;
+  readonly live?: string;
+}
+
+/** Content used to explain a project beyond its overview card. */
+export interface ProjectDetails {
+  readonly goal: string;
+  readonly problem: string;
+  readonly solution: string;
+  readonly features?: readonly string[];
+  readonly technicalDecisions?: readonly string[];
+  readonly qualityAssurance?: readonly string[];
+}
+
 /** Supported project group used by the work-page filters. */
 export type ProjectCategory = 'web' | 'tool' | 'library' | 'game' | 'other';
 
-/** A portfolio project with optional source, live, and image references. */
+/** A portfolio project with optional details, public links, and image references. */
 export interface PortfolioProject {
   readonly id: string;
   readonly slug: string;
@@ -35,8 +53,8 @@ export interface PortfolioProject {
   readonly summary: string;
   readonly categories: readonly ProjectCategory[];
   readonly technologies: readonly string[];
-  readonly sourceUrl?: string;
-  readonly liveUrl?: string;
+  readonly details?: ProjectDetails;
+  readonly links?: ProjectLinks;
   readonly images: readonly PortfolioImage[];
   readonly featured: boolean;
 }

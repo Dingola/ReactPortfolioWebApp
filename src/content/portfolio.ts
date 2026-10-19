@@ -93,7 +93,7 @@ export function validatePortfolioContent(content: PortfolioContent) {
 
   const urls = [
     ...content.projects.flatMap((entry) =>
-      [entry.sourceUrl, entry.liveUrl].flatMap((url) =>
+      [entry.links?.repository, entry.links?.documentation, entry.links?.live].flatMap((url) =>
         url ? [[`projects.${entry.id}`, url] as const] : [],
       ),
     ),
