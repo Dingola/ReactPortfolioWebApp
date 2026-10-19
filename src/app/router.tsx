@@ -2,7 +2,7 @@ import { lazy, Suspense } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 
 import { App } from './App';
-import { useLocale } from './providers/locale/useLocale';
+import { RouteLoadingState } from './RouteLoadingState';
 
 const HomePage = lazy(() => import('@/pages/HomePage'));
 const AboutPage = lazy(() => import('@/pages/AboutPage'));
@@ -12,12 +12,6 @@ const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'));
 const ResumePage = lazy(() => import('@/pages/ResumePage'));
 const PrivacyPage = lazy(() => import('@/pages/PrivacyPage'));
 const WorkPage = lazy(() => import('@/pages/WorkPage'));
-
-function RouteFallback() {
-  const { translate } = useLocale();
-
-  return <p role="status">{translate('Loading…')}</p>;
-}
 
 /**
  * Client-side route configuration for the application.
@@ -32,7 +26,7 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: (
-          <Suspense fallback={<RouteFallback />}>
+          <Suspense fallback={<RouteLoadingState />}>
             <HomePage />
           </Suspense>
         ),
@@ -40,7 +34,7 @@ export const router = createBrowserRouter([
       {
         path: 'work',
         element: (
-          <Suspense fallback={<RouteFallback />}>
+          <Suspense fallback={<RouteLoadingState />}>
             <WorkPage />
           </Suspense>
         ),
@@ -48,7 +42,7 @@ export const router = createBrowserRouter([
       {
         path: 'resume',
         element: (
-          <Suspense fallback={<RouteFallback />}>
+          <Suspense fallback={<RouteLoadingState />}>
             <ResumePage />
           </Suspense>
         ),
@@ -56,7 +50,7 @@ export const router = createBrowserRouter([
       {
         path: 'about',
         element: (
-          <Suspense fallback={<RouteFallback />}>
+          <Suspense fallback={<RouteLoadingState />}>
             <AboutPage />
           </Suspense>
         ),
@@ -64,7 +58,7 @@ export const router = createBrowserRouter([
       {
         path: 'contact',
         element: (
-          <Suspense fallback={<RouteFallback />}>
+          <Suspense fallback={<RouteLoadingState />}>
             <ContactPage />
           </Suspense>
         ),
@@ -72,7 +66,7 @@ export const router = createBrowserRouter([
       {
         path: 'impressum',
         element: (
-          <Suspense fallback={<RouteFallback />}>
+          <Suspense fallback={<RouteLoadingState />}>
             <ImprintPage />
           </Suspense>
         ),
@@ -80,7 +74,7 @@ export const router = createBrowserRouter([
       {
         path: 'privacy',
         element: (
-          <Suspense fallback={<RouteFallback />}>
+          <Suspense fallback={<RouteLoadingState />}>
             <PrivacyPage />
           </Suspense>
         ),
@@ -88,7 +82,7 @@ export const router = createBrowserRouter([
       {
         path: '*',
         element: (
-          <Suspense fallback={<RouteFallback />}>
+          <Suspense fallback={<RouteLoadingState />}>
             <NotFoundPage />
           </Suspense>
         ),
