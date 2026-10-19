@@ -8,6 +8,7 @@ import { useLocale } from './providers/locale/useLocale';
 const HomePage = lazy(() => import('@/pages/HomePage'));
 const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'));
 const RoutePlaceholderPage = lazy(() => import('@/pages/RoutePlaceholderPage'));
+const WorkPage = lazy(() => import('@/pages/WorkPage'));
 
 function RouteFallback() {
   const { translate } = useLocale();
@@ -33,8 +34,16 @@ export const router = createBrowserRouter([
           </Suspense>
         ),
       },
+      {
+        path: 'work',
+        element: (
+          <Suspense fallback={<RouteFallback />}>
+            <WorkPage />
+          </Suspense>
+        ),
+      },
       ...primaryNavigationItems
-        .filter((item) => item.path !== '/')
+        .filter((item) => item.path !== '/' && item.path !== '/work')
         .map((item) => ({
           path: item.path.slice(1),
           element: (
