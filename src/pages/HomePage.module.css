@@ -166,7 +166,6 @@
   display: grid;
   min-block-size: calc(100svh - 4.5rem);
   align-items: center;
-  border-block-start: var(--border-width) solid var(--color-border);
   padding-block: clamp(var(--space-8), 5vw, var(--space-16));
   gap: clamp(var(--space-10), 6vw, var(--space-20));
   grid-template-columns: minmax(17rem, 0.65fr) minmax(0, 1.35fr);

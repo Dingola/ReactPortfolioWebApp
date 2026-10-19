@@ -224,7 +224,6 @@ textarea.control:placeholder-shown:not(:focus) + label {
 
   .formSection {
     padding-inline-start: 0;
-    border-block-start: var(--border-width) solid var(--color-border);
     border-inline-start: 0;
   }
 }

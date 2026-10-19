@@ -10,7 +10,7 @@ html {
 }
 
 body {
-  min-width: 20rem;
+  min-width: 0;
   min-height: 100vh;
   background: var(--color-background);
 }
@@ -24,8 +24,10 @@ h1,
 h2,
 h3 {
   font-weight: 650;
+  hyphens: auto;
   letter-spacing: var(--letter-spacing-tight);
   line-height: var(--line-height-heading);
+  overflow-wrap: anywhere;
   text-wrap: balance;
 }
 
