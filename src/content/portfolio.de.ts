@@ -27,7 +27,14 @@ export const germanPortfolioContent = {
       categories: ['tool'],
       technologies: ['C++20', 'Qt 6', 'SQLite', 'CMake', 'GoogleTest'],
       sourceUrl: 'https://github.com/Dingola/Qt-LogViewer',
-      images: [],
+      images: [
+        {
+          src: '/images/projects/qt-log-viewer/log-view.png',
+          alt: 'Qt Log Viewer mit geöffneter Logdatei, Filtern und Detailansicht',
+          width: 2560,
+          height: 1400,
+        },
+      ],
       featured: true,
     },
     {
@@ -67,13 +74,37 @@ export const germanPortfolioContent = {
       ],
     },
     {
-      id: 'toolchain-testing',
-      title: 'Toolchain, Tests und Dokumentation',
+      id: 'build-quality',
+      title: 'Build und Qualität',
       skills: [
         { id: 'cmake', label: 'CMake', emphasis: 'primary' },
         { id: 'msvc', label: 'MSVC', emphasis: 'supporting' },
-        { id: 'google-test', label: 'GoogleTest', emphasis: 'supporting' },
+        { id: 'git', label: 'Git', emphasis: 'primary' },
+        { id: 'clang-tidy', label: 'Clang-Tidy', emphasis: 'supporting' },
+        { id: 'valgrind', label: 'Valgrind', emphasis: 'supporting' },
+        { id: 'sanitizers', label: 'Sanitizer', emphasis: 'supporting' },
+      ],
+    },
+    {
+      id: 'testing-documentation',
+      title: 'Testing und Dokumentation',
+      skills: [
+        { id: 'google-test', label: 'GoogleTest', emphasis: 'primary' },
         { id: 'doxygen', label: 'Doxygen', emphasis: 'supporting' },
+        { id: 'codecov', label: 'Codecov', emphasis: 'supporting' },
+      ],
+    },
+    {
+      id: 'ci-cd-deployment',
+      title: 'CI/CD und Deployment',
+      skills: [
+        { id: 'github-actions', label: 'GitHub Actions', emphasis: 'primary' },
+        { id: 'docker', label: 'Docker', emphasis: 'supporting' },
+        {
+          id: 'deployment-scripting',
+          label: 'Deployment-Skripte',
+          emphasis: 'supporting',
+        },
       ],
     },
     {
@@ -82,8 +113,6 @@ export const germanPortfolioContent = {
       skills: [
         { id: 'visual-studio', label: 'Visual Studio', emphasis: 'supporting' },
         { id: 'vs-code', label: 'Visual Studio Code', emphasis: 'supporting' },
-        { id: 'git', label: 'Git', emphasis: 'primary' },
-        { id: 'docker', label: 'Docker', emphasis: 'supporting' },
       ],
     },
     {
@@ -96,6 +125,17 @@ export const germanPortfolioContent = {
         { id: 'node-js', label: 'Node.js', emphasis: 'supporting' },
         { id: 'html', label: 'HTML', emphasis: 'supporting' },
         { id: 'css', label: 'CSS', emphasis: 'supporting' },
+      ],
+    },
+    {
+      id: 'academic-foundations',
+      title: 'Akademische Grundlagen',
+      skills: [
+        { id: 'c', label: 'C', emphasis: 'foundational' },
+        { id: 'java', label: 'Java', emphasis: 'foundational' },
+        { id: 'erlang', label: 'Erlang', emphasis: 'foundational' },
+        { id: 'prolog', label: 'Prolog', emphasis: 'foundational' },
+        { id: 'labview', label: 'LabVIEW (G)', emphasis: 'foundational' },
       ],
     },
   ],
