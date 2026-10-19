@@ -62,8 +62,110 @@ export const germanPortfolioContent = {
       featured: true,
     },
   ],
-  experience: [],
-  education: [],
+  experience: [
+    {
+      id: 'gfai',
+      organisation: 'GFaI – Gesellschaft zur Förderung angewandter Informatik e. V.',
+      role: 'Wissenschaftlicher Mitarbeiter (C++-/Qt-Softwareentwickler)',
+      description:
+        'Im Forschungsbereich Signalverarbeitung umfasste mein Aufgabengebiet folgende Tätigkeiten:',
+      startDate: '2017-09',
+      endDate: '2020-10',
+      highlights: [
+        {
+          text: 'Entwicklung von Softwarebausteinen in C++14 unter Verwendung von OpenGL 4.3, GLSL und dem Qt-Framework.',
+        },
+        {
+          text: 'Entwicklung und Anpassung grafischer Benutzeroberflächen für Prüfstandssoftware eines Außengeräuschprüfstands und eines Windkanals.',
+        },
+        {
+          text: 'Entwicklung einer Klasse zur Visualisierung von Richtungsinformationen als parametrisierbare Pfeile auf Basis von Instanced Rendering mit OpenGL 3.3 und GLSL.',
+          link: {
+            label: 'DynaBeam – innovative 3D-Lokalisierung von Schallabstrahlungen',
+            href: 'https://www.gfai.de/aktuelles/presse/news/artikel/dynabeam-innovative-3d-lokalisierung-von-schallabstrahlungen',
+          },
+        },
+        {
+          text: 'Entwicklung eines Datenmodells für eine Reporting-Software.',
+        },
+        {
+          text: 'Entwicklung und Anpassung einer grafischen Benutzeroberfläche für eine Reporting-Software für akustische Karten.',
+          link: {
+            label: 'NoiseImage Conclusions',
+            href: 'https://www.gfaitech.com/de/produkte/akustische-kamera/software-noiseimage/noiseimage-conclusions',
+          },
+        },
+      ],
+      technologies: ['C++14', 'Qt', 'OpenGL', 'GLSL'],
+      organisationUrl: 'https://www.gfai.de/',
+    },
+    {
+      id: 'ghc',
+      organisation: 'GHC – Global Health Care GmbH',
+      role: 'C++-Softwareentwickler',
+      startDate: '2016-09',
+      endDate: '2016-11',
+      highlights: [],
+      technologies: ['C++'],
+      organisationUrl: 'https://ghc-tech.de/',
+    },
+    {
+      id: 'vivantes',
+      organisation: 'VIVANTES Auguste-Viktoria-Klinikum',
+      role: 'Zivildienstleistender',
+      startDate: '2009-12',
+      endDate: '2010-09',
+      highlights: [
+        {
+          text: 'Zivildienst auf der Station für Neurologie: Erstellung von Speiselisten, Vorbereitung und Ausgabe von Mahlzeiten und Getränken sowie Unterstützung des Pflegepersonals im Arbeitsablauf.',
+        },
+      ],
+      technologies: [],
+      organisationUrl:
+        'https://www.vivantes.de/auguste-viktoria-klinikum/neurologie-mit-stroke-unit',
+    },
+  ],
+  education: [
+    {
+      id: 'htw-berlin',
+      institution: 'Hochschule für Technik und Wirtschaft Berlin (HTW Berlin)',
+      role: 'Student',
+      qualification: 'Bachelor of Science (B. Sc.)',
+      subject: 'Angewandte Informatik, Schwerpunkt Multimedia',
+      startDate: '2010-10',
+      endDate: '2016-04',
+      details: [
+        {
+          text: 'Praktikum bei der IAV mit dem Schwerpunkt auf der Entwicklung einer Schnittstelle zwischen Java und MATLAB.',
+          link: { label: 'IAV', href: 'https://www.iav.com/' },
+        },
+        {
+          text: 'Bachelorarbeit: Konzeption und Entwicklung eines Messprogramms zur Aufnahme spektroskopischer Daten.',
+        },
+      ],
+      institutionUrl: 'https://www.htw-berlin.de/',
+    },
+    {
+      id: 'osz-kim',
+      institution: 'Oberstufenzentrum Kommunikations-, Informations- und Medientechnik',
+      role: 'Schüler',
+      qualification: 'Allgemeine Fachhochschulreife (FOS)',
+      startDate: '2007-08',
+      endDate: '2009-06',
+      details: [],
+      institutionUrl: 'https://www.oszkim.de/wp/',
+    },
+    {
+      id: 'sankt-marien',
+      institution: 'Katholische Schule Sankt Marien',
+      role: 'Schüler',
+      qualification: 'Mittlerer Schulabschluss (MSA)',
+      startDate: '2002-08',
+      endDate: '2007-07',
+      details: [],
+      institutionUrl: 'https://marienschule-berlin.de/',
+    },
+  ],
   skillGroups: [
     {
       id: 'core-development',
@@ -71,6 +173,7 @@ export const germanPortfolioContent = {
       skills: [
         { id: 'cpp', label: 'C++', emphasis: 'primary' },
         { id: 'qt', label: 'Qt', emphasis: 'primary' },
+        { id: 'opengl', label: 'OpenGL', emphasis: 'supporting' },
       ],
     },
     {
@@ -78,10 +181,10 @@ export const germanPortfolioContent = {
       title: 'Build und Qualität',
       skills: [
         { id: 'cmake', label: 'CMake', emphasis: 'primary' },
-        { id: 'msvc', label: 'MSVC', emphasis: 'supporting' },
+        { id: 'msvc', label: 'MSVC', emphasis: 'primary' },
         { id: 'git', label: 'Git', emphasis: 'primary' },
-        { id: 'clang-tidy', label: 'Clang-Tidy', emphasis: 'supporting' },
-        { id: 'valgrind', label: 'Valgrind', emphasis: 'supporting' },
+        { id: 'clang-tools', label: 'Clang (Format / Tidy)', emphasis: 'primary' },
+        { id: 'valgrind', label: 'Valgrind', emphasis: 'primary' },
         { id: 'sanitizers', label: 'Sanitizer', emphasis: 'supporting' },
       ],
     },
@@ -90,8 +193,8 @@ export const germanPortfolioContent = {
       title: 'Testing und Dokumentation',
       skills: [
         { id: 'google-test', label: 'GoogleTest', emphasis: 'primary' },
-        { id: 'doxygen', label: 'Doxygen', emphasis: 'supporting' },
-        { id: 'codecov', label: 'Codecov', emphasis: 'supporting' },
+        { id: 'doxygen', label: 'Doxygen', emphasis: 'primary' },
+        { id: 'codecov', label: 'Codecov', emphasis: 'primary' },
       ],
     },
     {
@@ -99,7 +202,7 @@ export const germanPortfolioContent = {
       title: 'CI/CD und Deployment',
       skills: [
         { id: 'github-actions', label: 'GitHub Actions', emphasis: 'primary' },
-        { id: 'docker', label: 'Docker', emphasis: 'supporting' },
+        { id: 'docker', label: 'Docker', emphasis: 'primary' },
         {
           id: 'deployment-scripting',
           label: 'Deployment-Skripte',
@@ -111,7 +214,7 @@ export const germanPortfolioContent = {
       id: 'development-tools',
       title: 'Entwicklungswerkzeuge',
       skills: [
-        { id: 'visual-studio', label: 'Visual Studio', emphasis: 'supporting' },
+        { id: 'visual-studio', label: 'Visual Studio', emphasis: 'primary' },
         { id: 'vs-code', label: 'Visual Studio Code', emphasis: 'supporting' },
       ],
     },

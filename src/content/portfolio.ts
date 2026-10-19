@@ -88,12 +88,24 @@ export function validatePortfolioContent(content: PortfolioContent) {
         url ? [[`projects.${entry.id}`, url] as const] : [],
       ),
     ),
-    ...content.experience.flatMap((entry) =>
-      entry.organisationUrl ? ([[`experience.${entry.id}`, entry.organisationUrl]] as const) : [],
-    ),
-    ...content.education.flatMap((entry) =>
-      entry.institutionUrl ? ([[`education.${entry.id}`, entry.institutionUrl]] as const) : [],
-    ),
+    ...content.experience.flatMap((entry) => [
+      ...(entry.organisationUrl
+        ? ([[`experience.${entry.id}`, entry.organisationUrl]] as const)
+        : []),
+      ...entry.highlights.flatMap((detail, index) =>
+        detail.link
+          ? ([[`experience.${entry.id}.highlights.${index}`, detail.link.href]] as const)
+          : [],
+      ),
+    ]),
+    ...content.education.flatMap((entry) => [
+      ...(entry.institutionUrl ? ([[`education.${entry.id}`, entry.institutionUrl]] as const) : []),
+      ...entry.details.flatMap((detail, index) =>
+        detail.link
+          ? ([[`education.${entry.id}.details.${index}`, detail.link.href]] as const)
+          : [],
+      ),
+    ]),
     ...content.certificates.flatMap((entry) =>
       entry.credentialUrl ? ([[`certificates.${entry.id}`, entry.credentialUrl]] as const) : [],
     ),

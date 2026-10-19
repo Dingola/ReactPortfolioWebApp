@@ -42,6 +42,13 @@ export const germanTranslations = {
   'Other projects': 'Weitere Projekte',
   'Source code': 'Quellcode',
   'Project preview': 'Projektvorschau',
+  'Professional experience': 'Berufserfahrung',
+  Education: 'Ausbildung',
+  Skills: 'Kenntnisse',
+  Qualification: 'Abschluss',
+  'Visit organisation website': 'Webseite der Organisation',
+  'Career history, education, and technical expertise.':
+    'Berufliche Stationen, Ausbildung und technische Kenntnisse.',
   'This section is being prepared.': 'Dieser Bereich wird derzeit vorbereitet.',
   'Page not found': 'Seite nicht gefunden',
   'The requested page does not exist.': 'Die angeforderte Seite existiert nicht.',

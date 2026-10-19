@@ -7,6 +7,7 @@ import { useLocale } from './providers/locale/useLocale';
 
 const HomePage = lazy(() => import('@/pages/HomePage'));
 const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'));
+const ResumePage = lazy(() => import('@/pages/ResumePage'));
 const RoutePlaceholderPage = lazy(() => import('@/pages/RoutePlaceholderPage'));
 const WorkPage = lazy(() => import('@/pages/WorkPage'));
 
@@ -42,8 +43,16 @@ export const router = createBrowserRouter([
           </Suspense>
         ),
       },
+      {
+        path: 'resume',
+        element: (
+          <Suspense fallback={<RouteFallback />}>
+            <ResumePage />
+          </Suspense>
+        ),
+      },
       ...primaryNavigationItems
-        .filter((item) => item.path !== '/' && item.path !== '/work')
+        .filter((item) => item.path !== '/' && item.path !== '/work' && item.path !== '/resume')
         .map((item) => ({
           path: item.path.slice(1),
           element: (

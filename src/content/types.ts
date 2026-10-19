@@ -37,14 +37,27 @@ export interface PortfolioProject {
   readonly featured: boolean;
 }
 
+/** An optional external reference attached to a resume detail. */
+export interface ContentLink {
+  readonly label: string;
+  readonly href: string;
+}
+
+/** A textual resume detail with an optional supporting public link. */
+export interface ContentDetail {
+  readonly text: string;
+  readonly link?: ContentLink;
+}
+
 /** A professional position shown in reverse chronological order. */
 export interface ExperienceEntry {
   readonly id: string;
   readonly organisation: string;
   readonly role: string;
+  readonly description?: string;
   readonly startDate: string;
   readonly endDate?: string;
-  readonly highlights: readonly string[];
+  readonly highlights: readonly ContentDetail[];
   readonly technologies: readonly string[];
   readonly organisationUrl?: string;
 }
@@ -53,11 +66,12 @@ export interface ExperienceEntry {
 export interface EducationEntry {
   readonly id: string;
   readonly institution: string;
+  readonly role?: string;
   readonly qualification: string;
-  readonly subject: string;
+  readonly subject?: string;
   readonly startDate: string;
   readonly endDate: string;
-  readonly details: readonly string[];
+  readonly details: readonly ContentDetail[];
   readonly institutionUrl?: string;
 }
 
