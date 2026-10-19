@@ -49,6 +49,11 @@ export const germanTranslations = {
   'Visit organisation website': 'Webseite der Organisation',
   'Career history, education, and technical expertise.':
     'Berufliche Stationen, Ausbildung und technische Kenntnisse.',
+  'How I approach software development.': 'Wie ich Softwareentwicklung angehe.',
+  'Working principles': 'Arbeitsweise',
+  'My workspace': 'Mein Arbeitsplatz',
+  "Adrian Helbig's workspace": 'Arbeitsplatz von Adrian Helbig',
+  'View GitHub profile': 'GitHub-Profil ansehen',
   'This section is being prepared.': 'Dieser Bereich wird derzeit vorbereitet.',
   'Page not found': 'Seite nicht gefunden',
   'The requested page does not exist.': 'Die angeforderte Seite existiert nicht.',

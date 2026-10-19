@@ -6,6 +6,7 @@ import { primaryNavigationItems } from './navigation';
 import { useLocale } from './providers/locale/useLocale';
 
 const HomePage = lazy(() => import('@/pages/HomePage'));
+const AboutPage = lazy(() => import('@/pages/AboutPage'));
 const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'));
 const ResumePage = lazy(() => import('@/pages/ResumePage'));
 const RoutePlaceholderPage = lazy(() => import('@/pages/RoutePlaceholderPage'));
@@ -51,8 +52,22 @@ export const router = createBrowserRouter([
           </Suspense>
         ),
       },
+      {
+        path: 'about',
+        element: (
+          <Suspense fallback={<RouteFallback />}>
+            <AboutPage />
+          </Suspense>
+        ),
+      },
       ...primaryNavigationItems
-        .filter((item) => item.path !== '/' && item.path !== '/work' && item.path !== '/resume')
+        .filter(
+          (item) =>
+            item.path !== '/' &&
+            item.path !== '/work' &&
+            item.path !== '/resume' &&
+            item.path !== '/about',
+        )
         .map((item) => ({
           path: item.path.slice(1),
           element: (

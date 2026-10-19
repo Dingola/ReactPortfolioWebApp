@@ -112,6 +112,13 @@ export interface ContactLink {
   readonly href: string;
 }
 
+/** A principle that describes how the portfolio owner approaches software development. */
+export interface WorkingPrinciple {
+  readonly id: string;
+  readonly title: string;
+  readonly description: string;
+}
+
 /** Localized portfolio content independent from its visual presentation. */
 export interface PortfolioContent {
   readonly locale: Locale;
@@ -120,6 +127,11 @@ export interface PortfolioContent {
     readonly role: string;
     readonly location: string;
     readonly introduction: string;
+  };
+  readonly about: {
+    readonly statement: string;
+    readonly paragraphs: readonly string[];
+    readonly workingPrinciples: readonly WorkingPrinciple[];
   };
   readonly navigation: readonly NavigationItem[];
   readonly projects: readonly PortfolioProject[];

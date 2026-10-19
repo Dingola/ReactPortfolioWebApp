@@ -48,6 +48,11 @@ export type SourceMessage =
   | 'Qualification'
   | 'Visit organisation website'
   | 'Career history, education, and technical expertise.'
+  | 'How I approach software development.'
+  | 'Working principles'
+  | 'My workspace'
+  | "Adrian Helbig's workspace"
+  | 'View GitHub profile'
   | 'This section is being prepared.'
   | 'Page not found'
   | 'The requested page does not exist.'

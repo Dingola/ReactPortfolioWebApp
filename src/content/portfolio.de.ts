@@ -10,6 +10,41 @@ export const germanPortfolioContent = {
     introduction:
       'Ich entwickle Desktop-Anwendungen mit C++ und Qt und beschäftige mich daneben mit weiteren Technologien und eigenen Projekten.',
   },
+  about: {
+    statement:
+      'Komplexe Anforderungen in verständliche, belastbare Software zu übersetzen, ist der Kern meiner Arbeit.',
+    paragraphs: [
+      'Mein fachlicher Schwerpunkt liegt auf Desktop-Anwendungen mit C++ und Qt. Dabei verbinde ich Datenmodelle, Geschäftslogik und grafische Benutzeroberflächen zu modularen Anwendungen, die langfristig wartbar bleiben.',
+      'Qualität entsteht für mich nicht erst am Ende: Clean Code, automatisierte Tests, statische und dynamische Analyse sowie reproduzierbare Build-Prozesse gehören zu meiner Arbeitsweise.',
+      'Seit 2024 beschäftige ich mich intensiv mit KI-gestützter und agentischer Softwareentwicklung. Codex und GitHub Copilot nutze ich strukturiert für die Umsetzung von Anforderungen, Codeanalyse, Refactoring und Qualitätssicherung. Die fachliche Kontrolle bleibt dabei ein fester Bestandteil.',
+    ],
+    workingPrinciples: [
+      {
+        id: 'robust-solutions',
+        title: 'Robuste Lösungen',
+        description:
+          'Software soll auch unter realen Bedingungen zuverlässig, nachvollziehbar und wartbar bleiben.',
+      },
+      {
+        id: 'modular-architecture',
+        title: 'Modulare Architektur',
+        description:
+          'Klare Verantwortlichkeiten und wiederverwendbare Komponenten machen komplexe Anforderungen beherrschbar.',
+      },
+      {
+        id: 'quality-process',
+        title: 'Qualität als Prozess',
+        description:
+          'Tests, Analysewerkzeuge und automatisierte Builds begleiten die Entwicklung kontinuierlich.',
+      },
+      {
+        id: 'direct-collaboration',
+        title: 'Direkter Austausch',
+        description:
+          'Kurze Abstimmungswege, fachlicher Austausch und gemeinsame Verantwortung führen zu besseren Lösungen.',
+      },
+    ],
+  },
   navigation: [
     { id: 'home', index: 1, label: 'Home', path: '/' },
     { id: 'work', index: 2, label: 'Work', path: '/work' },
