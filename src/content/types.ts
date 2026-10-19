@@ -133,6 +133,13 @@ export interface PortfolioContent {
     readonly paragraphs: readonly string[];
     readonly workingPrinciples: readonly WorkingPrinciple[];
   };
+  readonly legal: {
+    readonly operatorName: string;
+    readonly street: string;
+    readonly postalCode: string;
+    readonly city: string;
+    readonly email: string;
+  };
   readonly navigation: readonly NavigationItem[];
   readonly projects: readonly PortfolioProject[];
   readonly experience: readonly ExperienceEntry[];

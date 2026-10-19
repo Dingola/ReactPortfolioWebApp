@@ -45,6 +45,13 @@ export const germanPortfolioContent = {
       },
     ],
   },
+  legal: {
+    operatorName: 'Adrian Helbig',
+    street: 'Buschrosensteig 9',
+    postalCode: '12347',
+    city: 'Berlin',
+    email: 'email@adrianhelbig.de',
+  },
   navigation: [
     { id: 'home', index: 1, label: 'Home', path: '/' },
     { id: 'work', index: 2, label: 'Work', path: '/work' },

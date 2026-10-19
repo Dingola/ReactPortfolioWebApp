@@ -7,6 +7,30 @@
 
 .inner {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   gap: var(--space-4);
+}
+
+.inner nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-4);
+}
+
+.inner a {
+  color: var(--color-text-muted);
+}
+
+@media (width <= 36rem) {
+  .inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .inner nav {
+    justify-content: flex-start;
+    order: 3;
+  }
 }

@@ -7,8 +7,10 @@ import { useLocale } from './providers/locale/useLocale';
 const HomePage = lazy(() => import('@/pages/HomePage'));
 const AboutPage = lazy(() => import('@/pages/AboutPage'));
 const ContactPage = lazy(() => import('@/pages/ContactPage'));
+const ImprintPage = lazy(() => import('@/pages/ImprintPage'));
 const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'));
 const ResumePage = lazy(() => import('@/pages/ResumePage'));
+const PrivacyPage = lazy(() => import('@/pages/PrivacyPage'));
 const WorkPage = lazy(() => import('@/pages/WorkPage'));
 
 function RouteFallback() {
@@ -64,6 +66,22 @@ export const router = createBrowserRouter([
         element: (
           <Suspense fallback={<RouteFallback />}>
             <ContactPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'impressum',
+        element: (
+          <Suspense fallback={<RouteFallback />}>
+            <ImprintPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'privacy',
+        element: (
+          <Suspense fallback={<RouteFallback />}>
+            <PrivacyPage />
           </Suspense>
         ),
       },
