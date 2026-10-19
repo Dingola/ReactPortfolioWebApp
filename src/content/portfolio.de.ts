@@ -280,6 +280,12 @@ export const germanPortfolioContent = {
   certificates: [],
   contactLinks: [
     {
+      id: 'email',
+      kind: 'email',
+      label: 'email@adrianhelbig.de',
+      href: 'mailto:email@adrianhelbig.de',
+    },
+    {
       id: 'github',
       kind: 'github',
       label: 'GitHub',

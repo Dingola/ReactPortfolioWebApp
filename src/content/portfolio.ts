@@ -30,6 +30,15 @@ function isSafePublicUrl(value: string) {
   }
 }
 
+function isSafeEmailUrl(value: string) {
+  try {
+    const url = new URL(value);
+    return url.protocol === 'mailto:' && url.pathname.length > 0;
+  } catch {
+    return false;
+  }
+}
+
 /** Finds a portfolio project by its stable route slug. */
 export function getProjectBySlug(
   content: PortfolioContent,
@@ -109,12 +118,24 @@ export function validatePortfolioContent(content: PortfolioContent) {
     ...content.certificates.flatMap((entry) =>
       entry.credentialUrl ? ([[`certificates.${entry.id}`, entry.credentialUrl]] as const) : [],
     ),
-    ...content.contactLinks.map((entry) => [`contactLinks.${entry.id}`, entry.href] as const),
+    ...content.contactLinks.flatMap((entry) =>
+      entry.kind === 'email' ? [] : [[`contactLinks.${entry.id}`, entry.href] as const],
+    ),
   ];
 
   for (const [path, url] of urls) {
     if (!isSafePublicUrl(url)) {
       issues.push({ code: 'invalid-url', path, message: `Expected an HTTPS URL: ${url}` });
+    }
+  }
+
+  for (const entry of content.contactLinks.filter((link) => link.kind === 'email')) {
+    if (!isSafeEmailUrl(entry.href)) {
+      issues.push({
+        code: 'invalid-url',
+        path: `contactLinks.${entry.id}`,
+        message: `Expected a mailto URL: ${entry.href}`,
+      });
     }
   }
 

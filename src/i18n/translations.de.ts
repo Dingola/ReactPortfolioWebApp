@@ -54,6 +54,25 @@ export const germanTranslations = {
   'My workspace': 'Mein Arbeitsplatz',
   "Adrian Helbig's workspace": 'Arbeitsplatz von Adrian Helbig',
   'View GitHub profile': 'GitHub-Profil ansehen',
+  'Let us talk about software, projects, and new opportunities.':
+    'Lassen Sie uns über Software, Projekte und neue Möglichkeiten sprechen.',
+  'Contact form': 'Kontaktformular',
+  'Direct contact': 'Direkter Kontakt',
+  'Your name': 'Ihr Name',
+  'Your email address': 'Ihre E-Mail-Adresse',
+  'Your message': 'Ihre Nachricht',
+  'Send message': 'Nachricht senden',
+  'Sending message…': 'Nachricht wird gesendet …',
+  'Please enter your name.': 'Bitte geben Sie Ihren Namen an.',
+  'Please enter a valid email address.': 'Bitte geben Sie eine gültige E-Mail-Adresse an.',
+  'Please write at least three words.': 'Bitte schreiben Sie mindestens drei Wörter.',
+  'Thank you. Your message has been sent successfully.':
+    'Vielen Dank. Ihre Nachricht wurde erfolgreich übermittelt.',
+  'Your message could not be sent. Please try again later or use one of the direct contact options.':
+    'Ihre Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es später erneut oder nutzen Sie eine der direkten Kontaktmöglichkeiten.',
+  'Your data is stored only to process your request. Find all details in the':
+    'Ihre Daten werden nur zur Bearbeitung Ihrer Anfrage gespeichert. Alle Details finden Sie in der',
+  'privacy policy': 'Datenschutzerklärung',
   'This section is being prepared.': 'Dieser Bereich wird derzeit vorbereitet.',
   'Page not found': 'Seite nicht gefunden',
   'The requested page does not exist.': 'Die angeforderte Seite existiert nicht.',

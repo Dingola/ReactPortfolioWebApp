@@ -2,14 +2,13 @@ import { lazy, Suspense } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 
 import { App } from './App';
-import { primaryNavigationItems } from './navigation';
 import { useLocale } from './providers/locale/useLocale';
 
 const HomePage = lazy(() => import('@/pages/HomePage'));
 const AboutPage = lazy(() => import('@/pages/AboutPage'));
+const ContactPage = lazy(() => import('@/pages/ContactPage'));
 const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'));
 const ResumePage = lazy(() => import('@/pages/ResumePage'));
-const RoutePlaceholderPage = lazy(() => import('@/pages/RoutePlaceholderPage'));
 const WorkPage = lazy(() => import('@/pages/WorkPage'));
 
 function RouteFallback() {
@@ -60,22 +59,14 @@ export const router = createBrowserRouter([
           </Suspense>
         ),
       },
-      ...primaryNavigationItems
-        .filter(
-          (item) =>
-            item.path !== '/' &&
-            item.path !== '/work' &&
-            item.path !== '/resume' &&
-            item.path !== '/about',
-        )
-        .map((item) => ({
-          path: item.path.slice(1),
-          element: (
-            <Suspense fallback={<RouteFallback />}>
-              <RoutePlaceholderPage path={item.path} />
-            </Suspense>
-          ),
-        })),
+      {
+        path: 'contact',
+        element: (
+          <Suspense fallback={<RouteFallback />}>
+            <ContactPage />
+          </Suspense>
+        ),
+      },
       {
         path: '*',
         element: (
