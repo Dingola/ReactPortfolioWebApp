@@ -120,7 +120,7 @@ export default function HomePage() {
               <li key={technology}>{technology}</li>
             ))}
           </ul>
-          <Link className={styles.projectLink} to="/work">
+          <Link className={styles.projectLink} to={`/work/${featuredProject.slug}`}>
             {translate('View project')}
             <span aria-hidden="true">→</span>
           </Link>

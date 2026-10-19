@@ -11,6 +11,7 @@ const ImprintPage = lazy(() => import('@/pages/ImprintPage'));
 const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'));
 const ResumePage = lazy(() => import('@/pages/ResumePage'));
 const PrivacyPage = lazy(() => import('@/pages/PrivacyPage'));
+const ProjectDetailPage = lazy(() => import('@/pages/ProjectDetailPage'));
 const WorkPage = lazy(() => import('@/pages/WorkPage'));
 
 /**
@@ -36,6 +37,14 @@ export const router = createBrowserRouter([
         element: (
           <Suspense fallback={<RouteLoadingState />}>
             <WorkPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'work/:slug',
+        element: (
+          <Suspense fallback={<RouteLoadingState />}>
+            <ProjectDetailPage />
           </Suspense>
         ),
       },

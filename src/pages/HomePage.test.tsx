@@ -37,6 +37,9 @@ describe('HomePage', () => {
     expect(
       screen.getByRole('img', { name: /qt log viewer mit geöffneter logdatei/i }),
     ).toHaveAttribute('src', '/images/projects/qt-log-viewer/log-view.png');
-    expect(screen.getByRole('link', { name: /projekt ansehen/i })).toHaveAttribute('href', '/work');
+    expect(screen.getByRole('link', { name: /projekt ansehen/i })).toHaveAttribute(
+      'href',
+      '/work/qt-log-viewer',
+    );
   });
 });

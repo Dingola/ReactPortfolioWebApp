@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import { appConfig } from '@/app/config';
 import { useLocale } from '@/app/providers/locale/useLocale';
@@ -48,13 +49,21 @@ function ProjectCard({ project, index }: { project: PortfolioProject; index: num
 
       <div className={styles.cardContent}>
         <p className={styles.projectNumber}>PROJECT_{String(index + 1).padStart(3, '0')}</p>
-        <h2>{project.title}</h2>
+        <h2>
+          <Link className={styles.titleLink} to={`/work/${project.slug}`}>
+            {project.title}
+          </Link>
+        </h2>
         <p className={styles.summary}>{project.summary}</p>
         <ul className={styles.technologies} aria-label={translate('Technology stack')}>
           {project.technologies.map((technology) => (
             <li key={technology}>{technology}</li>
           ))}
         </ul>
+        <Link className={styles.detailLink} to={`/work/${project.slug}`}>
+          {translate('View project')}
+          <span aria-hidden="true">→</span>
+        </Link>
         {project.links?.repository ? (
           <a
             className={styles.sourceLink}

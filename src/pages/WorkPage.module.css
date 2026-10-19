@@ -158,6 +158,16 @@
   font-size: var(--font-size-heading-small);
 }
 
+.titleLink {
+  color: inherit;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+  transition:
+    color var(--motion-duration-fast) var(--motion-easing-standard),
+    text-decoration-color var(--motion-duration-fast) var(--motion-easing-standard);
+}
+
 .summary {
   margin-block-start: var(--space-4);
   color: var(--color-text-muted);
@@ -181,19 +191,33 @@
   font-size: var(--font-size-xs);
 }
 
+.detailLink,
 .sourceLink {
   display: inline-flex;
   align-items: center;
   justify-self: start;
   gap: var(--space-2);
-  margin-block-start: var(--space-6);
   color: var(--color-text);
   font-weight: 600;
   text-decoration-color: var(--color-accent);
   text-decoration-thickness: 2px;
 }
 
+.detailLink {
+  margin-block-start: var(--space-6);
+}
+
+.sourceLink {
+  margin-block-start: var(--space-3);
+  color: var(--color-text-muted);
+}
+
 @media (hover: hover) {
+  .titleLink:hover {
+    color: var(--color-accent);
+    text-decoration-color: currentcolor;
+  }
+
   .filter:hover span {
     border-color: var(--color-accent);
     color: var(--color-text);

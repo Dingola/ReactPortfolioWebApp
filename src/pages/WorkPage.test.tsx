@@ -18,7 +18,16 @@ describe('WorkPage', () => {
     expect(screen.getByRole('heading', { name: 'Qt Log Viewer' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Qt Widgets Common Library' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'React Portfolio Web App' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Qt Log Viewer' })).toHaveAttribute(
+      'href',
+      '/work/qt-log-viewer',
+    );
     expect(screen.getAllByRole('link', { name: /quellcode/i })).toHaveLength(3);
+    expect(screen.getAllByRole('link', { name: /projekt ansehen/i })).toHaveLength(3);
+    expect(screen.getAllByRole('link', { name: /projekt ansehen/i })[0]).toHaveAttribute(
+      'href',
+      '/work/qt-log-viewer',
+    );
   });
 
   it('filters projects by category', async () => {
