@@ -23,10 +23,12 @@ describe('ProjectDetailPage', () => {
     expect(screen.getByText('Projektziel')).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Zentrale Funktionen' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Qualitätssicherung' })).toBeInTheDocument();
-    expect(screen.getByRole('img')).toHaveAttribute(
+    expect(screen.getAllByRole('img')).toHaveLength(4);
+    expect(screen.getAllByRole('img')[0]).toHaveAttribute(
       'src',
       '/images/projects/qt-log-viewer/log-view.png',
     );
+    expect(screen.getByRole('heading', { name: 'Projekteinblicke' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /zurück zu den projekten/i })).toHaveAttribute(
       'href',
       '/work',

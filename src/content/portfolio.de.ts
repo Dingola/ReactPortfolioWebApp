@@ -112,6 +112,48 @@ export const germanPortfolioContent = {
             },
           ],
         },
+        {
+          src: '/images/projects/qt-log-viewer/log-file-import.png',
+          alt: 'Qt Log Viewer mit Parsing-Profil und Vorschau beim Import einer Logdatei',
+          caption: 'Importvorschau mit Parsing-Profil, erkannten Feldern und Validierung',
+          width: 2560,
+          height: 1400,
+          sources: [
+            {
+              type: 'image/avif',
+              srcSet:
+                '/images/projects/qt-log-viewer/log-file-import-640.avif 640w, /images/projects/qt-log-viewer/log-file-import-1280.avif 1280w, /images/projects/qt-log-viewer/log-file-import-2560.avif 2560w',
+            },
+          ],
+        },
+        {
+          src: '/images/projects/qt-log-viewer/start-page.png',
+          alt: 'Startseite des Qt Log Viewers mit zuletzt verwendeter Datei und gespeicherter Sitzung',
+          caption: 'Startseite mit zuletzt verwendeten Dateien und gespeicherten Sitzungen',
+          width: 2560,
+          height: 1400,
+          sources: [
+            {
+              type: 'image/avif',
+              srcSet:
+                '/images/projects/qt-log-viewer/start-page-640.avif 640w, /images/projects/qt-log-viewer/start-page-1280.avif 1280w, /images/projects/qt-log-viewer/start-page-2560.avif 2560w',
+            },
+          ],
+        },
+        {
+          src: '/images/projects/qt-log-viewer/start-page-empty.png',
+          alt: 'Leere Startseite des Qt Log Viewers mit Aktionen zum Öffnen von Dateien und Sitzungen',
+          caption: 'Leerer Ausgangszustand mit direkten Aktionen für Logdateien und Sitzungen',
+          width: 2560,
+          height: 1400,
+          sources: [
+            {
+              type: 'image/avif',
+              srcSet:
+                '/images/projects/qt-log-viewer/start-page-empty-640.avif 640w, /images/projects/qt-log-viewer/start-page-empty-1280.avif 1280w, /images/projects/qt-log-viewer/start-page-empty-2560.avif 2560w',
+            },
+          ],
+        },
       ],
       featured: true,
     },
