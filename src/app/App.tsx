@@ -1,8 +1,14 @@
+import { ScrollRestoration, type Location } from 'react-router-dom';
+
 import styles from './App.module.css';
 import { Footer } from './layout/Footer';
 import { Header } from './layout/Header';
 import { PageTransition } from './PageTransition';
 import { useLocale } from './providers/locale/useLocale';
+
+function getScrollRestorationKey(location: Location) {
+  return `${location.pathname}${location.search}${location.hash}`;
+}
 
 /**
  * Provides the persistent application shell shared by all routes.
@@ -24,6 +30,7 @@ export function App() {
         <PageTransition />
       </main>
       <Footer />
+      <ScrollRestoration getKey={getScrollRestorationKey} />
     </div>
   );
 }

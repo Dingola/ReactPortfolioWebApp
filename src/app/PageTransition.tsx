@@ -28,6 +28,7 @@ const pageVariants = {
   exit: ({ direction, distance, reduceMotion }: TransitionContext) => ({
     opacity: reduceMotion ? 1 : 0,
     x: reduceMotion || direction === 'none' ? 0 : direction === 'forward' ? -distance : distance,
+    transition: { duration: 0 },
   }),
 };
 
