@@ -8,6 +8,8 @@
 }
 
 .inner {
+  position: relative;
+  z-index: 3;
   display: grid;
   min-height: 4.5rem;
   align-items: center;
@@ -51,7 +53,8 @@
 }
 
 .menuButton,
-.mobilePanel {
+.mobilePanel,
+.menuBackdrop {
   display: none;
 }
 
@@ -83,12 +86,14 @@
 
   .mobilePanel {
     position: absolute;
+    z-index: 2;
     inset: calc(100% + 1px) 0 auto;
     display: grid;
     max-height: 0;
     overflow: hidden;
     border-block-end: var(--border-width) solid transparent;
-    background: var(--color-background);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-small);
     opacity: 0;
     pointer-events: none;
     transition:
@@ -97,10 +102,25 @@
       border-color var(--motion-duration-fast) var(--motion-easing-standard);
   }
 
+  .menuBackdrop {
+    position: fixed;
+    z-index: 40;
+    inset: 4.5rem 0 0;
+    display: block;
+    padding: 0;
+    border: 0;
+    background: color-mix(in srgb, var(--color-text) 14%, transparent);
+    backdrop-filter: blur(0.125rem);
+    cursor: default;
+    animation: reveal-menu-backdrop var(--motion-duration-fast) var(--motion-easing-standard);
+  }
+
   .mobilePanelOpen {
-    max-height: 32rem;
+    max-height: calc(100dvh - 4.5rem);
+    overflow-y: auto;
     border-color: var(--color-border);
     opacity: 1;
+    overscroll-behavior: contain;
     pointer-events: auto;
   }
 
@@ -111,6 +131,12 @@
   .mobileActions {
     justify-content: space-between;
     padding-block-start: var(--space-5);
+  }
+}
+
+@keyframes reveal-menu-backdrop {
+  from {
+    opacity: 0;
   }
 }
 

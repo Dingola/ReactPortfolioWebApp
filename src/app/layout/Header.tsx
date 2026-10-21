@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 
 import { Container } from '@/components/layout/Container';
@@ -32,11 +33,21 @@ export function Header() {
       }
     };
 
+    const previousBodyOverflow = document.body.style.overflow;
+
+    document.body.style.overflow = 'hidden';
     document.addEventListener('keydown', closeOnEscape);
-    return () => document.removeEventListener('keydown', closeOnEscape);
+    return () => {
+      document.body.style.overflow = previousBodyOverflow;
+      document.removeEventListener('keydown', closeOnEscape);
+    };
   }, [isMenuOpen]);
 
   const closeMenu = () => setIsMenuOpen(false);
+  const closeMenuAndRestoreFocus = () => {
+    setIsMenuOpen(false);
+    menuButtonRef.current?.focus();
+  };
 
   return (
     <header className={styles.header}>
@@ -75,6 +86,17 @@ export function Header() {
           {menuLabel}
         </Button>
       </Container>
+      {isMenuOpen
+        ? createPortal(
+            <button
+              aria-label={translate('Close navigation menu')}
+              className={styles.menuBackdrop}
+              onClick={closeMenuAndRestoreFocus}
+              type="button"
+            />,
+            document.body,
+          )
+        : null}
       <div
         className={`${styles.mobilePanel} ${isMenuOpen ? styles.mobilePanelOpen : ''}`}
         hidden={!isMenuOpen}
