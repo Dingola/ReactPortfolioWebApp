@@ -28,6 +28,7 @@ describe('WorkPage', () => {
       'href',
       '/work/qt-log-viewer',
     );
+    expect(screen.getAllByRole('button', { name: /bild vergrößern/i })).toHaveLength(1);
   });
 
   it('filters projects by category', async () => {

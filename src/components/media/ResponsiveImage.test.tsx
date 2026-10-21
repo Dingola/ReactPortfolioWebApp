@@ -1,5 +1,5 @@
 import { fireEvent } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 
 import { renderWithProviders, screen } from '@/test/test-utils';
 
@@ -34,7 +34,8 @@ describe('ResponsiveImage', () => {
   });
 
   it('moves from its loading state to the loaded state', () => {
-    const { container } = renderWithProviders(<ResponsiveImage {...imageProps} />);
+    const onLoad = vi.fn();
+    const { container } = renderWithProviders(<ResponsiveImage {...imageProps} onLoad={onLoad} />);
 
     const frame = container.querySelector('[data-image-status]');
     expect(frame).toHaveAttribute('data-image-status', 'loading');
@@ -42,6 +43,7 @@ describe('ResponsiveImage', () => {
     fireEvent.load(screen.getByAltText('Application preview'));
 
     expect(frame).toHaveAttribute('data-image-status', 'loaded');
+    expect(onLoad).toHaveBeenCalledOnce();
   });
 
   it('shows localized feedback when the image cannot be loaded', () => {

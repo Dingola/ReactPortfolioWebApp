@@ -1,3 +1,4 @@
+import userEvent from '@testing-library/user-event';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { describe, expect, it } from 'vitest';
 
@@ -16,7 +17,8 @@ function renderProjectRoute(path: string) {
 }
 
 describe('ProjectDetailPage', () => {
-  it('renders the structured Qt Log Viewer project content', () => {
+  it('renders the structured Qt Log Viewer project content', async () => {
+    const user = userEvent.setup();
     renderProjectRoute('/work/qt-log-viewer');
 
     expect(screen.getByRole('heading', { level: 1, name: 'Qt Log Viewer' })).toBeInTheDocument();
@@ -29,6 +31,10 @@ describe('ProjectDetailPage', () => {
       '/images/projects/qt-log-viewer/log-view.png',
     );
     expect(screen.getByRole('heading', { name: 'Projekteinblicke' })).toBeInTheDocument();
+    const imageButtons = screen.getAllByRole('button', { name: /bild vergrößern/i });
+    expect(imageButtons).toHaveLength(4);
+    await user.click(imageButtons[0]!);
+    expect(screen.getByRole('dialog', { name: 'Bildansicht' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /zurück zu den projekten/i })).toHaveAttribute(
       'href',
       '/work',

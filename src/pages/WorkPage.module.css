@@ -118,6 +118,10 @@
   height: 100%;
 }
 
+.previewButton {
+  height: 100%;
+}
+
 .preview img {
   height: 100%;
   object-fit: contain;

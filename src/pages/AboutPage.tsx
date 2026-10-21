@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { appConfig } from '@/app/config';
 import { useLocale } from '@/app/providers/locale/useLocale';
 import { Container } from '@/components/layout/Container';
-import { ResponsiveImage } from '@/components/media/ResponsiveImage';
+import { ImageViewer } from '@/components/media/ImageViewer';
 import { germanPortfolioContent } from '@/content/portfolio.de';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 
@@ -61,14 +61,17 @@ export default function AboutPage() {
 
         <figure className={styles.workspace}>
           <div className={styles.imageFrame}>
-            <ResponsiveImage
+            <ImageViewer
               className={styles.workspaceMedia}
-              src="/images/about/workplace.png"
-              sources={workspaceSources}
+              image={{
+                src: '/images/about/workplace.png',
+                sources: workspaceSources,
+                alt: translate("Adrian Helbig's workspace"),
+                caption: translate('My workspace'),
+                width: 900,
+                height: 1200,
+              }}
               sizes="(max-width: 48rem) 82vw, 24rem"
-              alt={translate("Adrian Helbig's workspace")}
-              width={900}
-              height={1200}
               loading="lazy"
             />
           </div>

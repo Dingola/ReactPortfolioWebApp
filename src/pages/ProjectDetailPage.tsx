@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { appConfig } from '@/app/config';
 import { useLocale } from '@/app/providers/locale/useLocale';
 import { Container } from '@/components/layout/Container';
-import { ResponsiveImage } from '@/components/media/ResponsiveImage';
+import { ImageViewer } from '@/components/media/ImageViewer';
 import { getProjectBySlug } from '@/content/portfolio';
 import { germanPortfolioContent } from '@/content/portfolio.de';
 import type { ProjectDetails } from '@/content/types';
@@ -121,13 +121,10 @@ export default function ProjectDetailPage() {
 
       {images[0] ? (
         <figure className={styles.heroImage}>
-          <ResponsiveImage
-            src={images[0].src}
-            sources={images[0].sources ?? []}
+          <ImageViewer
+            image={images[0]}
+            images={images}
             sizes="(max-width: 92rem) calc(100vw - 2rem), 92rem"
-            alt={images[0].alt}
-            width={images[0].width}
-            height={images[0].height}
           />
           {images[0].caption ? <figcaption>{images[0].caption}</figcaption> : null}
         </figure>
@@ -148,15 +145,13 @@ export default function ProjectDetailPage() {
         <section className={styles.gallery}>
           <h2>{translate('Project screenshots')}</h2>
           <div className={styles.galleryGrid}>
-            {images.slice(1).map((image) => (
+            {images.slice(1).map((image, index) => (
               <figure key={image.src}>
-                <ResponsiveImage
-                  src={image.src}
-                  sources={image.sources ?? []}
+                <ImageViewer
+                  image={image}
+                  images={images}
+                  initialIndex={index + 1}
                   sizes="(max-width: 48rem) calc(100vw - 2rem), 50vw"
-                  alt={image.alt}
-                  width={image.width}
-                  height={image.height}
                   loading="lazy"
                 />
                 {image.caption ? <figcaption>{image.caption}</figcaption> : null}

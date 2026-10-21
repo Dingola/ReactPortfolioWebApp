@@ -17,6 +17,8 @@ export interface ResponsiveImageProps extends Omit<
   readonly alt: string;
   readonly className?: string | undefined;
   readonly height: number;
+  /** Runs after the current image source has loaded successfully. */
+  readonly onLoad?: (() => void) | undefined;
   readonly sizes: string;
   readonly sources: readonly ResponsiveImageSource[];
   readonly src: string;
@@ -28,6 +30,7 @@ export function ResponsiveImage({
   alt,
   className,
   height,
+  onLoad,
   sizes,
   sources,
   src,
@@ -57,7 +60,10 @@ export function ResponsiveImage({
           className={styles.image}
           height={height}
           onError={() => setImageState({ src, status: 'error' })}
-          onLoad={() => setImageState({ src, status: 'loaded' })}
+          onLoad={() => {
+            setImageState({ src, status: 'loaded' });
+            onLoad?.();
+          }}
           src={src}
           width={width}
         />

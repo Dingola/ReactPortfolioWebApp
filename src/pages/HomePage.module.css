@@ -46,6 +46,10 @@
   object-position: center top;
 }
 
+.portraitButton {
+  height: 100%;
+}
+
 .portraitMedia {
   height: 100%;
 }

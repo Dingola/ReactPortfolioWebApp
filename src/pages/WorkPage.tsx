@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { appConfig } from '@/app/config';
 import { useLocale } from '@/app/providers/locale/useLocale';
 import { Container } from '@/components/layout/Container';
-import { ResponsiveImage } from '@/components/media/ResponsiveImage';
+import { ImageViewer } from '@/components/media/ImageViewer';
 import { germanPortfolioContent } from '@/content/portfolio.de';
 import type { PortfolioProject, ProjectCategory } from '@/content/types';
 import type { SourceMessage } from '@/i18n/messages';
@@ -29,14 +29,12 @@ function ProjectCard({ project, index }: { project: PortfolioProject; index: num
     <article className={styles.card}>
       <div className={styles.preview}>
         {image ? (
-          <ResponsiveImage
+          <ImageViewer
+            buttonClassName={styles.previewButton}
             className={styles.previewMedia}
-            src={image.src}
-            sources={image.sources ?? []}
+            image={image}
+            images={project.images}
             sizes="(max-width: 48rem) calc(100vw - 3rem), 50vw"
-            alt={image.alt}
-            width={image.width}
-            height={image.height}
             loading="lazy"
           />
         ) : (

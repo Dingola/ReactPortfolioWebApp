@@ -33,6 +33,9 @@ describe('AboutPage', () => {
       'src',
       '/images/about/workplace.png',
     );
+    expect(
+      screen.getByRole('button', { name: /bild vergrößern: arbeitsplatz von adrian helbig/i }),
+    ).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /Projekte ansehen/ })).toHaveAttribute('href', '/work');
     expect(screen.getByRole('link', { name: /GitHub-Profil ansehen/ })).toHaveAttribute(
       'href',

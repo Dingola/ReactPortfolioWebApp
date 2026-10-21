@@ -5,7 +5,7 @@ import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 
 import { useLocale } from '@/app/providers/locale/useLocale';
 import { Container } from '@/components/layout/Container';
-import { ResponsiveImage } from '@/components/media/ResponsiveImage';
+import { ImageViewer } from '@/components/media/ImageViewer';
 import { germanPortfolioContent } from '@/content/portfolio.de';
 
 import styles from './HomePage.module.css';
@@ -82,14 +82,17 @@ export default function HomePage() {
             </div>
 
             <figure className={styles.portrait}>
-              <ResponsiveImage
+              <ImageViewer
+                buttonClassName={styles.portraitButton}
                 className={styles.portraitMedia}
-                src="/images/profile/adrian-helbig.png"
-                sources={portraitSources}
+                image={{
+                  src: '/images/profile/adrian-helbig.png',
+                  sources: portraitSources,
+                  alt: translate('Portrait of Adrian Helbig'),
+                  width: 896,
+                  height: 1111,
+                }}
                 sizes={portraitSizes}
-                alt={translate('Portrait of Adrian Helbig')}
-                width={896}
-                height={1111}
                 loading="eager"
                 fetchPriority="high"
               />
@@ -127,14 +130,11 @@ export default function HomePage() {
         </div>
 
         <figure className={styles.projectImage}>
-          <ResponsiveImage
+          <ImageViewer
             className={styles.projectMedia}
-            src={featuredImage.src}
-            sources={featuredImage.sources ?? []}
+            image={featuredImage}
+            images={featuredProject.images}
             sizes="(max-width: 64rem) calc(100vw - 3rem), 60vw"
-            alt={featuredImage.alt}
-            width={featuredImage.width}
-            height={featuredImage.height}
             loading="lazy"
           />
         </figure>

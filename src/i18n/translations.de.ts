@@ -41,6 +41,12 @@ export const germanTranslations = {
   Documentation: 'Dokumentation',
   'Live website': 'Live-Webseite',
   'Project screenshots': 'Projekteinblicke',
+  'Image viewer': 'Bildansicht',
+  'Open image viewer': 'Bild vergrößern',
+  'Close image viewer': 'Bildansicht schließen',
+  'Previous image': 'Vorheriges Bild',
+  'Next image': 'Nächstes Bild',
+  Image: 'Bild',
   Projects: 'Projekte',
   'Selected software projects and the technologies behind them.':
     'Ausgewählte Softwareprojekte und die Technologien dahinter.',
