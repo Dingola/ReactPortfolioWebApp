@@ -195,6 +195,9 @@
   padding: var(--space-6);
   border: var(--border-width) solid var(--color-border);
   background: var(--color-surface);
+  transition:
+    border-color var(--motion-duration-medium) var(--motion-easing-standard),
+    box-shadow var(--motion-duration-medium) var(--motion-easing-standard);
 }
 
 .skillGroup h3 {
@@ -217,6 +220,13 @@
 
 .skillGroup li[data-emphasis='foundational'] {
   color: var(--color-text-subtle);
+}
+
+@media (hover: hover) {
+  .skillGroup:hover {
+    border-color: var(--color-border-strong);
+    box-shadow: var(--shadow-surface);
+  }
 }
 
 @media (width > 48rem) {

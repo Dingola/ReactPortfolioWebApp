@@ -37,6 +37,9 @@
   background: var(--color-surface);
   box-shadow: var(--space-2) var(--space-2) 0 var(--color-accent-soft);
   overflow: hidden;
+  transition:
+    border-color var(--motion-duration-medium) var(--motion-easing-standard),
+    box-shadow var(--motion-duration-medium) var(--motion-easing-standard);
 }
 
 .portrait img {
@@ -201,10 +204,23 @@
   border: var(--border-width) solid var(--color-border-strong);
   background: var(--color-surface);
   box-shadow: 1rem 1rem 0 var(--color-accent-soft);
+  transition:
+    border-color var(--motion-duration-medium) var(--motion-easing-standard),
+    box-shadow var(--motion-duration-medium) var(--motion-easing-standard);
 }
 
 .projectMedia {
   border: var(--border-width) solid var(--color-border);
+}
+
+@media (hover: hover) {
+  .portrait:hover,
+  .projectImage:hover {
+    border-color: var(--color-accent);
+    box-shadow:
+      var(--space-3) var(--space-3) 0 var(--color-accent-soft),
+      var(--shadow-surface);
+  }
 }
 
 @media (width <= 64rem) {

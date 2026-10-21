@@ -4,6 +4,7 @@
   top: 0;
   border-block-end: var(--border-width) solid var(--color-border);
   background: color-mix(in srgb, var(--color-background) 94%, transparent);
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--color-text) 3%, transparent);
   backdrop-filter: blur(1rem);
 }
 
@@ -39,6 +40,16 @@
   font-family: var(--font-family-mono);
   font-size: var(--font-size-xs);
   letter-spacing: -0.04em;
+  transition:
+    background-color var(--motion-duration-fast) var(--motion-easing-standard),
+    color var(--motion-duration-fast) var(--motion-easing-standard);
+}
+
+@media (hover: hover) {
+  .brand:hover .monogram {
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+  }
 }
 
 .desktopNavigation {

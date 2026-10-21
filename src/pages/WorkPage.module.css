@@ -111,6 +111,9 @@
   border: var(--border-width) solid var(--color-border);
   background: var(--color-surface);
   grid-template-rows: auto 1fr;
+  transition:
+    border-color var(--motion-duration-medium) var(--motion-easing-standard),
+    box-shadow var(--motion-duration-medium) var(--motion-easing-standard);
 }
 
 .preview {
@@ -236,6 +239,11 @@
 }
 
 @media (hover: hover) {
+  .card:hover {
+    border-color: var(--color-border-strong);
+    box-shadow: var(--shadow-surface);
+  }
+
   .titleLink:hover {
     color: var(--color-accent);
     text-decoration-color: currentcolor;

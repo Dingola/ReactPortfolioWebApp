@@ -71,6 +71,9 @@
   border: var(--border-width) solid var(--color-border-strong);
   background: var(--color-surface);
   box-shadow: var(--space-4) var(--space-4) 0 var(--color-accent-soft);
+  transition:
+    border-color var(--motion-duration-medium) var(--motion-easing-standard),
+    box-shadow var(--motion-duration-medium) var(--motion-easing-standard);
 }
 
 .workspaceMedia {
@@ -114,6 +117,7 @@
   border-block-start: var(--border-width) solid var(--color-border-strong);
   gap: var(--space-5);
   grid-template-columns: auto 1fr;
+  transition: background-color var(--motion-duration-medium) var(--motion-easing-standard);
 }
 
 .principles li:nth-child(odd) {
@@ -134,6 +138,19 @@
 .principleDescription {
   margin-block-start: var(--space-3);
   color: var(--color-text-muted);
+}
+
+@media (hover: hover) {
+  .imageFrame:hover {
+    border-color: var(--color-accent);
+    box-shadow:
+      var(--space-4) var(--space-4) 0 var(--color-accent-soft),
+      var(--shadow-surface);
+  }
+
+  .principles li:hover {
+    background: color-mix(in srgb, var(--color-surface-muted) 55%, transparent);
+  }
 }
 
 @media (width <= 64rem) {
