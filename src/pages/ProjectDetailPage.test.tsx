@@ -50,7 +50,21 @@ describe('ProjectDetailPage', () => {
     expect(screen.queryByRole('link', { name: /vorheriges projekt/i })).not.toBeInTheDocument();
     expect(screen.getByRole('link', { name: /nächstes projekt/i })).toHaveAttribute(
       'href',
-      '/work/qt-widgets-common-lib',
+      '/work/qt-record-parser',
+    );
+  });
+
+  it('renders the QtRecordParser library details', () => {
+    renderProjectRoute('/work/qt-record-parser');
+
+    expect(screen.getByRole('heading', { level: 1, name: 'QtRecordParser' })).toBeInTheDocument();
+    expect(
+      screen.getByText(/serialisierbare Konfiguration beschreibt Platzhalter/i),
+    ).toBeInTheDocument();
+    expect(screen.getByText('Converter-Registry', { exact: false })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /repository/i })).toHaveAttribute(
+      'href',
+      'https://github.com/Dingola/QtRecordParser',
     );
   });
 
@@ -59,7 +73,7 @@ describe('ProjectDetailPage', () => {
 
     expect(screen.getByRole('link', { name: /vorheriges projekt/i })).toHaveAttribute(
       'href',
-      '/work/qt-log-viewer',
+      '/work/qt-record-parser',
     );
     expect(screen.getByRole('link', { name: /nächstes projekt/i })).toHaveAttribute(
       'href',

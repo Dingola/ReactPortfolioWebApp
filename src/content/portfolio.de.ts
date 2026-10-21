@@ -158,6 +158,47 @@ export const germanPortfolioContent = {
       featured: true,
     },
     {
+      id: 'qt-record-parser',
+      slug: 'qt-record-parser',
+      title: 'QtRecordParser',
+      summary:
+        'Eine konfigurierbare Qt-6-Bibliothek zur Umwandlung strukturierter Textdatensätze in dynamisch benannte und typisierte Werte.',
+      categories: ['library'],
+      technologies: ['C++20', 'Qt 6', 'CMake', 'GoogleTest', 'Codecov'],
+      details: {
+        goal: 'Unterschiedlich aufgebaute Textdatensätze anhand wiederverwendbarer Konfigurationen zuverlässig erfassen und unmittelbar in typisierte Werte umwandeln.',
+        problem:
+          'Dateien, Datenströme und importierte Datensätze verwenden unterschiedliche Feldformate. Fest eingebettete Parserlogik führt dabei schnell zu mehrfacher Extraktions-, Validierungs- und Konvertierungslogik.',
+        solution:
+          'Eine serialisierbare Konfiguration beschreibt Platzhalter, reguläre Ausdrücke und Konverter. Der Parser erzeugt daraus ein verankertes Gesamtmuster, extrahiert die Felder und liefert entweder einen typisierten Datensatz oder strukturierte Fehlerdetails.',
+        features: [
+          'Platzhalterbasierte Formate mit konfigurierbaren Erfassungsmustern',
+          'Integrierte Konverter für Text, Ganzzahlen, Fließkommazahlen, boolesche Werte und Zeitangaben',
+          'JSON-Serialisierung von Parser- und Feldkonfigurationen',
+          'Erweiterbare Converter-Registry für anwendungsspezifische Datentypen',
+          'Strukturierte Fehlerkategorien mit Feldbezug und verständlichen Meldungen',
+        ],
+        technicalDecisions: [
+          'Getrennte Verantwortlichkeiten für Konfiguration, Feldextraktion und Wertkonvertierung',
+          'Dynamisch benannte Ergebnisse auf Basis von QVariant',
+          'Stabile Converter-IDs für serialisierbare Konfigurationen und eigene Erweiterungen',
+          'Explizite ParseResult-Rückgaben statt ausnahmebasierter Fehlerbehandlung',
+        ],
+        qualityAssurance: [
+          'Umfangreiche GoogleTest-Tests für Konfigurationen, Konverter, Fehlerszenarien und Parserverhalten',
+          'Automatisierte Build- und Test-Workflows für Windows, Linux und macOS',
+          'Code-Coverage-Auswertung mit Codecov',
+          'Optionale statische Analyse mit Clang-Tidy und API-Dokumentation mit Doxygen',
+        ],
+      },
+      links: {
+        repository: 'https://github.com/Dingola/QtRecordParser',
+        documentation: 'https://github.com/Dingola/QtRecordParser#readme',
+      },
+      images: [],
+      featured: true,
+    },
+    {
       id: 'qt-widgets-common-lib',
       slug: 'qt-widgets-common-lib',
       title: 'Qt Widgets Common Library',

@@ -15,8 +15,8 @@ describe('German portfolio content', () => {
     expect(validatePortfolioContent(germanPortfolioContent)).toEqual([]);
   });
 
-  it('provides detail content and explicit public links for the initial projects', () => {
-    expect(germanPortfolioContent.projects).toHaveLength(3);
+  it('provides detail content and explicit public links for every project', () => {
+    expect(germanPortfolioContent.projects).toHaveLength(4);
 
     for (const project of germanPortfolioContent.projects) {
       expect(project.details.goal).not.toHaveLength(0);

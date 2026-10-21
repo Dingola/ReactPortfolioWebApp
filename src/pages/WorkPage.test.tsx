@@ -16,14 +16,15 @@ describe('WorkPage', () => {
 
     expect(screen.getByRole('heading', { level: 1, name: 'Projekte' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Qt Log Viewer' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'QtRecordParser' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Qt Widgets Common Library' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'React Portfolio Web App' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Qt Log Viewer' })).toHaveAttribute(
       'href',
       '/work/qt-log-viewer',
     );
-    expect(screen.getAllByRole('link', { name: /quellcode/i })).toHaveLength(3);
-    expect(screen.getAllByRole('link', { name: /projekt ansehen/i })).toHaveLength(3);
+    expect(screen.getAllByRole('link', { name: /quellcode/i })).toHaveLength(4);
+    expect(screen.getAllByRole('link', { name: /projekt ansehen/i })).toHaveLength(4);
     expect(screen.getAllByRole('link', { name: /projekt ansehen/i })[0]).toHaveAttribute(
       'href',
       '/work/qt-log-viewer',
@@ -42,11 +43,27 @@ describe('WorkPage', () => {
     await user.click(screen.getByRole('radio', { name: 'Werkzeuge' }));
 
     expect(screen.getByRole('heading', { name: 'Qt Log Viewer' })).toBeInTheDocument();
+    expect(screen.queryByRole('heading', { name: 'QtRecordParser' })).not.toBeInTheDocument();
     expect(
       screen.queryByRole('heading', { name: 'Qt Widgets Common Library' }),
     ).not.toBeInTheDocument();
     expect(
       screen.queryByRole('heading', { name: 'React Portfolio Web App' }),
     ).not.toBeInTheDocument();
+  });
+
+  it('includes QtRecordParser in the library filter', async () => {
+    const user = userEvent.setup();
+    renderWithProviders(
+      <MemoryRouter>
+        <WorkPage />
+      </MemoryRouter>,
+    );
+
+    await user.click(screen.getByRole('radio', { name: 'Bibliotheken' }));
+
+    expect(screen.getByRole('heading', { name: 'QtRecordParser' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Qt Widgets Common Library' })).toBeInTheDocument();
+    expect(screen.queryByRole('heading', { name: 'Qt Log Viewer' })).not.toBeInTheDocument();
   });
 });
