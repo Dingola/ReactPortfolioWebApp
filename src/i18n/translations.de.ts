@@ -68,6 +68,9 @@ export const germanTranslations = {
   'More public repositories': 'Weitere öffentliche Repositories',
   'Related public libraries that support my C++ and Qt projects.':
     'Verwandte öffentliche Bibliotheken, die meine C++- und Qt-Projekte unterstützen.',
+  'Project foundations and templates': 'Projektgrundlagen und Templates',
+  'Reusable foundations for consistent builds, tests, and continuous integration.':
+    'Wiederverwendbare Grundlagen für konsistente Builds, Tests und Continuous Integration.',
   'View repository': 'Repository ansehen',
   'Image could not be loaded.': 'Bild konnte nicht geladen werden.',
   'Professional experience': 'Berufserfahrung',

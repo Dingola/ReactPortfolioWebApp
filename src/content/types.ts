@@ -181,6 +181,7 @@ export interface PortfolioContent {
   readonly navigation: readonly NavigationItem[];
   readonly projects: readonly PortfolioProject[];
   readonly publicRepositories: readonly PublicRepository[];
+  readonly projectTemplates: readonly PublicRepository[];
   readonly experience: readonly ExperienceEntry[];
   readonly education: readonly EducationEntry[];
   readonly skillGroups: readonly SkillGroup[];

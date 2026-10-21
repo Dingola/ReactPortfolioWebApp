@@ -6,7 +6,7 @@ import { useLocale } from '@/app/providers/locale/useLocale';
 import { Container } from '@/components/layout/Container';
 import { ImageViewer } from '@/components/media/ImageViewer';
 import { germanPortfolioContent } from '@/content/portfolio.de';
-import type { PortfolioProject, ProjectCategory } from '@/content/types';
+import type { PortfolioProject, ProjectCategory, PublicRepository } from '@/content/types';
 import type { SourceMessage } from '@/i18n/messages';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 
@@ -78,6 +78,37 @@ function ProjectCard({ project, index }: { project: PortfolioProject; index: num
   );
 }
 
+function CompactRepositoryGrid({ items }: { items: readonly PublicRepository[] }) {
+  const { translate } = useLocale();
+
+  return (
+    <div className={styles.repositoryGrid}>
+      {items.map((item) => (
+        <article className={styles.repositoryItem} key={item.id}>
+          <div>
+            <h3>{item.title}</h3>
+            <p className={styles.repositorySummary}>{item.summary}</p>
+          </div>
+          <ul className={styles.repositoryTechnologies} aria-label={translate('Technology stack')}>
+            {item.technologies.map((technology) => (
+              <li key={technology}>{technology}</li>
+            ))}
+          </ul>
+          <a
+            aria-label={`${item.title}: ${translate('View repository')}`}
+            href={item.repository}
+            rel="noreferrer"
+            target="_blank"
+          >
+            {translate('View repository')}
+            <span aria-hidden="true">↗</span>
+          </a>
+        </article>
+      ))}
+    </div>
+  );
+}
+
 /** Renders the filterable overview of confirmed portfolio projects. */
 export default function WorkPage() {
   const { translate } = useLocale();
@@ -140,33 +171,21 @@ export default function WorkPage() {
           <p>{translate('Related public libraries that support my C++ and Qt projects.')}</p>
         </header>
 
-        <div className={styles.repositoryGrid}>
-          {germanPortfolioContent.publicRepositories.map((work) => (
-            <article className={styles.repositoryItem} key={work.id}>
-              <div>
-                <h3>{work.title}</h3>
-                <p className={styles.repositorySummary}>{work.summary}</p>
-              </div>
-              <ul
-                className={styles.repositoryTechnologies}
-                aria-label={translate('Technology stack')}
-              >
-                {work.technologies.map((technology) => (
-                  <li key={technology}>{technology}</li>
-                ))}
-              </ul>
-              <a
-                aria-label={`${work.title}: ${translate('View repository')}`}
-                href={work.repository}
-                rel="noreferrer"
-                target="_blank"
-              >
-                {translate('View repository')}
-                <span aria-hidden="true">↗</span>
-              </a>
-            </article>
-          ))}
-        </div>
+        <CompactRepositoryGrid items={germanPortfolioContent.publicRepositories} />
+      </section>
+
+      <section className={styles.repositorySection} aria-labelledby="templates-heading">
+        <header className={styles.repositoryHeader}>
+          <p className={styles.eyebrow}>TEMPLATES / 04</p>
+          <h2 id="templates-heading">{translate('Project foundations and templates')}</h2>
+          <p>
+            {translate(
+              'Reusable foundations for consistent builds, tests, and continuous integration.',
+            )}
+          </p>
+        </header>
+
+        <CompactRepositoryGrid items={germanPortfolioContent.projectTemplates} />
       </section>
     </Container>
   );

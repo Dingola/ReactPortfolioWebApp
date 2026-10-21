@@ -46,6 +46,21 @@ describe('WorkPage', () => {
       'href',
       'https://github.com/Dingola/CommonLib',
     );
+    expect(
+      screen.getByRole('heading', { level: 2, name: 'Projektgrundlagen und Templates' }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', { name: /^ReactWebTemplate: Repository ansehen$/i }),
+    ).toHaveAttribute('href', 'https://github.com/Dingola/ReactWebTemplate');
+    expect(
+      screen.getByRole('link', { name: /^QtWidgetsTemplate: Repository ansehen$/i }),
+    ).toHaveAttribute('href', 'https://github.com/Dingola/QtWidgetsTemplate');
+    expect(
+      screen.getByRole('link', { name: /^QtQuickTemplate: Repository ansehen$/i }),
+    ).toHaveAttribute('href', 'https://github.com/Dingola/QtQuickTemplate');
+    expect(
+      screen.getByRole('link', { name: /^CppTemplate: Repository ansehen$/i }),
+    ).toHaveAttribute('href', 'https://github.com/Dingola/CppTemplate');
   });
 
   it('filters projects by category', async () => {

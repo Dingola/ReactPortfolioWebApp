@@ -353,6 +353,40 @@ export const germanPortfolioContent = {
       repository: 'https://github.com/Dingola/CommonLib',
     },
   ],
+  projectTemplates: [
+    {
+      id: 'react-web-template',
+      title: 'ReactWebTemplate',
+      summary:
+        'Copier- und GitHub-Template für React- und TypeScript-Webanwendungen mit Vite, Tests, Dokumentation und optionaler Infrastruktur.',
+      technologies: ['React', 'TypeScript', 'Vite', 'Copier'],
+      repository: 'https://github.com/Dingola/ReactWebTemplate',
+    },
+    {
+      id: 'qt-widgets-template',
+      title: 'QtWidgetsTemplate',
+      summary:
+        'Copier- und GitHub-Template für plattformübergreifende Qt-6-Widgets-Anwendungen und Bibliotheken.',
+      technologies: ['C++20', 'Qt Widgets', 'CMake', 'Copier'],
+      repository: 'https://github.com/Dingola/QtWidgetsTemplate',
+    },
+    {
+      id: 'qt-quick-template',
+      title: 'QtQuickTemplate',
+      summary:
+        'Copier- und GitHub-Template für plattformübergreifende Qt-6-Quick/QML-Anwendungen und Bibliotheken.',
+      technologies: ['C++20', 'Qt Quick', 'QML', 'Copier'],
+      repository: 'https://github.com/Dingola/QtQuickTemplate',
+    },
+    {
+      id: 'cpp-template',
+      title: 'CppTemplate',
+      summary:
+        'Copier- und GitHub-Template für plattformübergreifende C++20-Anwendungen und Bibliotheken.',
+      technologies: ['C++20', 'CMake', 'GoogleTest', 'Copier'],
+      repository: 'https://github.com/Dingola/CppTemplate',
+    },
+  ],
   experience: [
     {
       id: 'gfai',

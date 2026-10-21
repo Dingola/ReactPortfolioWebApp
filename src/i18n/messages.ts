@@ -67,6 +67,8 @@ export type SourceMessage =
   | 'Project preview'
   | 'More public repositories'
   | 'Related public libraries that support my C++ and Qt projects.'
+  | 'Project foundations and templates'
+  | 'Reusable foundations for consistent builds, tests, and continuous integration.'
   | 'View repository'
   | 'Image could not be loaded.'
   | 'Professional experience'

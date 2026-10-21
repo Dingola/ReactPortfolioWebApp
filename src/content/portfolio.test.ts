@@ -24,6 +24,15 @@ describe('German portfolio content', () => {
     ).toBe(true);
   });
 
+  it('provides compact links for reusable project templates', () => {
+    expect(germanPortfolioContent.projectTemplates).toHaveLength(4);
+    expect(
+      germanPortfolioContent.projectTemplates.every(({ repository }) =>
+        /^https:\/\/github\.com\/Dingola\/.+Template$/.test(repository),
+      ),
+    ).toBe(true);
+  });
+
   it('provides detail content and explicit public links for every project', () => {
     expect(germanPortfolioContent.projects).toHaveLength(5);
 
