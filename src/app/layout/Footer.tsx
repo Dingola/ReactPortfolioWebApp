@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 
 import { useLocale } from '@/app/providers/locale/useLocale';
 import { Container } from '@/components/layout/Container';
+import { SocialLinks } from '@/components/navigation/SocialLinks';
 import { germanPortfolioContent } from '@/content/portfolio.de';
 
 import styles from './Footer.module.css';
@@ -13,12 +14,15 @@ export function Footer() {
   return (
     <footer className={styles.footer}>
       <Container className={styles.inner}>
-        <span>© {new Date().getFullYear()}</span>
+        <div className={styles.identity}>
+          <span>© {new Date().getFullYear()}</span>
+          <span>{germanPortfolioContent.profile.name}</span>
+        </div>
         <nav aria-label={translate('Legal information')}>
           <Link to="/impressum">{translate('Legal notice')}</Link>
           <Link to="/privacy">{translate('Privacy policy')}</Link>
         </nav>
-        <span>{germanPortfolioContent.profile.name}</span>
+        <SocialLinks className={styles.socialLinks} />
       </Container>
     </footer>
   );

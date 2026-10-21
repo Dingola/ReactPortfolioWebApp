@@ -103,6 +103,10 @@
   margin-block-start: var(--space-6);
 }
 
+.socialLinks {
+  margin-block-start: var(--space-4);
+}
+
 .stack {
   display: grid;
   align-items: center;

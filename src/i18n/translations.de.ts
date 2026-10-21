@@ -72,6 +72,8 @@ export const germanTranslations = {
   'My workspace': 'Mein Arbeitsplatz',
   "Adrian Helbig's workspace": 'Arbeitsplatz von Adrian Helbig',
   'View GitHub profile': 'GitHub-Profil ansehen',
+  'View LinkedIn profile': 'LinkedIn-Profil ansehen',
+  'Professional profiles': 'Berufliche Profile',
   'Let us talk about software, projects, and new opportunities.':
     'Lassen Sie uns über Software, Projekte und neue Möglichkeiten sprechen.',
   'Contact form': 'Kontaktformular',

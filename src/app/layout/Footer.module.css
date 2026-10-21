@@ -12,6 +12,17 @@
   gap: var(--space-4);
 }
 
+.identity {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.identity span:first-child::after {
+  margin-inline-start: var(--space-2);
+  content: '/';
+}
+
 .inner nav {
   display: flex;
   flex-wrap: wrap;
@@ -23,6 +34,10 @@
   color: var(--color-text-muted);
 }
 
+.socialLinks {
+  flex: none;
+}
+
 @media (width <= 36rem) {
   .inner {
     align-items: flex-start;
@@ -32,5 +47,9 @@
   .inner nav {
     justify-content: flex-start;
     order: 3;
+  }
+
+  .socialLinks {
+    order: 2;
   }
 }

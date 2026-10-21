@@ -1,0 +1,85 @@
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.link {
+  position: relative;
+  display: inline-flex;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2);
+  border: var(--border-width) solid var(--color-border-strong);
+  border-radius: var(--radius-medium);
+  background: var(--color-surface);
+  color: var(--color-text);
+  text-decoration: none;
+  transition:
+    inset-block-start var(--motion-duration-fast) var(--motion-easing-standard),
+    border-color var(--motion-duration-fast) var(--motion-easing-standard),
+    background-color var(--motion-duration-fast) var(--motion-easing-standard);
+}
+
+.labeled .link {
+  gap: var(--space-3);
+  padding-inline: var(--space-4);
+  font-size: var(--font-size-small);
+  font-weight: 600;
+}
+
+.githubMark {
+  position: relative;
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  flex: none;
+}
+
+.githubMark img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: auto;
+  height: 1.5rem;
+}
+
+.githubDark {
+  visibility: hidden;
+}
+
+[data-theme='dark'] .githubLight {
+  visibility: hidden;
+}
+
+[data-theme='dark'] .githubDark {
+  visibility: visible;
+}
+
+.linkedinMark {
+  display: block;
+  width: auto;
+  height: 1.5rem;
+  flex: none;
+}
+
+.link:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 3px;
+}
+
+@media (hover: hover) {
+  .link:hover {
+    inset-block-start: -1px;
+    border-color: var(--color-accent);
+    background: var(--color-surface-emphasis);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link {
+    transition: none;
+  }
+}

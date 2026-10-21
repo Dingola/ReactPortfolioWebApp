@@ -41,5 +41,9 @@ describe('AboutPage', () => {
       'href',
       'https://github.com/Dingola',
     );
+    expect(screen.getByRole('link', { name: /LinkedIn-Profil ansehen/ })).toHaveAttribute(
+      'href',
+      'https://www.linkedin.com/in/adrian-helbig',
+    );
   });
 });

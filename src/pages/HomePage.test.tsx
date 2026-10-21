@@ -25,6 +25,14 @@ describe('HomePage', () => {
       'href',
       '/contact',
     );
+    expect(screen.getByRole('link', { name: /GitHub-Profil ansehen/i })).toHaveAttribute(
+      'href',
+      'https://github.com/Dingola',
+    );
+    expect(screen.getByRole('link', { name: /LinkedIn-Profil ansehen/i })).toHaveAttribute(
+      'href',
+      'https://www.linkedin.com/in/adrian-helbig',
+    );
     expect(screen.getByRole('img', { name: /porträt von adrian helbig/i })).toHaveAttribute(
       'src',
       '/images/profile/adrian-helbig.png',

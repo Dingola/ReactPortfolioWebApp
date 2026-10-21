@@ -4,6 +4,7 @@ import { appConfig } from '@/app/config';
 import { useLocale } from '@/app/providers/locale/useLocale';
 import { Container } from '@/components/layout/Container';
 import { ImageViewer } from '@/components/media/ImageViewer';
+import { SocialLinks } from '@/components/navigation/SocialLinks';
 import buttonStyles from '@/components/ui/Button.module.css';
 import { germanPortfolioContent } from '@/content/portfolio.de';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
@@ -20,8 +21,7 @@ const workspaceSources = [
 /** Presents the person and working principles behind the portfolio. */
 export default function AboutPage() {
   const { translate } = useLocale();
-  const { about, contactLinks } = germanPortfolioContent;
-  const githubProfile = contactLinks.find((link) => link.kind === 'github');
+  const { about } = germanPortfolioContent;
 
   useDocumentTitle(`${translate('About')} · ${appConfig.name}`);
 
@@ -51,19 +51,7 @@ export default function AboutPage() {
                 <span aria-hidden="true">→</span>
               </span>
             </Link>
-            {githubProfile ? (
-              <a
-                className={`${buttonStyles.button} ${buttonStyles.action} ${buttonStyles.secondary}`}
-                href={githubProfile.href}
-                rel="noreferrer"
-                target="_blank"
-              >
-                <span className={buttonStyles.content}>
-                  {translate('View GitHub profile')}
-                  <span aria-hidden="true">↗</span>
-                </span>
-              </a>
-            ) : null}
+            <SocialLinks showLabels />
           </div>
         </div>
 

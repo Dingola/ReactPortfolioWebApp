@@ -6,6 +6,7 @@ import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import { useLocale } from '@/app/providers/locale/useLocale';
 import { Container } from '@/components/layout/Container';
 import { ImageViewer } from '@/components/media/ImageViewer';
+import { SocialLinks } from '@/components/navigation/SocialLinks';
 import buttonStyles from '@/components/ui/Button.module.css';
 import { germanPortfolioContent } from '@/content/portfolio.de';
 
@@ -88,6 +89,7 @@ export default function HomePage() {
                   <span className={buttonStyles.content}>{translate('Get in touch')}</span>
                 </Link>
               </div>
+              <SocialLinks className={styles.socialLinks} showLabels />
             </div>
 
             <figure className={styles.portrait}>

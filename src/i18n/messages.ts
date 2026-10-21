@@ -71,6 +71,8 @@ export type SourceMessage =
   | 'My workspace'
   | "Adrian Helbig's workspace"
   | 'View GitHub profile'
+  | 'View LinkedIn profile'
+  | 'Professional profiles'
   | 'Let us talk about software, projects, and new opportunities.'
   | 'Contact form'
   | 'Direct contact'
