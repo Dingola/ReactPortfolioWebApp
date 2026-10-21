@@ -169,7 +169,7 @@ export default function ContactPage() {
                 )}{' '}
                 <Link to="/privacy">{translate('privacy policy')}</Link>.
               </p>
-              <Button disabled={submissionState === 'submitting'} type="submit">
+              <Button disabled={submissionState === 'submitting'} size="action" type="submit">
                 {translate(submissionState === 'submitting' ? 'Sending message…' : 'Send message')}
                 <span aria-hidden="true">→</span>
               </Button>

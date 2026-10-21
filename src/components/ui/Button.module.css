@@ -13,35 +13,65 @@
   transition:
     border-color var(--motion-duration-fast) var(--motion-easing-standard),
     background-color var(--motion-duration-fast) var(--motion-easing-standard),
-    color var(--motion-duration-fast) var(--motion-easing-standard),
-    transform var(--motion-duration-fast) var(--motion-easing-standard);
+    color var(--motion-duration-fast) var(--motion-easing-standard);
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: inherit;
+}
+
+.action {
+  position: relative;
+  inset-block-start: 0;
+  min-height: 2.875rem;
+  gap: var(--space-3);
+  padding-inline: var(--space-5);
+  text-decoration: none;
+  transition:
+    inset-block-start var(--motion-duration-fast) var(--motion-easing-standard),
+    border-color var(--motion-duration-fast) var(--motion-easing-standard),
+    background-color var(--motion-duration-fast) var(--motion-easing-standard),
+    color var(--motion-duration-fast) var(--motion-easing-standard);
+}
+
+.action::before {
+  position: absolute;
+  inset: -0.25rem;
+  content: '';
 }
 
 .primary {
   border-color: var(--color-accent);
-  background: var(--color-accent);
+  background-color: var(--color-accent);
   color: var(--color-on-accent);
 }
 
 .secondary {
   border-color: var(--color-border-strong);
-  background: transparent;
+  background-color: transparent;
   color: var(--color-text);
 }
 
 @media (hover: hover) {
-  .button:hover:not(:disabled) {
-    transform: translateY(-1px);
+  .action:hover:not(:disabled) {
+    inset-block-start: -1px;
   }
 
   .primary:hover:not(:disabled) {
     border-color: var(--color-accent-hover);
-    background: var(--color-accent-hover);
+    background-color: var(--color-accent-hover);
+    color: var(--color-on-accent);
   }
 
   .secondary:hover:not(:disabled) {
     border-color: var(--color-text-muted);
-    background: var(--color-surface-muted);
+    background-color: var(--color-surface-muted);
+    color: var(--color-text);
   }
 }
 
@@ -50,6 +80,12 @@
   opacity: 0.5;
 }
 
-.button:active:not(:disabled) {
-  transform: translateY(0);
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+
+  .action:hover:not(:disabled) {
+    inset-block-start: 0;
+  }
 }

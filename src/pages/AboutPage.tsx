@@ -4,6 +4,7 @@ import { appConfig } from '@/app/config';
 import { useLocale } from '@/app/providers/locale/useLocale';
 import { Container } from '@/components/layout/Container';
 import { ImageViewer } from '@/components/media/ImageViewer';
+import buttonStyles from '@/components/ui/Button.module.css';
 import { germanPortfolioContent } from '@/content/portfolio.de';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 
@@ -41,19 +42,26 @@ export default function AboutPage() {
             ))}
           </div>
           <div className={styles.actions}>
-            <Link className={styles.primaryAction} to="/work">
-              {translate('View projects')}
-              <span aria-hidden="true">→</span>
+            <Link
+              className={`${buttonStyles.button} ${buttonStyles.action} ${buttonStyles.primary}`}
+              to="/work"
+            >
+              <span className={buttonStyles.content}>
+                {translate('View projects')}
+                <span aria-hidden="true">→</span>
+              </span>
             </Link>
             {githubProfile ? (
               <a
-                className={styles.secondaryAction}
+                className={`${buttonStyles.button} ${buttonStyles.action} ${buttonStyles.secondary}`}
                 href={githubProfile.href}
                 rel="noreferrer"
                 target="_blank"
               >
-                {translate('View GitHub profile')}
-                <span aria-hidden="true">↗</span>
+                <span className={buttonStyles.content}>
+                  {translate('View GitHub profile')}
+                  <span aria-hidden="true">↗</span>
+                </span>
               </a>
             ) : null}
           </div>

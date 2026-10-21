@@ -6,6 +6,8 @@ import styles from './Button.module.css';
 
 /** Props accepted by the reusable {@link Button} component. */
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  /** Applies the larger dimensions used for prominent page actions. */
+  size?: 'default' | 'action';
   /** Visual emphasis applied to the button. Defaults to `primary`. */
   variant?: 'primary' | 'secondary';
 };
@@ -17,15 +19,22 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
  * submit that form unintentionally.
  */
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
-  { className, type = 'button', variant = 'primary', ...props },
+  { children, className, size = 'default', type = 'button', variant = 'primary', ...props },
   ref,
 ) {
   return (
     <button
       ref={ref}
-      className={clsx(styles.button, styles[variant], className)}
+      className={clsx(
+        styles.button,
+        styles[variant],
+        size === 'action' && styles.action,
+        className,
+      )}
       type={type}
       {...props}
-    />
+    >
+      <span className={styles.content}>{children}</span>
+    </button>
   );
 });

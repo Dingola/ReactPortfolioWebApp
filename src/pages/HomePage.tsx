@@ -6,6 +6,7 @@ import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import { useLocale } from '@/app/providers/locale/useLocale';
 import { Container } from '@/components/layout/Container';
 import { ImageViewer } from '@/components/media/ImageViewer';
+import buttonStyles from '@/components/ui/Button.module.css';
 import { germanPortfolioContent } from '@/content/portfolio.de';
 
 import styles from './HomePage.module.css';
@@ -71,12 +72,20 @@ export default function HomePage() {
               <p className={styles.role}>{profile.role}</p>
               <p className={styles.summary}>{profile.introduction}</p>
               <div className={styles.actions}>
-                <Link className={styles.primaryAction} to="/work">
-                  {translate('View projects')}
-                  <span aria-hidden="true">→</span>
+                <Link
+                  className={`${buttonStyles.button} ${buttonStyles.action} ${buttonStyles.primary}`}
+                  to="/work"
+                >
+                  <span className={buttonStyles.content}>
+                    {translate('View projects')}
+                    <span aria-hidden="true">→</span>
+                  </span>
                 </Link>
-                <Link className={styles.secondaryAction} to="/contact">
-                  {translate('Get in touch')}
+                <Link
+                  className={`${buttonStyles.button} ${buttonStyles.action} ${buttonStyles.secondary}`}
+                  to="/contact"
+                >
+                  <span className={buttonStyles.content}>{translate('Get in touch')}</span>
                 </Link>
               </div>
             </div>
