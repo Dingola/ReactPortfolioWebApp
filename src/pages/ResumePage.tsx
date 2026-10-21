@@ -1,3 +1,5 @@
+import { useEffect, useRef, useState, type CSSProperties, type PropsWithChildren } from 'react';
+
 import { appConfig } from '@/app/config';
 import { useLocale } from '@/app/providers/locale/useLocale';
 import { Container } from '@/components/layout/Container';
@@ -6,6 +8,47 @@ import type { ContentDetail } from '@/content/types';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 
 import styles from './ResumePage.module.css';
+
+interface TimelineEntryStyle extends CSSProperties {
+  '--timeline-index': number;
+}
+
+function Timeline({ children }: PropsWithChildren) {
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const [isRevealed, setIsRevealed] = useState(
+    () =>
+      !('IntersectionObserver' in window) ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+  );
+
+  useEffect(() => {
+    const timeline = timelineRef.current;
+
+    if (!timeline || isRevealed) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          setIsRevealed(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '0px 0px -12%', threshold: 0.15 },
+    );
+
+    observer.observe(timeline);
+
+    return () => observer.disconnect();
+  }, [isRevealed]);
+
+  return (
+    <div className={styles.timeline} data-revealed={isRevealed} ref={timelineRef}>
+      {children}
+    </div>
+  );
+}
 
 function formatDate(value: string, locale: string) {
   return new Intl.DateTimeFormat(locale, { month: '2-digit', year: 'numeric' }).format(
@@ -64,9 +107,13 @@ export default function ResumePage() {
 
       <section className={styles.section} aria-labelledby="experience-title">
         <h2 id="experience-title">{translate('Professional experience')}</h2>
-        <div className={styles.timeline}>
-          {experience.map((entry) => (
-            <article key={entry.id} className={styles.entry}>
+        <Timeline>
+          {experience.map((entry, index) => (
+            <article
+              key={entry.id}
+              className={styles.entry}
+              style={{ '--timeline-index': index } as TimelineEntryStyle}
+            >
               <div className={styles.entryPeriod}>
                 <Period end={entry.endDate} start={entry.startDate} />
               </div>
@@ -99,14 +146,18 @@ export default function ResumePage() {
               </div>
             </article>
           ))}
-        </div>
+        </Timeline>
       </section>
 
       <section className={styles.section} aria-labelledby="education-title">
         <h2 id="education-title">{translate('Education')}</h2>
-        <div className={styles.timeline}>
-          {education.map((entry) => (
-            <article key={entry.id} className={styles.entry}>
+        <Timeline>
+          {education.map((entry, index) => (
+            <article
+              key={entry.id}
+              className={styles.entry}
+              style={{ '--timeline-index': index } as TimelineEntryStyle}
+            >
               <div className={styles.entryPeriod}>
                 <Period end={entry.endDate} start={entry.startDate} />
               </div>
@@ -135,7 +186,7 @@ export default function ResumePage() {
               </div>
             </article>
           ))}
-        </div>
+        </Timeline>
       </section>
 
       <section className={styles.section} aria-labelledby="skills-title">
