@@ -25,14 +25,15 @@ describe('ProjectDetailPage', () => {
     expect(screen.getByText('Projektziel')).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Zentrale Funktionen' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Qualitätssicherung' })).toBeInTheDocument();
-    expect(screen.getAllByRole('img')).toHaveLength(4);
+    expect(screen.getAllByRole('img')).toHaveLength(3);
     expect(screen.getAllByRole('img')[0]).toHaveAttribute(
       'src',
       '/images/projects/qt-log-viewer/log-view.png',
     );
-    expect(screen.getByRole('heading', { name: 'Projekteinblicke' })).toBeInTheDocument();
+    expect(screen.getByRole('region', { name: 'Projekteinblicke' })).toBeInTheDocument();
     const imageButtons = screen.getAllByRole('button', { name: /bild vergrößern/i });
-    expect(imageButtons).toHaveLength(4);
+    expect(imageButtons).toHaveLength(3);
+    expect(screen.getByText('+1')).toBeInTheDocument();
     await user.click(imageButtons[0]!);
     expect(screen.getByRole('dialog', { name: 'Bildansicht' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /zurück zu den projekten/i })).toHaveAttribute(

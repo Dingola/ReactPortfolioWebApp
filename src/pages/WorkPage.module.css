@@ -1,6 +1,13 @@
 .page {
   display: grid;
-  gap: clamp(var(--space-10), 5vw, var(--space-16));
+  gap: clamp(var(--space-8), 4vw, var(--space-12));
+}
+
+.overview {
+  display: grid;
+  align-items: end;
+  gap: clamp(var(--space-8), 5vw, var(--space-16));
+  grid-template-columns: minmax(0, 1fr) auto;
 }
 
 .header {
@@ -93,8 +100,8 @@
 
 .projectGrid {
   display: grid;
-  gap: clamp(var(--space-8), 4vw, var(--space-12));
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(var(--space-5), 2vw, var(--space-8));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .card {
@@ -154,10 +161,15 @@
 .cardContent {
   display: grid;
   align-content: start;
-  padding: clamp(var(--space-5), 3vw, var(--space-8));
+  padding: clamp(var(--space-5), 2vw, var(--space-6));
+  grid-template-rows: auto auto auto 1fr;
 }
 
-.cardContent h2 {
+.introduction {
+  min-block-size: 12em;
+}
+
+.introduction h2 {
   margin-block-start: var(--space-3);
   font-size: var(--font-size-heading-small);
 }
@@ -207,8 +219,15 @@
   text-decoration-thickness: 2px;
 }
 
-.detailLink {
+.actions {
+  display: grid;
+  align-self: end;
+  justify-items: start;
   margin-block-start: var(--space-6);
+}
+
+.detailLink {
+  margin-block-start: 0;
 }
 
 .sourceLink {
@@ -232,8 +251,27 @@
   }
 }
 
+@media (width <= 75rem) {
+  .overview {
+    align-items: start;
+    grid-template-columns: 1fr;
+  }
+
+  .projectGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .introduction {
+    min-block-size: 8.5em;
+  }
+}
+
 @media (width <= 48rem) {
   .projectGrid {
     grid-template-columns: 1fr;
+  }
+
+  .introduction {
+    min-block-size: 0;
   }
 }

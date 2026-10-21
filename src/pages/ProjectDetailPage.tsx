@@ -75,6 +75,8 @@ export default function ProjectDetailPage() {
   }
 
   const { details, images, links } = project;
+  const previewImages = images.slice(1, 3);
+  const hiddenImageCount = Math.max(0, images.length - 3);
 
   return (
     <Container className={styles.page}>
@@ -120,14 +122,44 @@ export default function ProjectDetailPage() {
       </header>
 
       {images[0] ? (
-        <figure className={styles.heroImage}>
-          <ImageViewer
-            image={images[0]}
-            images={images}
-            sizes="(max-width: 92rem) calc(100vw - 2rem), 92rem"
-          />
-          {images[0].caption ? <figcaption>{images[0].caption}</figcaption> : null}
-        </figure>
+        <section
+          className={`${styles.mediaOverview} ${images.length === 1 ? styles.singleMedia : ''}`}
+          aria-label={translate('Project screenshots')}
+        >
+          <figure className={styles.mainMedia}>
+            <ImageViewer
+              buttonClassName={styles.mediaButton}
+              className={styles.mediaImage}
+              image={images[0]}
+              images={images}
+              sizes="(max-width: 64rem) calc(100vw - 2rem), 68vw"
+            />
+            {images[0].caption ? <figcaption>{images[0].caption}</figcaption> : null}
+          </figure>
+
+          {images.length > 1 ? (
+            <div className={styles.previewGrid}>
+              {previewImages.map((image, index) => (
+                <figure className={styles.preview} key={image.src}>
+                  <ImageViewer
+                    buttonClassName={styles.mediaButton}
+                    className={styles.mediaImage}
+                    image={image}
+                    images={images}
+                    initialIndex={index + 1}
+                    sizes="(max-width: 48rem) calc(100vw - 2rem), (max-width: 64rem) 50vw, 33vw"
+                    loading="lazy"
+                  />
+                  {index === previewImages.length - 1 && hiddenImageCount > 0 ? (
+                    <span className={styles.remainingImages} aria-hidden="true">
+                      +{hiddenImageCount}
+                    </span>
+                  ) : null}
+                </figure>
+              ))}
+            </div>
+          ) : null}
+        </section>
       ) : null}
 
       {details ? (
@@ -139,26 +171,6 @@ export default function ProjectDetailPage() {
             <DetailList heading="Quality assurance" items={details.qualityAssurance} />
           </div>
         </>
-      ) : null}
-
-      {images.length > 1 ? (
-        <section className={styles.gallery}>
-          <h2>{translate('Project screenshots')}</h2>
-          <div className={styles.galleryGrid}>
-            {images.slice(1).map((image, index) => (
-              <figure key={image.src}>
-                <ImageViewer
-                  image={image}
-                  images={images}
-                  initialIndex={index + 1}
-                  sizes="(max-width: 48rem) calc(100vw - 2rem), 50vw"
-                  loading="lazy"
-                />
-                {image.caption ? <figcaption>{image.caption}</figcaption> : null}
-              </figure>
-            ))}
-          </div>
-        </section>
       ) : null}
     </Container>
   );

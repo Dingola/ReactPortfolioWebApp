@@ -34,7 +34,7 @@ function ProjectCard({ project, index }: { project: PortfolioProject; index: num
             className={styles.previewMedia}
             image={image}
             images={project.images}
-            sizes="(max-width: 48rem) calc(100vw - 3rem), 50vw"
+            sizes="(max-width: 48rem) calc(100vw - 3rem), (max-width: 75rem) 50vw, 33vw"
             loading="lazy"
           />
         ) : (
@@ -47,32 +47,36 @@ function ProjectCard({ project, index }: { project: PortfolioProject; index: num
 
       <div className={styles.cardContent}>
         <p className={styles.projectNumber}>PROJECT_{String(index + 1).padStart(3, '0')}</p>
-        <h2>
-          <Link className={styles.titleLink} to={`/work/${project.slug}`}>
-            {project.title}
-          </Link>
-        </h2>
-        <p className={styles.summary}>{project.summary}</p>
+        <div className={styles.introduction}>
+          <h2>
+            <Link className={styles.titleLink} to={`/work/${project.slug}`}>
+              {project.title}
+            </Link>
+          </h2>
+          <p className={styles.summary}>{project.summary}</p>
+        </div>
         <ul className={styles.technologies} aria-label={translate('Technology stack')}>
           {project.technologies.map((technology) => (
             <li key={technology}>{technology}</li>
           ))}
         </ul>
-        <Link className={styles.detailLink} to={`/work/${project.slug}`}>
-          {translate('View project')}
-          <span aria-hidden="true">→</span>
-        </Link>
-        {project.links?.repository ? (
-          <a
-            className={styles.sourceLink}
-            href={project.links.repository}
-            rel="noreferrer"
-            target="_blank"
-          >
-            {translate('Source code')}
-            <span aria-hidden="true">↗</span>
-          </a>
-        ) : null}
+        <div className={styles.actions}>
+          <Link className={styles.detailLink} to={`/work/${project.slug}`}>
+            {translate('View project')}
+            <span aria-hidden="true">→</span>
+          </Link>
+          {project.links?.repository ? (
+            <a
+              className={styles.sourceLink}
+              href={project.links.repository}
+              rel="noreferrer"
+              target="_blank"
+            >
+              {translate('Source code')}
+              <span aria-hidden="true">↗</span>
+            </a>
+          ) : null}
+        </div>
       </div>
     </article>
   );
@@ -97,29 +101,31 @@ export default function WorkPage() {
 
   return (
     <Container className={styles.page}>
-      <header className={styles.header}>
-        <p className={styles.eyebrow}>02 / {translate('Work')}</p>
-        <h1>{translate('Projects')}</h1>
-        <p>{translate('Selected software projects and the technologies behind them.')}</p>
-      </header>
+      <div className={styles.overview}>
+        <header className={styles.header}>
+          <p className={styles.eyebrow}>02 / {translate('Work')}</p>
+          <h1>{translate('Projects')}</h1>
+          <p>{translate('Selected software projects and the technologies behind them.')}</p>
+        </header>
 
-      <fieldset className={styles.filters}>
-        <legend>{translate('Filter projects')}</legend>
-        <div className={styles.filterOptions}>
-          {availableFilters.map((filter) => (
-            <label key={filter.id} className={styles.filter}>
-              <input
-                checked={activeFilter === filter.id}
-                name="project-filter"
-                onChange={() => setActiveFilter(filter.id)}
-                type="radio"
-                value={filter.id}
-              />
-              <span>{translate(filter.label)}</span>
-            </label>
-          ))}
-        </div>
-      </fieldset>
+        <fieldset className={styles.filters}>
+          <legend>{translate('Filter projects')}</legend>
+          <div className={styles.filterOptions}>
+            {availableFilters.map((filter) => (
+              <label key={filter.id} className={styles.filter}>
+                <input
+                  checked={activeFilter === filter.id}
+                  name="project-filter"
+                  onChange={() => setActiveFilter(filter.id)}
+                  type="radio"
+                  value={filter.id}
+                />
+                <span>{translate(filter.label)}</span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+      </div>
 
       <div className={styles.projectGrid} aria-live="polite">
         {visibleProjects.map((project) => (
