@@ -66,6 +66,15 @@ export interface PortfolioProject {
   readonly featured: boolean;
 }
 
+/** A public repository referenced without a dedicated project page. */
+export interface PublicRepository {
+  readonly id: string;
+  readonly title: string;
+  readonly summary: string;
+  readonly technologies: readonly string[];
+  readonly repository: string;
+}
+
 /** An optional external reference attached to a resume detail. */
 export interface ContentLink {
   readonly label: string;
@@ -171,6 +180,7 @@ export interface PortfolioContent {
   };
   readonly navigation: readonly NavigationItem[];
   readonly projects: readonly PortfolioProject[];
+  readonly publicRepositories: readonly PublicRepository[];
   readonly experience: readonly ExperienceEntry[];
   readonly education: readonly EducationEntry[];
   readonly skillGroups: readonly SkillGroup[];

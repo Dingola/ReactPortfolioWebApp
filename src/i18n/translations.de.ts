@@ -65,6 +65,10 @@ export const germanTranslations = {
   'Other projects': 'Weitere Projekte',
   'Source code': 'Quellcode',
   'Project preview': 'Projektvorschau',
+  'More public repositories': 'Weitere öffentliche Repositories',
+  'Related public libraries that support my C++ and Qt projects.':
+    'Verwandte öffentliche Bibliotheken, die meine C++- und Qt-Projekte unterstützen.',
+  'View repository': 'Repository ansehen',
   'Image could not be loaded.': 'Bild konnte nicht geladen werden.',
   'Professional experience': 'Berufserfahrung',
   Education: 'Ausbildung',

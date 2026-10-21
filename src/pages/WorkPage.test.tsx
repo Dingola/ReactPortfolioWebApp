@@ -33,6 +33,19 @@ describe('WorkPage', () => {
       '/work/qt-log-viewer',
     );
     expect(screen.getAllByRole('button', { name: /bild vergrößern/i })).toHaveLength(1);
+    expect(
+      screen.getByRole('heading', { level: 2, name: 'Weitere öffentliche Repositories' }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', { name: /^QtQuickCommonLib: Repository ansehen$/i }),
+    ).toHaveAttribute('href', 'https://github.com/Dingola/QtQuickCommonLib');
+    expect(
+      screen.getByRole('link', { name: /^QtCommonLib: Repository ansehen$/i }),
+    ).toHaveAttribute('href', 'https://github.com/Dingola/QtCommonLib');
+    expect(screen.getByRole('link', { name: /^CommonLib: Repository ansehen$/i })).toHaveAttribute(
+      'href',
+      'https://github.com/Dingola/CommonLib',
+    );
   });
 
   it('filters projects by category', async () => {

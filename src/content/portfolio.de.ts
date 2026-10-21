@@ -327,6 +327,32 @@ export const germanPortfolioContent = {
       featured: true,
     },
   ],
+  publicRepositories: [
+    {
+      id: 'qt-quick-common-lib',
+      title: 'QtQuickCommonLib',
+      summary:
+        'Gemeinsame Dienste, Hilfsfunktionen und UI-Bausteine für Qt-Quick-basierte Desktop-Anwendungen.',
+      technologies: ['C++20', 'Qt Quick', 'QML'],
+      repository: 'https://github.com/Dingola/QtQuickCommonLib',
+    },
+    {
+      id: 'qt-common-lib',
+      title: 'QtCommonLib',
+      summary:
+        'UI-unabhängige Hilfsfunktionen für Qt-6-Anwendungen, darunter Datenbank- und Testunterstützung.',
+      technologies: ['C++20', 'Qt 6', 'GoogleTest'],
+      repository: 'https://github.com/Dingola/QtCommonLib',
+    },
+    {
+      id: 'common-lib',
+      title: 'CommonLib',
+      summary:
+        'Leichtgewichtige C++20-Basisbibliothek mit wiederverwendbaren Klassen, Mustern und Hilfsfunktionen.',
+      technologies: ['C++20', 'CMake', 'GoogleTest'],
+      repository: 'https://github.com/Dingola/CommonLib',
+    },
+  ],
   experience: [
     {
       id: 'gfai',

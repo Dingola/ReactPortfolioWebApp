@@ -132,6 +132,42 @@ export default function WorkPage() {
           />
         ))}
       </div>
+
+      <section className={styles.repositorySection} aria-labelledby="public-repositories-heading">
+        <header className={styles.repositoryHeader}>
+          <p className={styles.eyebrow}>REPOSITORIES / 03</p>
+          <h2 id="public-repositories-heading">{translate('More public repositories')}</h2>
+          <p>{translate('Related public libraries that support my C++ and Qt projects.')}</p>
+        </header>
+
+        <div className={styles.repositoryGrid}>
+          {germanPortfolioContent.publicRepositories.map((work) => (
+            <article className={styles.repositoryItem} key={work.id}>
+              <div>
+                <h3>{work.title}</h3>
+                <p className={styles.repositorySummary}>{work.summary}</p>
+              </div>
+              <ul
+                className={styles.repositoryTechnologies}
+                aria-label={translate('Technology stack')}
+              >
+                {work.technologies.map((technology) => (
+                  <li key={technology}>{technology}</li>
+                ))}
+              </ul>
+              <a
+                aria-label={`${work.title}: ${translate('View repository')}`}
+                href={work.repository}
+                rel="noreferrer"
+                target="_blank"
+              >
+                {translate('View repository')}
+                <span aria-hidden="true">↗</span>
+              </a>
+            </article>
+          ))}
+        </div>
+      </section>
     </Container>
   );
 }

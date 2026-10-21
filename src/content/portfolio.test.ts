@@ -15,6 +15,15 @@ describe('German portfolio content', () => {
     expect(validatePortfolioContent(germanPortfolioContent)).toEqual([]);
   });
 
+  it('provides compact links for supporting public repositories', () => {
+    expect(germanPortfolioContent.publicRepositories).toHaveLength(3);
+    expect(
+      germanPortfolioContent.publicRepositories.every(({ repository }) =>
+        /^https:\/\/github\.com\/Dingola\//.test(repository),
+      ),
+    ).toBe(true);
+  });
+
   it('provides detail content and explicit public links for every project', () => {
     expect(germanPortfolioContent.projects).toHaveLength(5);
 
