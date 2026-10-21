@@ -1,14 +1,41 @@
 .toggle {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-1);
+  gap: 0.125rem;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.04em;
 }
 
 .option {
-  min-width: 2.75rem;
-  padding-inline: var(--space-2);
+  min-width: 2rem;
+  min-height: 2.25rem;
+  padding: 0 var(--space-1);
+  border: 0;
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  font: inherit;
+  transition: color var(--motion-duration-fast) var(--motion-easing-standard);
 }
 
 .active {
-  border-color: currentcolor;
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.separator {
+  color: var(--color-border-strong);
+  user-select: none;
+}
+
+@media (hover: hover) {
+  .option:hover:not(:disabled) {
+    color: var(--color-accent-hover);
+  }
+}
+
+.option:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
 }

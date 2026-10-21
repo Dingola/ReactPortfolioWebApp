@@ -1,4 +1,5 @@
-import { Button } from '@/components/ui/Button';
+import { Fragment } from 'react';
+
 import { supportedLocales, type Locale } from '@/i18n/locales';
 import type { SourceMessage } from '@/i18n/messages';
 
@@ -26,18 +27,24 @@ export function LanguageToggle() {
           : `${abbreviation} – ${label}: ${translate('English version in preparation')}`;
 
         return (
-          <Button
-            key={option}
-            aria-label={accessibleLabel}
-            aria-pressed={isActive}
-            className={`${styles.option} ${isActive ? styles.active : ''}`}
-            disabled={!isAvailable}
-            onClick={() => setLocale(option)}
-            title={isAvailable ? label : translate('English version in preparation')}
-            variant="secondary"
-          >
-            {abbreviation}
-          </Button>
+          <Fragment key={option}>
+            {option === supportedLocales[0] ? null : (
+              <span className={styles.separator} aria-hidden="true">
+                /
+              </span>
+            )}
+            <button
+              aria-label={accessibleLabel}
+              aria-pressed={isActive}
+              className={`${styles.option} ${isActive ? styles.active : ''}`}
+              disabled={!isAvailable}
+              onClick={() => setLocale(option)}
+              title={isAvailable ? label : translate('English version in preparation')}
+              type="button"
+            >
+              {abbreviation}
+            </button>
+          </Fragment>
         );
       })}
     </div>
