@@ -68,12 +68,29 @@ describe('ProjectDetailPage', () => {
     );
   });
 
+  it('presents both logger repositories as one project family', () => {
+    renderProjectRoute('/work/simple-logger-libraries');
+
+    expect(
+      screen.getByRole('heading', { level: 1, name: 'SimpleCppLogger & SimpleQtLogger' }),
+    ).toBeInTheDocument();
+    expect(screen.getByText(/plattformunabhängigen, thread-sicheren Kern/i)).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /SimpleCppLogger/i })).toHaveAttribute(
+      'href',
+      'https://github.com/Dingola/SimpleCppLogger',
+    );
+    expect(screen.getByRole('link', { name: /SimpleQtLogger/i })).toHaveAttribute(
+      'href',
+      'https://github.com/Dingola/SimpleQtLogger',
+    );
+  });
+
   it('links to the surrounding projects from the detail navigation', () => {
     renderProjectRoute('/work/qt-widgets-common-lib');
 
     expect(screen.getByRole('link', { name: /vorheriges projekt/i })).toHaveAttribute(
       'href',
-      '/work/qt-record-parser',
+      '/work/simple-logger-libraries',
     );
     expect(screen.getByRole('link', { name: /nächstes projekt/i })).toHaveAttribute(
       'href',

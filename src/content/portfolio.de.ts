@@ -199,6 +199,55 @@ export const germanPortfolioContent = {
       featured: true,
     },
     {
+      id: 'simple-logger-libraries',
+      slug: 'simple-logger-libraries',
+      title: 'SimpleCppLogger & SimpleQtLogger',
+      summary:
+        'Eine zusammengehörige C++20-Loggerfamilie mit thread-sicherem Kern, flexiblen Ausgaben und einer gezielten Integration in Qt-Anwendungen.',
+      categories: ['library'],
+      technologies: ['C++20', 'Qt 6', 'CMake', 'GoogleTest', 'Codecov'],
+      details: {
+        goal: 'Eine leichtgewichtige Logging-Grundlage bereitstellen, die in reinem C++ einsetzbar bleibt und sich für Qt-Anwendungen gezielt erweitern lässt.',
+        problem:
+          'Eine direkte Kopplung an Qt schränkt die Wiederverwendbarkeit ein, während getrennte Logger in C++- und Qt-Projekten Log-Level, Formatierung, Ausgaben und Synchronisation mehrfach implementieren würden.',
+        solution:
+          'SimpleCppLogger bildet den plattformunabhängigen, thread-sicheren Kern mit austauschbaren Appendern und Formatierern. SimpleQtLogger baut darauf auf und ergänzt die Weiterleitung von Qt-Nachrichten, Qt-basierte Dateiausgabe sowie JSON- und HTML-Formatierung.',
+        features: [
+          'Thread-sicherer Logger mit mehreren Appendern und konfigurierbaren Log-Leveln',
+          'Stream- und Makro-Schnittstellen mit automatischer Erfassung der Quellposition',
+          'Erweiterbare Appender- und Formatter-Schnittstellen mit Konsolenausgabe im C++-Kern',
+          'Weiterleitung des globalen Qt-Message-Handlers an den gemeinsamen Logger',
+          'Qt-basierte Dateiausgabe sowie kompakte JSON- und anpassbare HTML-Formatierung',
+        ],
+        technicalDecisions: [
+          'Klare Trennung zwischen Qt-unabhängiger Kernbibliothek und darauf aufbauender Qt-Erweiterung',
+          'Abstrakte Appender- und Formatter-Schnittstellen für austauschbare Ausgaben und Darstellungen',
+          'Mutex-geschützte Logger-Konfiguration und Nachrichtenausgabe',
+          'Gemeinsames Log-Level- und Nachrichtenmodell über beide Bibliotheken hinweg',
+        ],
+        qualityAssurance: [
+          'GoogleTest-Tests für Logger, Log-Level, Streams, Makros, Appender und Formatierer',
+          'Gezielte Tests für Qt-Nachrichtenweiterleitung, Dateiausgabe sowie JSON- und HTML-Ergebnisse',
+          'Automatisierte Build- und Test-Workflows für Windows, Linux und macOS',
+          'Code-Coverage-Auswertung mit Codecov sowie optionale Clang-Tidy- und Sanitizer-Prüfungen',
+        ],
+      },
+      links: {
+        repositories: [
+          {
+            label: 'SimpleCppLogger',
+            href: 'https://github.com/Dingola/SimpleCppLogger',
+          },
+          {
+            label: 'SimpleQtLogger',
+            href: 'https://github.com/Dingola/SimpleQtLogger',
+          },
+        ],
+      },
+      images: [],
+      featured: true,
+    },
+    {
       id: 'qt-widgets-common-lib',
       slug: 'qt-widgets-common-lib',
       title: 'Qt Widgets Common Library',

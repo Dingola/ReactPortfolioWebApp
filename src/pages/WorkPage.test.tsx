@@ -17,14 +17,17 @@ describe('WorkPage', () => {
     expect(screen.getByRole('heading', { level: 1, name: 'Projekte' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Qt Log Viewer' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'QtRecordParser' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'SimpleCppLogger & SimpleQtLogger' }),
+    ).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Qt Widgets Common Library' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'React Portfolio Web App' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Qt Log Viewer' })).toHaveAttribute(
       'href',
       '/work/qt-log-viewer',
     );
-    expect(screen.getAllByRole('link', { name: /quellcode/i })).toHaveLength(4);
-    expect(screen.getAllByRole('link', { name: /projekt ansehen/i })).toHaveLength(4);
+    expect(screen.getAllByRole('link', { name: /quellcode/i })).toHaveLength(5);
+    expect(screen.getAllByRole('link', { name: /projekt ansehen/i })).toHaveLength(5);
     expect(screen.getAllByRole('link', { name: /projekt ansehen/i })[0]).toHaveAttribute(
       'href',
       '/work/qt-log-viewer',
@@ -63,6 +66,9 @@ describe('WorkPage', () => {
     await user.click(screen.getByRole('radio', { name: 'Bibliotheken' }));
 
     expect(screen.getByRole('heading', { name: 'QtRecordParser' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'SimpleCppLogger & SimpleQtLogger' }),
+    ).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Qt Widgets Common Library' })).toBeInTheDocument();
     expect(screen.queryByRole('heading', { name: 'Qt Log Viewer' })).not.toBeInTheDocument();
   });

@@ -25,9 +25,16 @@ export interface PortfolioImage {
   }[];
 }
 
+/** A labeled repository belonging to a portfolio project. */
+export interface ProjectRepositoryLink {
+  readonly label: string;
+  readonly href: string;
+}
+
 /** Public destinations belonging to a portfolio project. */
 export interface ProjectLinks {
   readonly repository?: string;
+  readonly repositories?: readonly ProjectRepositoryLink[];
   readonly documentation?: string;
   readonly live?: string;
 }

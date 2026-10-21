@@ -217,6 +217,16 @@ export default function ProjectDetailPage() {
                       {translate('Repository')} <span aria-hidden="true">↗</span>
                     </a>
                   ) : null}
+                  {links.repositories?.map((repository) => (
+                    <a
+                      href={repository.href}
+                      key={repository.href}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      {repository.label} <span aria-hidden="true">↗</span>
+                    </a>
+                  ))}
                   {links.documentation ? (
                     <a href={links.documentation} rel="noreferrer" target="_blank">
                       {translate('Documentation')} <span aria-hidden="true">↗</span>

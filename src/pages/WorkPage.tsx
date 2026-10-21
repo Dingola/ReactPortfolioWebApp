@@ -24,6 +24,7 @@ const availableFilters = [
 function ProjectCard({ project, index }: { project: PortfolioProject; index: number }) {
   const { translate } = useLocale();
   const image = project.images[0];
+  const sourceUrl = project.links?.repository ?? project.links?.repositories?.[0]?.href;
 
   return (
     <article className={styles.card}>
@@ -65,13 +66,8 @@ function ProjectCard({ project, index }: { project: PortfolioProject; index: num
             {translate('View project')}
             <span aria-hidden="true">→</span>
           </Link>
-          {project.links?.repository ? (
-            <a
-              className={styles.sourceLink}
-              href={project.links.repository}
-              rel="noreferrer"
-              target="_blank"
-            >
+          {sourceUrl ? (
+            <a className={styles.sourceLink} href={sourceUrl} rel="noreferrer" target="_blank">
               {translate('Source code')}
               <span aria-hidden="true">↗</span>
             </a>
