@@ -57,12 +57,15 @@ export function PageTransition() {
     distance: isMobile ? 28 : 64,
     reduceMotion,
   };
+  const transitionKey = location.pathname.startsWith('/work/')
+    ? '/work/:project'
+    : location.pathname;
 
   return (
     <div className={styles.viewport} data-reduced-motion={reduceMotion || undefined}>
       <AnimatePresence custom={transitionContext} initial={false} mode="popLayout">
         <motion.div
-          key={location.pathname}
+          key={transitionKey}
           animate="center"
           className={styles.page}
           custom={transitionContext}

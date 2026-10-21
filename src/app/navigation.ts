@@ -7,6 +7,19 @@ export type NavigationDirection = 'backward' | 'forward' | 'none';
 /** Ordered routes used by the primary navigation and directional page transitions. */
 export const primaryNavigationItems = germanPortfolioContent.navigation;
 
+function getProjectDetailIndex(pathname: string): number | undefined {
+  const projectRoutePrefix = '/work/';
+
+  if (!pathname.startsWith(projectRoutePrefix)) {
+    return undefined;
+  }
+
+  const slug = pathname.slice(projectRoutePrefix.length);
+  const index = germanPortfolioContent.projects.findIndex((project) => project.slug === slug);
+
+  return index >= 0 ? index : undefined;
+}
+
 /** Resolves a pathname to its position in the primary portfolio flow. */
 export function getPortfolioRouteIndex(pathname: string): number | undefined {
   const normalizedPath = pathname.startsWith('/work/') ? '/work' : pathname;
@@ -20,6 +33,17 @@ export function getNavigationDirection(
   previousPath: string,
   nextPath: string,
 ): NavigationDirection {
+  const previousProjectIndex = getProjectDetailIndex(previousPath);
+  const nextProjectIndex = getProjectDetailIndex(nextPath);
+
+  if (
+    previousProjectIndex !== undefined &&
+    nextProjectIndex !== undefined &&
+    previousProjectIndex !== nextProjectIndex
+  ) {
+    return nextProjectIndex > previousProjectIndex ? 'forward' : 'backward';
+  }
+
   const previousIndex = getPortfolioRouteIndex(previousPath);
   const nextIndex = getPortfolioRouteIndex(nextPath);
 

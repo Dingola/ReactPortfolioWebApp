@@ -16,6 +16,12 @@ describe('portfolio navigation order', () => {
     expect(getNavigationDirection('/', '/contact')).toBe('forward');
     expect(getNavigationDirection('/about', '/work')).toBe('backward');
     expect(getNavigationDirection('/work', '/work/qt-log-viewer')).toBe('none');
+    expect(getNavigationDirection('/work/qt-log-viewer', '/work/qt-widgets-common-lib')).toBe(
+      'forward',
+    );
+    expect(
+      getNavigationDirection('/work/react-portfolio-web-app', '/work/qt-widgets-common-lib'),
+    ).toBe('backward');
     expect(getNavigationDirection('/missing', '/')).toBe('none');
   });
 });
