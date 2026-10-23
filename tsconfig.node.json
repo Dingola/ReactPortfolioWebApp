@@ -15,11 +15,5 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true
   },
-  "include": [
-    "api/**/*.ts",
-    "workers/**/*.ts",
-    "vite.config.ts",
-    "vitest.config.ts",
-    "playwright.config.ts"
-  ]
+  "include": ["workers/**/*.ts", "vite.config.ts", "vitest.config.ts", "playwright.config.ts"]
 }
