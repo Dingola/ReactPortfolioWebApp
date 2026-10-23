@@ -94,7 +94,7 @@ export default function ResumePage() {
   const { content, translate } = useLocale();
   const { experience, education, skillGroups } = content;
 
-  useDocumentTitle(`${translate('Resume')} · ${appConfig.name}`);
+  useDocumentTitle(`${translate('Resume')} · ${appConfig.siteName}`);
 
   return (
     <Container className={styles.page}>

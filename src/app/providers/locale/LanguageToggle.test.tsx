@@ -33,5 +33,17 @@ describe('LanguageToggle', () => {
       'true',
     );
     expect(window.localStorage.getItem('locale-preference')).toBe('"en"');
+    expect(window.location.search).toBe('?lang=en');
+  });
+
+  it('uses a clean URL when switching back to the default language', async () => {
+    const user = userEvent.setup();
+    window.history.replaceState({}, '', '/work?lang=en');
+    renderWithProviders(<LanguageToggle />);
+
+    await user.click(screen.getByRole('button', { name: 'DE – German' }));
+
+    expect(document.documentElement).toHaveAttribute('lang', 'de');
+    expect(window.location.href).toBe('http://localhost:3000/work');
   });
 });

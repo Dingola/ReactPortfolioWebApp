@@ -70,7 +70,7 @@ export default function ContactPage() {
   const [turnstileToken, setTurnstileToken] = useState<string>();
   const [turnstileResetKey, setTurnstileResetKey] = useState(0);
 
-  useDocumentTitle(`${translate('Contact')} · ${appConfig.name}`);
+  useDocumentTitle(`${translate('Contact')} · ${appConfig.siteName}`);
   const handleTurnstileTokenChange = useCallback((token: string | undefined) => {
     setTurnstileToken(token);
   }, []);

@@ -22,7 +22,7 @@ export default function AboutPage() {
   const { content, translate } = useLocale();
   const { about } = content;
 
-  useDocumentTitle(`${translate('About')} · ${appConfig.name}`);
+  useDocumentTitle(`${translate('About')} · ${appConfig.siteName}`);
 
   return (
     <Container className={styles.page}>

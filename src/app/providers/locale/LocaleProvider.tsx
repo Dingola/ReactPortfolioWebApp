@@ -53,7 +53,11 @@ export function LocaleProvider({ children }: LocaleProviderProps) {
       setStoredValue(storageKey, nextLocale);
 
       const url = new URL(window.location.href);
-      url.searchParams.set('lang', nextLocale);
+      if (nextLocale === defaultLocale) {
+        url.searchParams.delete('lang');
+      } else {
+        url.searchParams.set('lang', nextLocale);
+      }
       window.history.replaceState(window.history.state, '', url);
     }
   }, []);

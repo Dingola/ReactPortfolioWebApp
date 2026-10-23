@@ -1,5 +1,6 @@
 {
   "name": "ReactPortfolioWebApp",
+  "siteName": "Adrian Helbig",
   "description": "A modern developer portfolio built with React and TypeScript.",
   "repositoryUrl": "https://github.com/Dingola/ReactPortfolioWebApp"
 }

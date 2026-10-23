@@ -17,7 +17,7 @@ describe('useLocaleMetadata', () => {
     const user = userEvent.setup();
     document.head.insertAdjacentHTML(
       'beforeend',
-      '<meta name="description"><meta property="og:description"><meta property="og:locale"><link rel="canonical"><link rel="alternate" hreflang="de"><link rel="alternate" hreflang="en"><link rel="alternate" hreflang="x-default">',
+      '<meta name="description"><meta name="robots"><meta name="twitter:description"><meta property="og:description"><meta property="og:locale"><meta property="og:url"><link rel="canonical"><link rel="alternate" hreflang="de"><link rel="alternate" hreflang="en"><link rel="alternate" hreflang="x-default">',
     );
 
     renderWithProviders(
@@ -31,7 +31,7 @@ describe('useLocaleMetadata', () => {
     await waitFor(() => {
       expect(document.head.querySelector('meta[name="description"]')).toHaveAttribute(
         'content',
-        expect.stringContaining('C++ and Qt projects'),
+        expect.stringContaining('Selected software projects'),
       );
     });
     expect(document.head.querySelector('meta[property="og:locale"]')).toHaveAttribute(
@@ -40,19 +40,27 @@ describe('useLocaleMetadata', () => {
     );
     expect(document.head.querySelector('link[rel="canonical"]')).toHaveAttribute(
       'href',
-      'http://localhost:3000/work?lang=en',
+      'https://adrianhelbig.de/work?lang=en',
     );
     expect(document.head.querySelector('link[hreflang="de"]')).toHaveAttribute(
       'href',
-      'http://localhost:3000/work?lang=de',
+      'https://adrianhelbig.de/work',
     );
     expect(document.head.querySelector('link[hreflang="en"]')).toHaveAttribute(
       'href',
-      'http://localhost:3000/work?lang=en',
+      'https://adrianhelbig.de/work?lang=en',
+    );
+    expect(document.head.querySelector('meta[property="og:url"]')).toHaveAttribute(
+      'content',
+      'https://adrianhelbig.de/work?lang=en',
+    );
+    expect(document.head.querySelector('meta[name="robots"]')).toHaveAttribute(
+      'content',
+      'index, follow',
     );
 
     document.head
-      .querySelectorAll('meta[name="description"], meta[property^="og:"], link[rel]')
+      .querySelectorAll('meta[name], meta[property^="og:"], link[rel]')
       .forEach((element) => element.remove());
   });
 });

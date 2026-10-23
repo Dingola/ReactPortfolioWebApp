@@ -10,7 +10,13 @@ import { useEffect } from 'react';
 export function useDocumentTitle(title: string) {
   useEffect(() => {
     const previousTitle = document.title;
+    const openGraphTitle = document.head.querySelector<HTMLMetaElement>(
+      'meta[property="og:title"]',
+    );
+    const twitterTitle = document.head.querySelector<HTMLMetaElement>('meta[name="twitter:title"]');
     document.title = title;
+    openGraphTitle?.setAttribute('content', title);
+    twitterTitle?.setAttribute('content', title);
 
     return () => {
       document.title = previousTitle;

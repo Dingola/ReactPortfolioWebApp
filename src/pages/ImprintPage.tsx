@@ -12,7 +12,7 @@ export default function ImprintPage() {
   const { content, translate } = useLocale();
   const { legal } = content;
 
-  useDocumentTitle(`${translate('Legal notice')} · ${appConfig.name}`);
+  useDocumentTitle(`${translate('Legal notice')} · ${appConfig.siteName}`);
 
   return (
     <Container className={styles.page}>

@@ -85,8 +85,8 @@ export default function ProjectDetailPage() {
 
   useDocumentTitle(
     project
-      ? `${project.title} · ${appConfig.name}`
-      : `${translate('Page not found')} · ${appConfig.name}`,
+      ? `${project.title} · ${appConfig.siteName}`
+      : `${translate('Page not found')} · ${appConfig.siteName}`,
   );
 
   if (!project) {

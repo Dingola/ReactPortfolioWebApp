@@ -8,7 +8,7 @@ import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 /** Renders the fallback page for URLs that do not match an application route. */
 export default function NotFoundPage() {
   const { translate } = useLocale();
-  useDocumentTitle(`${translate('Page not found')} · ${appConfig.name}`);
+  useDocumentTitle(`${translate('Page not found')} · ${appConfig.siteName}`);
 
   return (
     <Container as="section">

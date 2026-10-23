@@ -12,7 +12,7 @@ const hasPrivacyPolicy = privacyPolicyHtml.replace(/<!--[\s\S]*?-->/g, '').trim(
 export default function PrivacyPage() {
   const { translate } = useLocale();
 
-  useDocumentTitle(`${translate('Privacy policy (German)')} · ${appConfig.name}`);
+  useDocumentTitle(`${translate('Privacy policy (German)')} · ${appConfig.siteName}`);
 
   return (
     <Container className={styles.page}>

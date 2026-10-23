@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://adrianhelbig.de/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://adrianhelbig.de/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://adrianhelbig.de/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adrianhelbig.de/" />
+  </url>
+  <url>
+    <loc>https://adrianhelbig.de/?lang=en</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://adrianhelbig.de/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://adrianhelbig.de/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adrianhelbig.de/" />
+  </url>
+  <url>
+    <loc>https://adrianhelbig.de/work</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://adrianhelbig.de/work" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://adrianhelbig.de/work?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adrianhelbig.de/work" />
+  </url>
+  <url>
+    <loc>https://adrianhelbig.de/work?lang=en</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://adrianhelbig.de/work" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://adrianhelbig.de/work?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adrianhelbig.de/work" />
+  </url>
+  <url>
+    <loc>https://adrianhelbig.de/work/qt-log-viewer</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://adrianhelbig.de/work/qt-log-viewer" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://adrianhelbig.de/work/qt-log-viewer?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adrianhelbig.de/work/qt-log-viewer" />
+  </url>
+  <url>
+    <loc>https://adrianhelbig.de/work/qt-log-viewer?lang=en</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://adrianhelbig.de/work/qt-log-viewer" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://adrianhelbig.de/work/qt-log-viewer?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adrianhelbig.de/work/qt-log-viewer" />
+  </url>
+  <url>
+    <loc>https://adrianhelbig.de/work/qt-record-parser</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://adrianhelbig.de/work/qt-record-parser" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://adrianhelbig.de/work/qt-record-parser?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adrianhelbig.de/work/qt-record-parser" />
+  </url>
+  <url>
+    <loc>https://adrianhelbig.de/work/qt-record-parser?lang=en</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://adrianhelbig.de/work/qt-record-parser" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://adrianhelbig.de/work/qt-record-parser?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adrianhelbig.de/work/qt-record-parser" />
+  </url>
+  <url>
+    <loc>https://adrianhelbig.de/work/simple-logger-libraries</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://adrianhelbig.de/work/simple-logger-libraries" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://adrianhelbig.de/work/simple-logger-libraries?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adrianhelbig.de/work/simple-logger-libraries" />
+  </url>
+  <url>
+    <loc>https://adrianhelbig.de/work/simple-logger-libraries?lang=en</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://adrianhelbig.de/work/simple-logger-libraries" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://adrianhelbig.de/work/simple-logger-libraries?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adrianhelbig.de/work/simple-logger-libraries" />
+  </url>
+  <url>
+    <loc>https://adrianhelbig.de/work/qt-widgets-common-lib</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://adrianhelbig.de/work/qt-widgets-common-lib" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://adrianhelbig.de/work/qt-widgets-common-lib?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adrianhelbig.de/work/qt-widgets-common-lib" />
+  </url>
+  <url>
+    <loc>https://adrianhelbig.de/work/qt-widgets-common-lib?lang=en</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://adrianhelbig.de/work/qt-widgets-common-lib" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://adrianhelbig.de/work/qt-widgets-common-lib?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adrianhelbig.de/work/qt-widgets-common-lib" />
+  </url>
+  <url>
+    <loc>https://adrianhelbig.de/work/react-portfolio-web-app</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://adrianhelbig.de/work/react-portfolio-web-app" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://adrianhelbig.de/work/react-portfolio-web-app?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adrianhelbig.de/work/react-portfolio-web-app" />
+  </url>
+  <url>
+    <loc>https://adrianhelbig.de/work/react-portfolio-web-app?lang=en</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://adrianhelbig.de/work/react-portfolio-web-app" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://adrianhelbig.de/work/react-portfolio-web-app?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adrianhelbig.de/work/react-portfolio-web-app" />
+  </url>
+  <url>
+    <loc>https://adrianhelbig.de/resume</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://adrianhelbig.de/resume" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://adrianhelbig.de/resume?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adrianhelbig.de/resume" />
+  </url>
+  <url>
+    <loc>https://adrianhelbig.de/resume?lang=en</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://adrianhelbig.de/resume" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://adrianhelbig.de/resume?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adrianhelbig.de/resume" />
+  </url>
+  <url>
+    <loc>https://adrianhelbig.de/about</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://adrianhelbig.de/about" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://adrianhelbig.de/about?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adrianhelbig.de/about" />
+  </url>
+  <url>
+    <loc>https://adrianhelbig.de/about?lang=en</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://adrianhelbig.de/about" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://adrianhelbig.de/about?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adrianhelbig.de/about" />
+  </url>
+  <url>
+    <loc>https://adrianhelbig.de/contact</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://adrianhelbig.de/contact" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://adrianhelbig.de/contact?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adrianhelbig.de/contact" />
+  </url>
+  <url>
+    <loc>https://adrianhelbig.de/contact?lang=en</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://adrianhelbig.de/contact" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://adrianhelbig.de/contact?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adrianhelbig.de/contact" />
+  </url>
+  <url>
+    <loc>https://adrianhelbig.de/impressum</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://adrianhelbig.de/impressum" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://adrianhelbig.de/impressum?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adrianhelbig.de/impressum" />
+  </url>
+  <url>
+    <loc>https://adrianhelbig.de/impressum?lang=en</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://adrianhelbig.de/impressum" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://adrianhelbig.de/impressum?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adrianhelbig.de/impressum" />
+  </url>
+  <url>
+    <loc>https://adrianhelbig.de/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://adrianhelbig.de/privacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adrianhelbig.de/privacy" />
+  </url>
+</urlset>

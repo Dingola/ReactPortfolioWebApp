@@ -123,7 +123,7 @@ export default function WorkPage() {
     [activeFilter, projects],
   );
 
-  useDocumentTitle(`${translate('Projects')} · ${appConfig.name}`);
+  useDocumentTitle(`${translate('Projects')} · ${appConfig.siteName}`);
 
   return (
     <Container className={styles.page}>
