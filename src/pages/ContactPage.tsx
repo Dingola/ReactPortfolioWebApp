@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react';
+import { useCallback, useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 
 import { appConfig } from '@/app/config';
@@ -10,6 +10,7 @@ import {
   type ContactFormErrors,
   validateContactForm,
 } from '@/features/contact/contactValidation';
+import { TurnstileWidget } from '@/features/contact/TurnstileWidget';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import type { SourceMessage } from '@/i18n/messages';
 import { apiRequest } from '@/lib/api/apiClient';
@@ -66,8 +67,13 @@ export default function ContactPage() {
   const { content, translate } = useLocale();
   const [errors, setErrors] = useState<ContactFormErrors>({});
   const [submissionState, setSubmissionState] = useState<SubmissionState>('idle');
+  const [turnstileToken, setTurnstileToken] = useState<string>();
+  const [turnstileResetKey, setTurnstileResetKey] = useState(0);
 
   useDocumentTitle(`${translate('Contact')} · ${appConfig.name}`);
+  const handleTurnstileTokenChange = useCallback((token: string | undefined) => {
+    setTurnstileToken(token);
+  }, []);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -87,17 +93,24 @@ export default function ContactPage() {
       return;
     }
 
+    if (!turnstileToken) {
+      setSubmissionState('error');
+      return;
+    }
+
     setSubmissionState('submitting');
 
     try {
       await apiRequest<{ readonly message: string }>('/contact', {
         method: 'POST',
-        body: result.data,
+        body: { ...result.data, turnstileToken },
       });
       form.reset();
       setSubmissionState('success');
     } catch {
       setSubmissionState('error');
+    } finally {
+      setTurnstileResetKey((currentKey) => currentKey + 1);
     }
   }
 
@@ -161,6 +174,13 @@ export default function ContactPage() {
               <input id="website" name="website" tabIndex={-1} autoComplete="off" />
             </div>
 
+            <div className={styles.spamProtection}>
+              <TurnstileWidget
+                onTokenChange={handleTurnstileTokenChange}
+                resetKey={turnstileResetKey}
+              />
+            </div>
+
             <div className={styles.formFooter}>
               <p className={styles.privacyNotice}>
                 {translate(
@@ -168,7 +188,11 @@ export default function ContactPage() {
                 )}{' '}
                 <Link to="/privacy">{translate('privacy policy')}</Link>.
               </p>
-              <Button disabled={submissionState === 'submitting'} size="action" type="submit">
+              <Button
+                disabled={submissionState === 'submitting' || !turnstileToken}
+                size="action"
+                type="submit"
+              >
                 {translate(submissionState === 'submitting' ? 'Sending message…' : 'Send message')}
                 <span aria-hidden="true">→</span>
               </Button>

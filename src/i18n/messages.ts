@@ -91,6 +91,8 @@ export type SourceMessage =
   | 'Your message'
   | 'Send message'
   | 'Sending message…'
+  | 'Spam protection'
+  | 'Contact form protection is not configured.'
   | 'Please enter your name.'
   | 'Please enter a valid email address.'
   | 'Please write at least three words.'

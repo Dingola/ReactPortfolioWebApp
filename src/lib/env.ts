@@ -2,6 +2,7 @@ import { z } from 'zod';
 
 const environmentSchema = z.object({
   VITE_API_BASE_URL: z.string().min(1).default('/api'),
+  VITE_TURNSTILE_SITE_KEY: z.string().default(''),
 });
 
 const parsedEnvironment = environmentSchema.safeParse(import.meta.env);

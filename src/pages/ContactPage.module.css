@@ -171,6 +171,14 @@ textarea.control:placeholder-shown:not(:focus) + label {
   white-space: nowrap;
 }
 
+.spamProtection {
+  min-height: 0;
+}
+
+.spamProtection > div {
+  width: 100%;
+}
+
 .formFooter {
   display: flex;
   align-items: center;

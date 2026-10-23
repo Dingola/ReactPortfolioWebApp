@@ -95,6 +95,9 @@ export const germanTranslations = {
   'Your message': 'Ihre Nachricht',
   'Send message': 'Nachricht senden',
   'Sending message…': 'Nachricht wird gesendet …',
+  'Spam protection': 'Spamschutz',
+  'Contact form protection is not configured.':
+    'Der Schutz des Kontaktformulars ist noch nicht konfiguriert.',
   'Please enter your name.': 'Bitte geben Sie Ihren Namen an.',
   'Please enter a valid email address.': 'Bitte geben Sie eine gültige E-Mail-Adresse an.',
   'Please write at least three words.': 'Bitte schreiben Sie mindestens drei Wörter.',

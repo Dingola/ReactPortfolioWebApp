@@ -6,6 +6,17 @@ import { renderWithProviders, screen, waitFor } from '@/test/test-utils';
 
 import ContactPage from './ContactPage';
 
+vi.mock('@/features/contact/TurnstileWidget', async () => {
+  const { useEffect } = await import('react');
+
+  return {
+    TurnstileWidget: ({ onTokenChange }: { readonly onTokenChange: (token: string) => void }) => {
+      useEffect(() => onTokenChange('test-turnstile-token'), [onTokenChange]);
+      return <div aria-label="Spamschutz" />;
+    },
+  };
+});
+
 describe('ContactPage', () => {
   afterEach(() => {
     vi.restoreAllMocks();
@@ -70,5 +81,11 @@ describe('ContactPage', () => {
       expect(screen.getByRole('status')).toHaveTextContent(/erfolgreich übermittelt/);
     });
     expect(fetch).toHaveBeenCalledWith('/api/contact', expect.objectContaining({ method: 'POST' }));
+    expect(fetch).toHaveBeenCalledWith(
+      '/api/contact',
+      expect.objectContaining({
+        body: expect.stringContaining('test-turnstile-token'),
+      }),
+    );
   });
 });
