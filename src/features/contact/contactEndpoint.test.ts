@@ -1,16 +1,24 @@
 /// <reference types="node" />
 
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 
-import contactEndpoint from '../../../api/contact';
+import contactWorker, { type ContactWorkerEnvironment } from '../../../workers/contact';
 
-const endpointUrl = 'https://adrianhelbig.de/api/contact';
+const endpointUrl = 'https://react-portfolio-contact.example.workers.dev/contact';
 const validBody = {
   name: 'Ada Lovelace',
   email: 'ada@example.com',
   message: 'Ich möchte Kontakt aufnehmen.',
   website: '',
   turnstileToken: 'valid-token',
+};
+
+const environment: ContactWorkerEnvironment = {
+  RESEND_API_KEY: 'test-resend-key',
+  CONTACT_EMAIL_TO: 'email@adrianhelbig.de',
+  CONTACT_EMAIL_FROM: 'Portfolio <portfolio@send.adrianhelbig.de>',
+  TURNSTILE_SECRET_KEY: 'test-turnstile-secret',
+  CONTACT_ALLOWED_ORIGINS: 'http://localhost:5173,https://adrianhelbig.de',
 };
 
 function createRequest(body: unknown, origin = 'https://adrianhelbig.de') {
@@ -25,21 +33,8 @@ function createRequest(body: unknown, origin = 'https://adrianhelbig.de') {
 }
 
 describe('contact endpoint', () => {
-  beforeEach(() => {
-    process.env.RESEND_API_KEY = 'test-resend-key';
-    process.env.CONTACT_EMAIL_TO = 'email@adrianhelbig.de';
-    process.env.CONTACT_EMAIL_FROM = 'Portfolio <portfolio@send.adrianhelbig.de>';
-    process.env.TURNSTILE_SECRET_KEY = 'test-turnstile-secret';
-    process.env.CONTACT_ALLOWED_ORIGINS = 'http://localhost:5173';
-  });
-
   afterEach(() => {
     vi.restoreAllMocks();
-    delete process.env.RESEND_API_KEY;
-    delete process.env.CONTACT_EMAIL_TO;
-    delete process.env.CONTACT_EMAIL_FROM;
-    delete process.env.TURNSTILE_SECRET_KEY;
-    delete process.env.CONTACT_ALLOWED_ORIGINS;
   });
 
   it('verifies the challenge and forwards valid messages without exposing the sender', async () => {
@@ -48,7 +43,7 @@ describe('contact endpoint', () => {
       .mockResolvedValueOnce(Response.json({ success: true, action: 'contact' }))
       .mockResolvedValueOnce(Response.json({ id: 'message-id' }));
 
-    const response = await contactEndpoint.fetch(createRequest(validBody));
+    const response = await contactWorker.fetch(createRequest(validBody), environment);
 
     expect(response.status).toBe(200);
     expect(fetchMock).toHaveBeenNthCalledWith(
@@ -69,8 +64,9 @@ describe('contact endpoint', () => {
   it('rejects requests from another origin before contacting external services', async () => {
     const fetchMock = vi.spyOn(globalThis, 'fetch');
 
-    const response = await contactEndpoint.fetch(
+    const response = await contactWorker.fetch(
       createRequest(validBody, 'https://malicious.example'),
+      environment,
     );
 
     expect(response.status).toBe(403);
@@ -80,8 +76,9 @@ describe('contact endpoint', () => {
   it('silently accepts honeypot submissions without sending email', async () => {
     const fetchMock = vi.spyOn(globalThis, 'fetch');
 
-    const response = await contactEndpoint.fetch(
+    const response = await contactWorker.fetch(
       createRequest({ ...validBody, website: 'spam.example' }),
+      environment,
     );
 
     expect(response.status).toBe(200);
@@ -93,9 +90,38 @@ describe('contact endpoint', () => {
       .spyOn(globalThis, 'fetch')
       .mockResolvedValueOnce(Response.json({ success: false }));
 
-    const response = await contactEndpoint.fetch(createRequest(validBody));
+    const response = await contactWorker.fetch(createRequest(validBody), environment);
 
     expect(response.status).toBe(400);
     expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it('answers valid cross-origin preflight requests', async () => {
+    const response = await contactWorker.fetch(
+      new Request(endpointUrl, {
+        method: 'OPTIONS',
+        headers: {
+          Origin: 'https://adrianhelbig.de',
+          'Access-Control-Request-Method': 'POST',
+          'Access-Control-Request-Headers': 'content-type',
+        },
+      }),
+      environment,
+    );
+
+    expect(response.status).toBe(204);
+    expect(response.headers.get('Access-Control-Allow-Origin')).toBe('https://adrianhelbig.de');
+    expect(response.headers.get('Access-Control-Allow-Methods')).toBe('POST');
+  });
+
+  it('includes the permitted origin in successful responses', async () => {
+    vi.spyOn(globalThis, 'fetch')
+      .mockResolvedValueOnce(Response.json({ success: true, action: 'contact' }))
+      .mockResolvedValueOnce(Response.json({ id: 'message-id' }));
+
+    const response = await contactWorker.fetch(createRequest(validBody), environment);
+
+    expect(response.headers.get('Access-Control-Allow-Origin')).toBe('https://adrianhelbig.de');
+    expect(response.headers.get('Vary')).toBe('Origin');
   });
 });

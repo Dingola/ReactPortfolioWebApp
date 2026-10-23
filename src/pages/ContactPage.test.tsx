@@ -80,9 +80,12 @@ describe('ContactPage', () => {
     await waitFor(() => {
       expect(screen.getByRole('status')).toHaveTextContent(/erfolgreich übermittelt/);
     });
-    expect(fetch).toHaveBeenCalledWith('/api/contact', expect.objectContaining({ method: 'POST' }));
     expect(fetch).toHaveBeenCalledWith(
-      '/api/contact',
+      'https://react-portfolio-contact.adrian-helbig.workers.dev/contact',
+      expect.objectContaining({ method: 'POST' }),
+    );
+    expect(fetch).toHaveBeenCalledWith(
+      'https://react-portfolio-contact.adrian-helbig.workers.dev/contact',
       expect.objectContaining({
         body: expect.stringContaining('test-turnstile-token'),
       }),

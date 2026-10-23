@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "react-portfolio-contact",
+  "main": "workers/contact.ts",
+  "compatibility_date": "2026-10-23",
+  "workers_dev": true,
+  "vars": {
+    "CONTACT_EMAIL_TO": "email@adrianhelbig.de",
+    "CONTACT_EMAIL_FROM": "Portfolio <portfolio@send.adrianhelbig.de>",
+    "CONTACT_ALLOWED_ORIGINS": "http://localhost:5173,http://localhost:4173,https://adrianhelbig.de,https://www.adrianhelbig.de,https://react-portfolio-web-app-phi.vercel.app",
+  },
+  "observability": {
+    "enabled": true,
+  },
+}
