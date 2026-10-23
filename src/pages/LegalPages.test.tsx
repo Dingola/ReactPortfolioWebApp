@@ -28,17 +28,45 @@ describe('legal pages', () => {
     );
   });
 
-  it('creates review placeholders without copying the previous privacy policy', () => {
+  it('renders the privacy policy and its contact form delivery provider', () => {
     renderWithProviders(
       <MemoryRouter>
         <PrivacyPage />
       </MemoryRouter>,
     );
 
+    const privacyHeading = screen.getByRole('heading', {
+      level: 1,
+      name: /Datenschutz.erklärung/,
+    });
+
+    expect(privacyHeading).toBeInTheDocument();
+    expect(privacyHeading.closest('[lang="de"]')).toBeInTheDocument();
     expect(
-      screen.getByRole('heading', { level: 1, name: 'Datenschutzerklärung' }),
+      screen.getByRole('heading', { level: 3, name: 'E-Mail-Versand mit Resend' }),
     ).toBeInTheDocument();
-    expect(screen.getByText('Inhalt wird noch ergänzt und geprüft.')).toBeInTheDocument();
-    expect(screen.queryAllByRole('heading', { level: 2 })).toHaveLength(0);
+    expect(
+      screen.getByRole('heading', { level: 3, name: 'Verarbeitung über Cloudflare Workers' }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', {
+        level: 3,
+        name: 'E-Mail-Empfang und -Speicherung bei IONOS',
+      }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', {
+        level: 3,
+        name: 'Lokale Speicherung von Darstellungs- und Spracheinstellungen',
+      }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { level: 3, name: 'Anfrage per E-Mail' }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', { name: 'https://www.cloudflare.com/cloudflare-customer-scc/' }),
+    ).toHaveAttribute('href', 'https://www.cloudflare.com/cloudflare-customer-scc/');
+    expect(screen.queryByText(/Telefonnummer der verantwortlichen Stelle/)).not.toBeInTheDocument();
+    expect(screen.queryByRole('heading', { name: /Telefon oder Telefax/ })).not.toBeInTheDocument();
   });
 });

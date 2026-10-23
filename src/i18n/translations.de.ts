@@ -108,6 +108,7 @@ export const germanTranslations = {
   'Your data is stored only to process your request. Find all details in the':
     'Ihre Daten werden nur zur Bearbeitung Ihrer Anfrage gespeichert. Alle Details finden Sie in der',
   'privacy policy': 'Datenschutzerklärung',
+  'privacy policy (German)': 'Datenschutzerklärung',
   'Legal information': 'Rechtliche Informationen',
   'Legal notice': 'Impressum',
   'Information according to Section 5 DDG': 'Angaben gemäß § 5 DDG',
@@ -115,6 +116,7 @@ export const germanTranslations = {
   'Contact details': 'Kontaktangaben',
   'Use contact form': 'Kontaktformular verwenden',
   'Privacy policy': 'Datenschutzerklärung',
+  'Privacy policy (German)': 'Datenschutzerklärung',
   'The privacy policy is being prepared and will be reviewed before publication.':
     'Die Datenschutzerklärung wird vorbereitet und vor der Veröffentlichung geprüft.',
   'Content pending review': 'Inhalt wird noch ergänzt und geprüft.',

@@ -49,9 +49,9 @@ export default function ImprintPage() {
         </section>
 
         <section className={styles.section} aria-labelledby="imprint-privacy-title">
-          <h2 id="imprint-privacy-title">{translate('Privacy policy')}</h2>
+          <h2 id="imprint-privacy-title">{translate('Privacy policy (German)')}</h2>
           <div className={styles.sectionContent}>
-            <Link to="/privacy">{translate('Privacy policy')}</Link>
+            <Link to="/privacy">{translate('Privacy policy (German)')}</Link>
           </div>
         </section>
       </div>

@@ -19,7 +19,7 @@ export function Footer() {
         </div>
         <nav aria-label={translate('Legal information')}>
           <Link to="/impressum">{translate('Legal notice')}</Link>
-          <Link to="/privacy">{translate('Privacy policy')}</Link>
+          <Link to="/privacy">{translate('Privacy policy (German)')}</Link>
         </nav>
         <SocialLinks className={styles.socialLinks} />
       </Container>

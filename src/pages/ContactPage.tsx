@@ -186,7 +186,7 @@ export default function ContactPage() {
                 {translate(
                   'Your data is stored only to process your request. Find all details in the',
                 )}{' '}
-                <Link to="/privacy">{translate('privacy policy')}</Link>.
+                <Link to="/privacy">{translate('privacy policy (German)')}</Link>.
               </p>
               <Button
                 disabled={submissionState === 'submitting' || !turnstileToken}

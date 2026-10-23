@@ -8,6 +8,7 @@ test-results/
 package-lock.json
 pnpm-lock.yaml
 *.md
+src/content/privacy-policy.*.html
 package.json
 vite.config.ts
 .github/workflows/*.yml
