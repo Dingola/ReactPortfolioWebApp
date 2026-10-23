@@ -8,6 +8,9 @@ import {
   type Locale,
 } from '@/i18n/locales';
 import { translateMessage, type SourceMessage } from '@/i18n/messages';
+import { germanPortfolioContent } from '@/content/portfolio.de';
+import { englishPortfolioContent } from '@/content/portfolio.en';
+import type { PortfolioContent } from '@/content/types';
 import { getStoredValue, setStoredValue } from '@/lib/storage';
 
 import { LocaleContext } from './LocaleContext';
@@ -19,8 +22,18 @@ export interface LocaleProviderProps {
 }
 
 const storageKey = 'locale-preference';
+const portfolioContent: Record<Locale, PortfolioContent> = {
+  de: germanPortfolioContent,
+  en: englishPortfolioContent,
+};
 
 function getInitialLocale(): Locale {
+  const requestedLocale = new URLSearchParams(window.location.search).get('lang');
+
+  if (isLocale(requestedLocale) && isLocaleAvailable(requestedLocale)) {
+    return requestedLocale;
+  }
+
   const storedLocale = getStoredValue<unknown>(storageKey, defaultLocale);
   return isLocale(storedLocale) && isLocaleAvailable(storedLocale) ? storedLocale : defaultLocale;
 }
@@ -37,17 +50,22 @@ export function LocaleProvider({ children }: LocaleProviderProps) {
   const setLocale = useCallback((nextLocale: Locale) => {
     if (isLocaleAvailable(nextLocale)) {
       updateLocale(nextLocale);
+      setStoredValue(storageKey, nextLocale);
+
+      const url = new URL(window.location.href);
+      url.searchParams.set('lang', nextLocale);
+      window.history.replaceState(window.history.state, '', url);
     }
   }, []);
 
   useLayoutEffect(() => {
     document.documentElement.lang = locale;
-    setStoredValue(storageKey, locale);
   }, [locale]);
 
   const value = useMemo(
     () => ({
       locale,
+      content: portfolioContent[locale],
       availableLocales,
       setLocale,
       translate: (source: SourceMessage) => translateMessage(locale, source),

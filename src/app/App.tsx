@@ -1,5 +1,7 @@
 import { ScrollRestoration, type Location } from 'react-router-dom';
 
+import { useLocaleMetadata } from '@/hooks/useLocaleMetadata';
+
 import styles from './App.module.css';
 import { Footer } from './layout/Footer';
 import { Header } from './layout/Header';
@@ -18,6 +20,7 @@ function getScrollRestorationKey(location: Location) {
  */
 export function App() {
   const { translate } = useLocale();
+  useLocaleMetadata();
 
   return (
     <div className={styles.app}>

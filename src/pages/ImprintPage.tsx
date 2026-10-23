@@ -3,15 +3,14 @@ import { Link } from 'react-router-dom';
 import { appConfig } from '@/app/config';
 import { useLocale } from '@/app/providers/locale/useLocale';
 import { Container } from '@/components/layout/Container';
-import { germanPortfolioContent } from '@/content/portfolio.de';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 
 import styles from './LegalPage.module.css';
 
 /** Renders the portfolio owner's legal notice and contact information. */
 export default function ImprintPage() {
-  const { translate } = useLocale();
-  const { legal } = germanPortfolioContent;
+  const { content, translate } = useLocale();
+  const { legal } = content;
 
   useDocumentTitle(`${translate('Legal notice')} · ${appConfig.name}`);
 

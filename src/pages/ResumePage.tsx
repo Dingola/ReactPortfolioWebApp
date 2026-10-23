@@ -3,7 +3,6 @@ import { useEffect, useRef, useState, type CSSProperties, type PropsWithChildren
 import { appConfig } from '@/app/config';
 import { useLocale } from '@/app/providers/locale/useLocale';
 import { Container } from '@/components/layout/Container';
-import { germanPortfolioContent } from '@/content/portfolio.de';
 import type { ContentDetail } from '@/content/types';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 
@@ -56,7 +55,7 @@ function formatDate(value: string, locale: string) {
   );
 }
 
-function Period({ start, end }: { readonly start: string; readonly end?: string }) {
+function Period({ start, end }: { readonly start: string; readonly end: string | undefined }) {
   const { locale } = useLocale();
 
   return (
@@ -92,8 +91,8 @@ function DetailList({ details }: { readonly details: readonly ContentDetail[] })
 
 /** Renders the professional history, education, and skill overview. */
 export default function ResumePage() {
-  const { translate } = useLocale();
-  const { experience, education, skillGroups } = germanPortfolioContent;
+  const { content, translate } = useLocale();
+  const { experience, education, skillGroups } = content;
 
   useDocumentTitle(`${translate('Resume')} · ${appConfig.name}`);
 

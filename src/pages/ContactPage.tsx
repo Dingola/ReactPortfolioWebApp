@@ -5,7 +5,6 @@ import { appConfig } from '@/app/config';
 import { useLocale } from '@/app/providers/locale/useLocale';
 import { Container } from '@/components/layout/Container';
 import { Button } from '@/components/ui/Button';
-import { germanPortfolioContent } from '@/content/portfolio.de';
 import {
   type ContactField,
   type ContactFormErrors,
@@ -64,7 +63,7 @@ function FloatingField({ id, label, error, multiline = false }: FloatingFieldPro
 
 /** Renders the contact options and message form. */
 export default function ContactPage() {
-  const { translate } = useLocale();
+  const { content, translate } = useLocale();
   const [errors, setErrors] = useState<ContactFormErrors>({});
   const [submissionState, setSubmissionState] = useState<SubmissionState>('idle');
 
@@ -122,7 +121,7 @@ export default function ContactPage() {
           <p className={styles.sectionIndex}>01</p>
           <h2 id="direct-contact-title">{translate('Direct contact')}</h2>
           <ul>
-            {germanPortfolioContent.contactLinks.map((link) => (
+            {content.contactLinks.map((link) => (
               <li key={link.id}>
                 <a
                   href={link.href}

@@ -6,7 +6,6 @@ import { Container } from '@/components/layout/Container';
 import { ImageViewer } from '@/components/media/ImageViewer';
 import { SocialLinks } from '@/components/navigation/SocialLinks';
 import buttonStyles from '@/components/ui/Button.module.css';
-import { germanPortfolioContent } from '@/content/portfolio.de';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 
 import styles from './AboutPage.module.css';
@@ -20,8 +19,8 @@ const workspaceSources = [
 
 /** Presents the person and working principles behind the portfolio. */
 export default function AboutPage() {
-  const { translate } = useLocale();
-  const { about } = germanPortfolioContent;
+  const { content, translate } = useLocale();
+  const { about } = content;
 
   useDocumentTitle(`${translate('About')} · ${appConfig.name}`);
 

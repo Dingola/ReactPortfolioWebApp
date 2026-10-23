@@ -18,7 +18,6 @@ export type SourceMessage =
   | 'Language'
   | 'German'
   | 'English'
-  | 'English version in preparation'
   | 'Dark'
   | 'Light'
   | 'Switch to dark theme'

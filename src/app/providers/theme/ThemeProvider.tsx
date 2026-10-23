@@ -1,4 +1,4 @@
-import { type ReactNode, useEffect, useLayoutEffect, useMemo, useState } from 'react';
+import { type ReactNode, useCallback, useEffect, useLayoutEffect, useMemo, useState } from 'react';
 
 import { getStoredValue, setStoredValue } from '@/lib/storage';
 
@@ -33,9 +33,13 @@ function getSystemTheme(): 'light' | 'dark' {
  * stored preference.
  */
 export function ThemeProvider({ children }: ThemeProviderProps) {
-  const [preference, setPreference] = useState<ThemePreference>(getInitialPreference);
+  const [preference, updatePreference] = useState<ThemePreference>(getInitialPreference);
   const [systemTheme, setSystemTheme] = useState<'light' | 'dark'>(getSystemTheme);
   const resolvedTheme = preference === 'system' ? systemTheme : preference;
+  const setPreference = useCallback((nextPreference: ThemePreference) => {
+    updatePreference(nextPreference);
+    setStoredValue(storageKey, nextPreference);
+  }, []);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
@@ -48,12 +52,11 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   useLayoutEffect(() => {
     document.documentElement.dataset.theme = resolvedTheme;
     document.documentElement.style.colorScheme = resolvedTheme;
-    setStoredValue(storageKey, preference);
-  }, [preference, resolvedTheme]);
+  }, [resolvedTheme]);
 
   const value = useMemo(
     () => ({ preference, resolvedTheme, setPreference }),
-    [preference, resolvedTheme],
+    [preference, resolvedTheme, setPreference],
   );
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;

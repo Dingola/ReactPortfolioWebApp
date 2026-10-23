@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 import { Container } from '@/components/layout/Container';
 import { Button } from '@/components/ui/Button';
-import { germanPortfolioContent } from '@/content/portfolio.de';
 
 import { LanguageToggle } from '../providers/locale/LanguageToggle';
 import { useLocale } from '../providers/locale/useLocale';
@@ -14,10 +13,10 @@ import { PrimaryNavigation } from './PrimaryNavigation';
 
 /** Renders the persistent portfolio header and responsive primary navigation. */
 export function Header() {
-  const { translate } = useLocale();
+  const { content, translate } = useLocale();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
-  const profileName = germanPortfolioContent.profile.name;
+  const profileName = content.profile.name;
   const menuLabel = translate('Menu');
   const menuAction = translate(isMenuOpen ? 'Close navigation menu' : 'Open navigation menu');
 

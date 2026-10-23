@@ -8,7 +8,7 @@ export type Locale = (typeof supportedLocales)[number];
 export const defaultLocale: Locale = 'de';
 
 /** Locales whose translations and portfolio content are ready for visitors. */
-export const availableLocales: readonly Locale[] = ['de'];
+export const availableLocales: readonly Locale[] = supportedLocales;
 
 /** Checks whether a value is a recognized locale identifier. */
 export function isLocale(value: unknown): value is Locale {

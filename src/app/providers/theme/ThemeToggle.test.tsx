@@ -11,6 +11,8 @@ describe('ThemeToggle', () => {
     const user = userEvent.setup();
     renderWithProviders(<ThemeToggle />);
 
+    expect(window.localStorage.getItem('theme-preference')).toBeNull();
+
     await user.click(
       screen.getByRole('button', {
         name: `${translateMessage('de', 'Dark')} – ${translateMessage(
@@ -21,6 +23,7 @@ describe('ThemeToggle', () => {
     );
 
     expect(document.documentElement).toHaveAttribute('data-theme', 'dark');
+    expect(window.localStorage.getItem('theme-preference')).toBe('"dark"');
     expect(
       screen.getByRole('button', {
         name: `${translateMessage('de', 'Light')} – ${translateMessage(

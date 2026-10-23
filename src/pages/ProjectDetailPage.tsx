@@ -8,7 +8,6 @@ import { useLocale } from '@/app/providers/locale/useLocale';
 import { Container } from '@/components/layout/Container';
 import { ImageViewer } from '@/components/media/ImageViewer';
 import { getProjectBySlug } from '@/content/portfolio';
-import { germanPortfolioContent } from '@/content/portfolio.de';
 import type { ProjectDetails } from '@/content/types';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import type { SourceMessage } from '@/i18n/messages';
@@ -63,10 +62,10 @@ function ProjectNarrative({ details }: { readonly details: ProjectDetails }) {
 
 /** Renders the structured detail view for a portfolio project route. */
 export default function ProjectDetailPage() {
-  const { translate } = useLocale();
+  const { content, translate } = useLocale();
   const { slug = '' } = useParams();
   const location = useLocation();
-  const project = getProjectBySlug(germanPortfolioContent, slug);
+  const project = getProjectBySlug(content, slug);
   const [copyState, setCopyState] = useState<'idle' | 'copied' | 'error'>('idle');
   const copyResetTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const reduceMotion = useReducedMotion() ?? false;
@@ -95,11 +94,9 @@ export default function ProjectDetailPage() {
   }
 
   const { details, images, links } = project;
-  const projectIndex = germanPortfolioContent.projects.findIndex(
-    (candidate) => candidate.id === project.id,
-  );
-  const previousProject = germanPortfolioContent.projects[projectIndex - 1];
-  const nextProject = germanPortfolioContent.projects[projectIndex + 1];
+  const projectIndex = content.projects.findIndex((candidate) => candidate.id === project.id);
+  const previousProject = content.projects[projectIndex - 1];
+  const nextProject = content.projects[projectIndex + 1];
   const previewImages = images.slice(1, 3);
   const hiddenImageCount = Math.max(0, images.length - 3);
 

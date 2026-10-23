@@ -5,7 +5,6 @@ import { appConfig } from '@/app/config';
 import { useLocale } from '@/app/providers/locale/useLocale';
 import { Container } from '@/components/layout/Container';
 import { ImageViewer } from '@/components/media/ImageViewer';
-import { germanPortfolioContent } from '@/content/portfolio.de';
 import type { PortfolioProject, ProjectCategory, PublicRepository } from '@/content/types';
 import type { SourceMessage } from '@/i18n/messages';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
@@ -111,9 +110,9 @@ function CompactRepositoryGrid({ items }: { items: readonly PublicRepository[] }
 
 /** Renders the filterable overview of confirmed portfolio projects. */
 export default function WorkPage() {
-  const { translate } = useLocale();
+  const { content, translate } = useLocale();
   const [activeFilter, setActiveFilter] = useState<ProjectFilter>('all');
-  const projects = germanPortfolioContent.projects;
+  const projects = content.projects;
   const visibleProjects = useMemo(
     () =>
       activeFilter === 'all'
@@ -171,7 +170,7 @@ export default function WorkPage() {
           <p>{translate('Related public libraries that support my C++ and Qt projects.')}</p>
         </header>
 
-        <CompactRepositoryGrid items={germanPortfolioContent.publicRepositories} />
+        <CompactRepositoryGrid items={content.publicRepositories} />
       </section>
 
       <section className={styles.repositorySection} aria-labelledby="templates-heading">
@@ -185,7 +184,7 @@ export default function WorkPage() {
           </p>
         </header>
 
-        <CompactRepositoryGrid items={germanPortfolioContent.projectTemplates} />
+        <CompactRepositoryGrid items={content.projectTemplates} />
       </section>
     </Container>
   );

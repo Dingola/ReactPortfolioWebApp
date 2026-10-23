@@ -1,7 +1,6 @@
 import clsx from 'clsx';
 
 import { useLocale } from '@/app/providers/locale/useLocale';
-import { germanPortfolioContent } from '@/content/portfolio.de';
 
 import styles from './SocialLinks.module.css';
 
@@ -12,8 +11,8 @@ export interface SocialLinksProps {
 
 /** Links to the portfolio owner's professional profiles using the official brand marks. */
 export function SocialLinks({ className, showLabels = false }: SocialLinksProps) {
-  const { translate } = useLocale();
-  const profiles = germanPortfolioContent.contactLinks.filter(
+  const { content, translate } = useLocale();
+  const profiles = content.contactLinks.filter(
     (link) => link.kind === 'github' || link.kind === 'linkedin',
   );
 

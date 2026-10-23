@@ -51,4 +51,23 @@ describe('HomePage', () => {
       '/work/qt-log-viewer',
     );
   });
+
+  it('presents translated content and media descriptions in English', () => {
+    window.localStorage.setItem('locale-preference', '"en"');
+
+    renderWithProviders(
+      <MemoryRouter>
+        <HomePage />
+      </MemoryRouter>,
+    );
+
+    expect(
+      screen.getByRole('heading', { level: 1, name: /hi, i'm adrian helbig/i }),
+    ).toBeInTheDocument();
+    expect(screen.getByText('C++ Software Developer', { selector: 'p' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /view projects/i })).toHaveAttribute('href', '/work');
+    expect(
+      screen.getByRole('img', { name: /qt log viewer displaying an open log file/i }),
+    ).toHaveAttribute('src', '/images/projects/qt-log-viewer/log-view.png');
+  });
 });

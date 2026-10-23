@@ -58,6 +58,8 @@ export function validatePortfolioContent(content: PortfolioContent) {
   const collections = [
     ['navigation', content.navigation],
     ['projects', content.projects],
+    ['publicRepositories', content.publicRepositories],
+    ['projectTemplates', content.projectTemplates],
     ['experience', content.experience],
     ['education', content.education],
     ['skillGroups', content.skillGroups],
@@ -93,9 +95,18 @@ export function validatePortfolioContent(content: PortfolioContent) {
 
   const urls = [
     ...content.projects.flatMap((entry) =>
-      [entry.links?.repository, entry.links?.documentation, entry.links?.live].flatMap((url) =>
-        url ? [[`projects.${entry.id}`, url] as const] : [],
-      ),
+      [
+        entry.links?.repository,
+        ...(entry.links?.repositories?.map(({ href }) => href) ?? []),
+        entry.links?.documentation,
+        entry.links?.live,
+      ].flatMap((url) => (url ? [[`projects.${entry.id}`, url] as const] : [])),
+    ),
+    ...content.publicRepositories.map(
+      (entry) => [`publicRepositories.${entry.id}`, entry.repository] as const,
+    ),
+    ...content.projectTemplates.map(
+      (entry) => [`projectTemplates.${entry.id}`, entry.repository] as const,
     ),
     ...content.experience.flatMap((entry) => [
       ...(entry.organisationUrl

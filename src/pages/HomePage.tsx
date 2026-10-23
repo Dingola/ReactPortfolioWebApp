@@ -8,7 +8,6 @@ import { Container } from '@/components/layout/Container';
 import { ImageViewer } from '@/components/media/ImageViewer';
 import { SocialLinks } from '@/components/navigation/SocialLinks';
 import buttonStyles from '@/components/ui/Button.module.css';
-import { germanPortfolioContent } from '@/content/portfolio.de';
 
 import styles from './HomePage.module.css';
 
@@ -40,8 +39,8 @@ preload('/images/profile/adrian-helbig-896.webp', {
 
 /** Renders the portfolio landing page. */
 export default function HomePage() {
-  const { translate } = useLocale();
-  const { profile, projects } = germanPortfolioContent;
+  const { content, translate } = useLocale();
+  const { profile, projects } = content;
   const featuredProject = projects.find((project) => project.id === 'qt-log-viewer');
 
   if (!featuredProject) {

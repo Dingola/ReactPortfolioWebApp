@@ -30,12 +30,7 @@
 }
 
 @media (hover: hover) {
-  .option:hover:not(:disabled) {
+  .option:hover {
     color: var(--color-accent-hover);
   }
-}
-
-.option:disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
 }

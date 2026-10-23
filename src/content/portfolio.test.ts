@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import { getNavigationItemByPath, getProjectBySlug, validatePortfolioContent } from './portfolio';
 import { germanPortfolioContent } from './portfolio.de';
+import { englishPortfolioContent } from './portfolio.en';
 import type { PortfolioContent, ProjectLinks } from './types';
 
 describe('German portfolio content', () => {
@@ -13,6 +14,20 @@ describe('German portfolio content', () => {
 
   it('passes structural content validation', () => {
     expect(validatePortfolioContent(germanPortfolioContent)).toEqual([]);
+    expect(validatePortfolioContent(englishPortfolioContent)).toEqual([]);
+  });
+
+  it('keeps stable identifiers and routes aligned across both languages', () => {
+    expect(englishPortfolioContent.projects.map(({ id }) => id)).toEqual(
+      germanPortfolioContent.projects.map(({ id }) => id),
+    );
+    expect(englishPortfolioContent.navigation.map(({ path }) => path)).toEqual(
+      germanPortfolioContent.navigation.map(({ path }) => path),
+    );
+    expect(englishPortfolioContent.profile.role).toBe('C++ Software Developer');
+    expect(getProjectBySlug(englishPortfolioContent, 'qt-log-viewer')?.images[0]?.alt).toMatch(
+      /displaying an open log file/i,
+    );
   });
 
   it('provides compact links for supporting public repositories', () => {

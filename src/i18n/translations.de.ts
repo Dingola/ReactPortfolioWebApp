@@ -17,7 +17,6 @@ export const germanTranslations = {
   Language: 'Sprache',
   German: 'Deutsch',
   English: 'Englisch',
-  'English version in preparation': 'Englische Version in Vorbereitung',
   Dark: 'Dunkel',
   Light: 'Hell',
   'Switch to dark theme': 'Zum dunklen Farbschema wechseln',

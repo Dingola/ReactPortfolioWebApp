@@ -11,20 +11,17 @@ const localeLabels: Record<Locale, SourceMessage> = {
   en: 'English',
 };
 
-/** Renders the locale selector and disables languages without complete content. */
+/** Renders the locale selector for every complete portfolio language. */
 export function LanguageToggle() {
-  const { availableLocales, locale, setLocale, translate } = useLocale();
+  const { locale, setLocale, translate } = useLocale();
 
   return (
     <div className={styles.toggle} role="group" aria-label={translate('Language')}>
       {supportedLocales.map((option) => {
-        const isAvailable = availableLocales.includes(option);
         const isActive = locale === option;
         const label = translate(localeLabels[option]);
         const abbreviation = option.toUpperCase();
-        const accessibleLabel = isAvailable
-          ? `${abbreviation} – ${label}`
-          : `${abbreviation} – ${label}: ${translate('English version in preparation')}`;
+        const accessibleLabel = `${abbreviation} – ${label}`;
 
         return (
           <Fragment key={option}>
@@ -37,9 +34,8 @@ export function LanguageToggle() {
               aria-label={accessibleLabel}
               aria-pressed={isActive}
               className={`${styles.option} ${isActive ? styles.active : ''}`}
-              disabled={!isAvailable}
               onClick={() => setLocale(option)}
-              title={isAvailable ? label : translate('English version in preparation')}
+              title={label}
               type="button"
             >
               {abbreviation}
