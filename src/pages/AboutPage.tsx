@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { appConfig } from '@/app/config';
 import { useLocale } from '@/app/providers/locale/useLocale';
 import { Container } from '@/components/layout/Container';
+import surfaceStyles from '@/components/layout/SectionSurface.module.css';
 import { ImageViewer } from '@/components/media/ImageViewer';
 import { SocialLinks } from '@/components/navigation/SocialLinks';
 import buttonStyles from '@/components/ui/Button.module.css';
@@ -77,7 +78,10 @@ export default function AboutPage() {
         </figure>
       </section>
 
-      <section className={styles.principles} aria-labelledby="principles-title">
+      <section
+        className={`${styles.principles} ${surfaceStyles.surface}`}
+        aria-labelledby="principles-title"
+      >
         <div className={styles.sectionHeading}>
           <p className={styles.eyebrow}>01 — 04</p>
           <h2 id="principles-title">{translate('Working principles')}</h2>

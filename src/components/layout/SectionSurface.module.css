@@ -1,0 +1,4 @@
+.surface {
+  border: var(--border-width) solid var(--color-border-strong);
+  background: var(--color-surface);
+}

@@ -33,6 +33,10 @@
   gap: var(--space-8);
 }
 
+.timelineSection {
+  padding: clamp(var(--space-6), 3.5vw, var(--space-10));
+}
+
 .section > h2 {
   display: grid;
   align-items: end;
@@ -51,6 +55,10 @@
 
 .timeline {
   display: grid;
+}
+
+.timelineSection .timeline {
+  padding-block-start: var(--space-2);
 }
 
 .entry {
@@ -87,6 +95,10 @@
   content: '';
   inset: calc(var(--entry-content-offset) + var(--timeline-marker-top)) auto auto
     calc(var(--timeline-axis) - var(--timeline-marker-radius));
+}
+
+.timelineSection .entry::after {
+  background: var(--color-surface);
 }
 
 .entry:not(:last-child)::before {
@@ -157,7 +169,13 @@
 
 .entryContent {
   display: grid;
+  width: 100%;
   place-items: start;
+}
+
+.timelineSection .entry:not(:last-child) .entryContent {
+  padding-block-end: var(--space-8);
+  border-block-end: var(--border-width) solid var(--color-border);
 }
 
 .entryContent h3 {
@@ -193,12 +211,33 @@
 .details {
   display: grid;
   gap: var(--space-3);
+  width: 100%;
   margin: var(--space-6) 0 0;
-  padding-inline-start: var(--space-5);
+  padding: var(--space-4) var(--space-5) var(--space-4) calc(var(--space-5) + 1rem);
+  border-inline-start: 2px solid var(--color-border-strong);
+  background: var(--color-surface-muted);
+  list-style: none;
 }
 
 .details li {
-  padding-inline-start: var(--space-2);
+  position: relative;
+  padding-inline-start: var(--space-5);
+}
+
+.details li::before {
+  position: absolute;
+  width: 0.4rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--color-text-subtle);
+  content: '';
+  inset-block-start: 0.55em;
+  inset-inline-start: 0;
+}
+
+.details li > span {
+  display: block;
+  max-width: 64ch;
 }
 
 .details a {
@@ -297,6 +336,10 @@
 }
 
 @media (width <= 48rem) {
+  .timelineSection {
+    padding: var(--space-5);
+  }
+
   .entry {
     gap: var(--space-4);
     grid-template-columns: 1fr;
@@ -307,7 +350,8 @@
   }
 
   .entryContent {
-    padding-inline-start: var(--space-6);
+    width: calc(100% - var(--space-6));
+    margin-inline-start: var(--space-6);
   }
 
   .skillGrid {

@@ -92,7 +92,7 @@
 .principles {
   display: grid;
   padding-block: clamp(var(--space-10), 5vw, var(--space-16));
-  border-block: var(--border-width) solid var(--color-border);
+  padding-inline: clamp(var(--space-6), 3.5vw, var(--space-10));
   gap: clamp(var(--space-8), 5vw, var(--space-16));
   grid-template-columns: minmax(12rem, 0.35fr) minmax(0, 1fr);
 }
@@ -180,6 +180,10 @@
 
   .principles ol {
     grid-template-columns: 1fr;
+  }
+
+  .principles {
+    padding: var(--space-6) var(--space-5);
   }
 
   .principles li {

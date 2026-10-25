@@ -3,6 +3,7 @@ import { useEffect, useRef, useState, type CSSProperties, type PropsWithChildren
 import { appConfig } from '@/app/config';
 import { useLocale } from '@/app/providers/locale/useLocale';
 import { Container } from '@/components/layout/Container';
+import surfaceStyles from '@/components/layout/SectionSurface.module.css';
 import type { ContentDetail } from '@/content/types';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 
@@ -104,7 +105,10 @@ export default function ResumePage() {
         <p>{translate('Career history, education, and technical expertise.')}</p>
       </header>
 
-      <section className={styles.section} aria-labelledby="experience-title">
+      <section
+        className={`${styles.section} ${styles.timelineSection} ${surfaceStyles.surface}`}
+        aria-labelledby="experience-title"
+      >
         <h2 id="experience-title">{translate('Professional experience')}</h2>
         <Timeline>
           {experience.map((entry, index) => (
@@ -148,7 +152,10 @@ export default function ResumePage() {
         </Timeline>
       </section>
 
-      <section className={styles.section} aria-labelledby="education-title">
+      <section
+        className={`${styles.section} ${styles.timelineSection} ${surfaceStyles.surface}`}
+        aria-labelledby="education-title"
+      >
         <h2 id="education-title">{translate('Education')}</h2>
         <Timeline>
           {education.map((entry, index) => (
