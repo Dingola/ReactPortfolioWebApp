@@ -1,0 +1,103 @@
+.page {
+  display: grid;
+  min-height: 100svh;
+  padding: clamp(var(--space-5), 5vw, var(--space-12));
+  background: var(--color-background);
+  grid-template-rows: auto 1fr;
+}
+
+.embedded {
+  min-height: min(42rem, calc(100svh - 8rem));
+  padding: clamp(var(--space-6), 5vw, var(--space-12)) 0;
+  background: transparent;
+  grid-template-rows: 1fr;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  gap: var(--space-3);
+  color: var(--color-text);
+  font-size: var(--font-size-small);
+  font-weight: 675;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+.monogram {
+  display: grid;
+  width: 2rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border: var(--border-width) solid var(--color-accent);
+  color: var(--color-accent);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: -0.04em;
+}
+
+.content {
+  display: grid;
+  width: min(100%, 52rem);
+  place-self: center;
+  gap: var(--space-5);
+  padding: clamp(var(--space-8), 6vw, var(--space-16));
+  border: var(--border-width) solid var(--color-border-strong);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-surface);
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--color-danger);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+}
+
+.content h1 {
+  max-width: 16ch;
+  font-size: var(--font-size-heading-medium);
+}
+
+.description {
+  max-width: 60ch;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-lead);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-block-start: var(--space-3);
+}
+
+.support {
+  max-width: 60ch;
+  margin-block-start: var(--space-3);
+  padding-block-start: var(--space-5);
+  border-block-start: var(--border-width) solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-small);
+}
+
+.support a {
+  font-weight: 650;
+}
+
+@media (hover: hover) {
+  .brand:hover .monogram {
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+  }
+}
+
+@media (width <= 32rem) {
+  .actions > * {
+    width: 100%;
+  }
+}

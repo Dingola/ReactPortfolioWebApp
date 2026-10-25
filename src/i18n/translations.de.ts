@@ -126,4 +126,11 @@ export const germanTranslations = {
   'Return to the home page': 'Zurück zur Startseite',
   'Something went wrong': 'Ein Fehler ist aufgetreten',
   'Reload the page and try again.': 'Lade die Seite neu und versuche es noch einmal.',
+  'This page could not be loaded': 'Diese Seite konnte nicht geladen werden',
+  'An unexpected error prevented this page from loading.':
+    'Ein unerwarteter Fehler hat das Laden dieser Seite verhindert.',
+  'Try again': 'Erneut versuchen',
+  'If the problem persists, use the contact page.':
+    'Falls der Fehler weiterhin auftritt, nutze bitte die Kontaktseite.',
+  'Open contact page': 'Kontaktseite öffnen',
 } as const satisfies TranslationCatalog;

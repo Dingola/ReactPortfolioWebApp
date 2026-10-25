@@ -1,17 +1,6 @@
 import { Component, type ErrorInfo, type ReactNode } from 'react';
 
-import { useLocale } from '../providers/locale/useLocale';
-
-function LocalizedErrorFallback() {
-  const { translate } = useLocale();
-
-  return (
-    <main className="fatal-error" role="alert">
-      <h1>{translate('Something went wrong')}</h1>
-      <p>{translate('Reload the page and try again.')}</p>
-    </main>
-  );
-}
+import { ErrorFallback } from './ErrorFallback';
 
 /** Props accepted by {@link ErrorBoundary}. */
 export type ErrorBoundaryProps = {
@@ -27,8 +16,8 @@ export type ErrorBoundaryState = {
 /**
  * Catches unhandled rendering errors and replaces the application with a safe fallback.
  *
- * Connect `componentDidCatch` to an application-specific monitoring service when one
- * is available.
+ * Router failures are handled separately so this boundary remains a final safeguard
+ * for provider and application-shell errors.
  */
 export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   public state: ErrorBoundaryState = { hasError: false };
@@ -38,16 +27,23 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
     return { hasError: true };
   }
 
-  /** Reports an unhandled descendant rendering error. */
+  /** Reports an unhandled descendant rendering error during local development. */
   public componentDidCatch(error: Error, info: ErrorInfo) {
-    // Replace this with an application-specific monitoring integration when needed.
-    console.error('Unhandled rendering error', error, info);
+    if (import.meta.env.DEV) {
+      console.error('Unhandled rendering error', error, info);
+    }
   }
 
-  /** Renders the protected subtree or the fatal-error fallback. */
+  /** Renders the protected subtree or the application error fallback. */
   public render() {
     if (this.state.hasError) {
-      return <LocalizedErrorFallback />;
+      return (
+        <ErrorFallback
+          description="Reload the page and try again."
+          statusCode={500}
+          title="Something went wrong"
+        />
+      );
     }
 
     return this.props.children;

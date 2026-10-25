@@ -85,15 +85,6 @@ a:hover {
   will-change: opacity, transform;
 }
 
-.fatal-error {
-  width: min(100% - 2 * var(--page-gutter), 40rem);
-  margin: 15vh auto;
-  padding: var(--space-8);
-  border: var(--border-width) solid var(--color-border);
-  border-radius: var(--radius-medium);
-  background: var(--color-surface);
-}
-
 @media (prefers-reduced-motion: reduce) {
   ::view-transition-old(root),
   ::view-transition-new(root) {

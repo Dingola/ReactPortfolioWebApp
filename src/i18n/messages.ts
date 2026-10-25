@@ -116,7 +116,12 @@ export type SourceMessage =
   | 'The requested page does not exist.'
   | 'Return to the home page'
   | 'Something went wrong'
-  | 'Reload the page and try again.';
+  | 'Reload the page and try again.'
+  | 'This page could not be loaded'
+  | 'An unexpected error prevented this page from loading.'
+  | 'Try again'
+  | 'If the problem persists, use the contact page.'
+  | 'Open contact page';
 
 /** Complete translation mapping for every English source message. */
 export type TranslationCatalog = Record<SourceMessage, string>;

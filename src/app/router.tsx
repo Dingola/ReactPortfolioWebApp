@@ -4,6 +4,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import HomePage from '@/pages/HomePage';
 
 import { App } from './App';
+import { RouteErrorPage } from './errors/RouteErrorPage';
 import { RouteLoadingState } from './RouteLoadingState';
 
 const AboutPage = lazy(() => import('@/pages/AboutPage'));
@@ -24,6 +25,7 @@ const WorkPage = lazy(() => import('@/pages/WorkPage'));
 export const router = createBrowserRouter([
   {
     element: <App />,
+    errorElement: <RouteErrorPage />,
     children: [
       {
         index: true,
