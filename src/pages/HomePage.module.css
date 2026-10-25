@@ -29,6 +29,7 @@
 }
 
 .portrait {
+  position: relative;
   width: 100%;
   margin: 0;
   aspect-ratio: 4 / 4.7;
@@ -40,6 +41,32 @@
   transition:
     border-color var(--motion-duration-medium) var(--motion-easing-standard),
     box-shadow var(--motion-duration-medium) var(--motion-easing-standard);
+}
+
+.portrait::after {
+  position: absolute;
+  z-index: 2;
+  inset-block: 0;
+  inset-inline-end: 0;
+  width: 2px;
+  background: var(--color-accent);
+  content: '';
+  pointer-events: none;
+  transform: scaleY(1);
+  transform-origin: top;
+}
+
+.portrait::before {
+  position: absolute;
+  z-index: 2;
+  inset-block-start: 0;
+  inset-inline: 0;
+  height: 2px;
+  background: var(--color-accent);
+  content: '';
+  pointer-events: none;
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 .portrait img {
@@ -110,6 +137,25 @@
   margin-block-start: var(--space-4);
 }
 
+.heroEntrance .introduction,
+.heroEntrance .portrait {
+  opacity: 0;
+  animation: hero-content-enter 520ms var(--motion-easing-standard) forwards;
+}
+
+.heroEntrance .portrait {
+  animation-delay: 70ms;
+  animation-name: hero-portrait-enter;
+}
+
+.heroEntrance .portrait::before {
+  animation: portrait-line-horizontal 640ms 120ms var(--motion-easing-emphasized) both;
+}
+
+.heroEntrance .portrait::after {
+  animation: portrait-line-vertical 520ms 280ms var(--motion-easing-emphasized) both;
+}
+
 .stack {
   display: grid;
   align-items: center;
@@ -125,6 +171,17 @@
   font-size: var(--font-size-xs);
   letter-spacing: var(--letter-spacing-label);
   text-transform: uppercase;
+}
+
+.stack h2::after {
+  display: block;
+  width: calc(100% + var(--space-5));
+  height: 2px;
+  margin-block-start: var(--space-2);
+  background: var(--color-accent);
+  content: '';
+  transform: scaleX(var(--scroll-line-scale, 0.15));
+  transform-origin: left;
 }
 
 .stack ul {
@@ -223,6 +280,46 @@
   }
 }
 
+@keyframes hero-content-enter {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hero-portrait-enter {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes portrait-line-horizontal {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes portrait-line-vertical {
+  from {
+    transform: scaleY(0);
+  }
+
+  to {
+    transform: scaleY(1);
+  }
+}
+
 @media (width <= 64rem) {
   .introduction {
     max-width: 48rem;
@@ -286,5 +383,23 @@
     min-block-size: calc(100svh - 4.5rem);
     padding-block: var(--space-12);
     gap: var(--space-8);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroEntrance .introduction,
+  .heroEntrance .portrait {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .heroEntrance .portrait::before,
+  .heroEntrance .portrait::after {
+    animation: none;
+  }
+
+  .stack h2::after {
+    transform: none;
   }
 }

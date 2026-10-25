@@ -1,10 +1,11 @@
 import { lazy, Suspense } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 
+import HomePage from '@/pages/HomePage';
+
 import { App } from './App';
 import { RouteLoadingState } from './RouteLoadingState';
 
-const HomePage = lazy(() => import('@/pages/HomePage'));
 const AboutPage = lazy(() => import('@/pages/AboutPage'));
 const ContactPage = lazy(() => import('@/pages/ContactPage'));
 const ImprintPage = lazy(() => import('@/pages/ImprintPage'));
@@ -26,11 +27,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: (
-          <Suspense fallback={<RouteLoadingState />}>
-            <HomePage />
-          </Suspense>
-        ),
+        element: <HomePage />,
       },
       {
         path: 'work',

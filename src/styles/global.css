@@ -78,6 +78,13 @@ a:hover {
   outline-offset: 3px;
 }
 
+[data-scroll-depth] {
+  opacity: var(--scroll-depth-opacity, 1);
+  transform: scale(var(--scroll-depth-scale, 1));
+  transform-origin: center;
+  will-change: opacity, transform;
+}
+
 .fatal-error {
   width: min(100% - 2 * var(--page-gutter), 40rem);
   margin: 15vh auto;
@@ -99,5 +106,11 @@ a:hover {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+
+  [data-scroll-depth] {
+    opacity: 1;
+    transform: none;
+    will-change: auto;
   }
 }

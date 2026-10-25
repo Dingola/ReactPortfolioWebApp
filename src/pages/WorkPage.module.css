@@ -100,8 +100,14 @@
 
 .projectGrid {
   display: grid;
+  align-content: start;
   gap: clamp(var(--space-5), 2vw, var(--space-8));
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  perspective: 80rem;
+}
+
+.projectGrid[data-transitioning='true'] {
+  pointer-events: none;
 }
 
 .card {
@@ -110,7 +116,9 @@
   align-content: start;
   border: var(--border-width) solid var(--color-border);
   background: var(--color-surface);
+  backface-visibility: hidden;
   grid-template-rows: auto 1fr;
+  transform-style: preserve-3d;
   transition:
     border-color var(--motion-duration-medium) var(--motion-easing-standard),
     box-shadow var(--motion-duration-medium) var(--motion-easing-standard);

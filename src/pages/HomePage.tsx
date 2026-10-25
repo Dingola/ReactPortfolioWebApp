@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { preload } from 'react-dom';
 
@@ -28,6 +29,7 @@ const portraitSources = [
   },
 ] as const;
 const portraitSizes = '(max-width: 56rem) 30vw, 15rem';
+let hasPresentedHomeIntro = false;
 
 preload('/images/profile/adrian-helbig-896.webp', {
   as: 'image',
@@ -41,7 +43,12 @@ preload('/images/profile/adrian-helbig-896.webp', {
 export default function HomePage() {
   const { content, translate } = useLocale();
   const { profile, projects } = content;
+  const [presentIntro] = useState(() => !hasPresentedHomeIntro);
   const featuredProject = projects.find((project) => project.id === 'qt-log-viewer');
+
+  useEffect(() => {
+    hasPresentedHomeIntro = true;
+  }, []);
 
   if (!featuredProject) {
     throw new Error('The featured Qt Log Viewer project is missing from the portfolio content.');
@@ -58,7 +65,10 @@ export default function HomePage() {
   return (
     <Container className={styles.home}>
       <div className={styles.introScreen}>
-        <section className={styles.hero} aria-labelledby="home-title">
+        <section
+          className={`${styles.hero} ${presentIntro ? styles.heroEntrance : ''}`}
+          aria-labelledby="home-title"
+        >
           <div className={styles.heroComposition}>
             <div className={styles.introduction}>
               <p className={styles.eyebrow}>
@@ -91,7 +101,7 @@ export default function HomePage() {
               <SocialLinks className={styles.socialLinks} showLabels />
             </div>
 
-            <figure className={styles.portrait}>
+            <figure className={styles.portrait} data-scroll-depth="subtle">
               <ImageViewer
                 buttonClassName={styles.portraitButton}
                 className={styles.portraitMedia}
@@ -110,7 +120,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className={styles.stack} aria-labelledby="technology-stack-title">
+        <section className={styles.stack} data-scroll-line aria-labelledby="technology-stack-title">
           <h2 id="technology-stack-title">{translate('Technology stack')}</h2>
           <ul>
             {technologyStack.map((technology) => (
@@ -139,7 +149,7 @@ export default function HomePage() {
           </Link>
         </div>
 
-        <figure className={styles.projectImage}>
+        <figure className={styles.projectImage} data-scroll-depth="strong">
           <ImageViewer
             className={styles.projectMedia}
             image={featuredImage}
