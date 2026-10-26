@@ -79,6 +79,8 @@ export const germanTranslations = {
   'Visit organisation website': 'Webseite der Organisation',
   'Career history, education, and technical expertise.':
     'Berufliche Stationen, Ausbildung und technische Kenntnisse.',
+  'Page sections': 'Seitenabschnitte',
+  'Resume overview': 'Lebenslaufübersicht',
   'How I approach software development.': 'Wie ich Softwareentwicklung angehe.',
   'Working principles': 'Arbeitsweise',
   'My workspace': 'Mein Arbeitsplatz',

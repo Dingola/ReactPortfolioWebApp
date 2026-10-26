@@ -4,6 +4,10 @@ import { appConfig } from '@/app/config';
 import { useLocale } from '@/app/providers/locale/useLocale';
 import { Container } from '@/components/layout/Container';
 import surfaceStyles from '@/components/layout/SectionSurface.module.css';
+import {
+  PageSectionNavigation,
+  type PageSectionNavigationItem,
+} from '@/components/navigation/PageSectionNavigation';
 import type { ContentDetail } from '@/content/types';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 
@@ -94,6 +98,14 @@ function DetailList({ details }: { readonly details: readonly ContentDetail[] })
 export default function ResumePage() {
   const { content, translate } = useLocale();
   const { experience, education, skillGroups } = content;
+  const sectionNavigationItems: readonly PageSectionNavigationItem[] = [
+    {
+      id: 'experience',
+      label: 'Professional experience',
+    },
+    { id: 'education', label: 'Education' },
+    { id: 'skills', label: 'Skills' },
+  ];
 
   useDocumentTitle(`${translate('Resume')} · ${appConfig.siteName}`);
 
@@ -105,113 +117,123 @@ export default function ResumePage() {
         <p>{translate('Career history, education, and technical expertise.')}</p>
       </header>
 
-      <section
-        className={`${styles.section} ${styles.timelineSection} ${surfaceStyles.surface}`}
-        aria-labelledby="experience-title"
-      >
-        <h2 id="experience-title">{translate('Professional experience')}</h2>
-        <Timeline>
-          {experience.map((entry, index) => (
-            <article
-              key={entry.id}
-              className={styles.entry}
-              style={{ '--timeline-index': index } as TimelineEntryStyle}
-            >
-              <div className={styles.entryPeriod}>
-                <Period end={entry.endDate} start={entry.startDate} />
-              </div>
-              <div className={styles.entryContent}>
-                <h3>{entry.role}</h3>
-                <a
-                  className={styles.organisation}
-                  href={entry.organisationUrl}
-                  rel="noreferrer"
-                  target="_blank"
+      <div className={styles.contentLayout}>
+        <div className={styles.sections}>
+          <section
+            id="experience"
+            className={`${styles.section} ${styles.timelineSection} ${surfaceStyles.surface}`}
+            aria-labelledby="experience-title"
+          >
+            <h2 id="experience-title">{translate('Professional experience')}</h2>
+            <Timeline>
+              {experience.map((entry, index) => (
+                <article
+                  key={entry.id}
+                  className={styles.entry}
+                  style={{ '--timeline-index': index } as TimelineEntryStyle}
                 >
-                  {entry.organisation}
-                  <span aria-hidden="true"> ↗</span>
-                  <span className="visually-hidden">
-                    {' '}
-                    – {translate('Visit organisation website')}
-                  </span>
-                </a>
-                {'description' in entry && entry.description ? (
-                  <p className={styles.description}>{entry.description}</p>
-                ) : null}
-                <DetailList details={entry.highlights} />
-                {entry.technologies.length > 0 ? (
-                  <ul className={styles.technologies} aria-label={translate('Technology stack')}>
-                    {entry.technologies.map((technology) => (
-                      <li key={technology}>{technology}</li>
+                  <div className={styles.entryPeriod}>
+                    <Period end={entry.endDate} start={entry.startDate} />
+                  </div>
+                  <div className={styles.entryContent}>
+                    <h3>{entry.role}</h3>
+                    <a
+                      className={styles.organisation}
+                      href={entry.organisationUrl}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      {entry.organisation}
+                      <span aria-hidden="true"> ↗</span>
+                      <span className="visually-hidden">
+                        {' '}
+                        – {translate('Visit organisation website')}
+                      </span>
+                    </a>
+                    {'description' in entry && entry.description ? (
+                      <p className={styles.description}>{entry.description}</p>
+                    ) : null}
+                    <DetailList details={entry.highlights} />
+                    {entry.technologies.length > 0 ? (
+                      <ul
+                        className={styles.technologies}
+                        aria-label={translate('Technology stack')}
+                      >
+                        {entry.technologies.map((technology) => (
+                          <li key={technology}>{technology}</li>
+                        ))}
+                      </ul>
+                    ) : null}
+                  </div>
+                </article>
+              ))}
+            </Timeline>
+          </section>
+
+          <section
+            id="education"
+            className={`${styles.section} ${styles.timelineSection} ${surfaceStyles.surface}`}
+            aria-labelledby="education-title"
+          >
+            <h2 id="education-title">{translate('Education')}</h2>
+            <Timeline>
+              {education.map((entry, index) => (
+                <article
+                  key={entry.id}
+                  className={styles.entry}
+                  style={{ '--timeline-index': index } as TimelineEntryStyle}
+                >
+                  <div className={styles.entryPeriod}>
+                    <Period end={entry.endDate} start={entry.startDate} />
+                  </div>
+                  <div className={styles.entryContent}>
+                    {'role' in entry && entry.role ? (
+                      <p className={styles.educationRole}>{entry.role}</p>
+                    ) : null}
+                    <h3>{entry.qualification}</h3>
+                    <a
+                      className={styles.organisation}
+                      href={entry.institutionUrl}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      {entry.institution}
+                      <span aria-hidden="true"> ↗</span>
+                      <span className="visually-hidden">
+                        {' '}
+                        – {translate('Visit organisation website')}
+                      </span>
+                    </a>
+                    {'subject' in entry && entry.subject ? (
+                      <p className={styles.subject}>{entry.subject}</p>
+                    ) : null}
+                    <DetailList details={entry.details} />
+                  </div>
+                </article>
+              ))}
+            </Timeline>
+          </section>
+
+          <section id="skills" className={styles.section} aria-labelledby="skills-title">
+            <h2 id="skills-title">{translate('Skills')}</h2>
+            <div className={styles.skillGrid}>
+              {skillGroups.map((group) => (
+                <article key={group.id} className={styles.skillGroup}>
+                  <h3>{group.title}</h3>
+                  <ul>
+                    {group.skills.map((skill) => (
+                      <li key={skill.id} data-emphasis={skill.emphasis}>
+                        {skill.label}
+                      </li>
                     ))}
                   </ul>
-                ) : null}
-              </div>
-            </article>
-          ))}
-        </Timeline>
-      </section>
-
-      <section
-        className={`${styles.section} ${styles.timelineSection} ${surfaceStyles.surface}`}
-        aria-labelledby="education-title"
-      >
-        <h2 id="education-title">{translate('Education')}</h2>
-        <Timeline>
-          {education.map((entry, index) => (
-            <article
-              key={entry.id}
-              className={styles.entry}
-              style={{ '--timeline-index': index } as TimelineEntryStyle}
-            >
-              <div className={styles.entryPeriod}>
-                <Period end={entry.endDate} start={entry.startDate} />
-              </div>
-              <div className={styles.entryContent}>
-                {'role' in entry && entry.role ? (
-                  <p className={styles.educationRole}>{entry.role}</p>
-                ) : null}
-                <h3>{entry.qualification}</h3>
-                <a
-                  className={styles.organisation}
-                  href={entry.institutionUrl}
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  {entry.institution}
-                  <span aria-hidden="true"> ↗</span>
-                  <span className="visually-hidden">
-                    {' '}
-                    – {translate('Visit organisation website')}
-                  </span>
-                </a>
-                {'subject' in entry && entry.subject ? (
-                  <p className={styles.subject}>{entry.subject}</p>
-                ) : null}
-                <DetailList details={entry.details} />
-              </div>
-            </article>
-          ))}
-        </Timeline>
-      </section>
-
-      <section className={styles.section} aria-labelledby="skills-title">
-        <h2 id="skills-title">{translate('Skills')}</h2>
-        <div className={styles.skillGrid}>
-          {skillGroups.map((group) => (
-            <article key={group.id} className={styles.skillGroup}>
-              <h3>{group.title}</h3>
-              <ul>
-                {group.skills.map((skill) => (
-                  <li key={skill.id} data-emphasis={skill.emphasis}>
-                    {skill.label}
-                  </li>
-                ))}
-              </ul>
-            </article>
-          ))}
+                </article>
+              ))}
+            </div>
+          </section>
         </div>
-      </section>
+        <PageSectionNavigation items={sectionNavigationItems} title="Resume overview" />
+      </div>
     </Container>
   );
 }

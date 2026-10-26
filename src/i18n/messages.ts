@@ -76,6 +76,8 @@ export type SourceMessage =
   | 'Qualification'
   | 'Visit organisation website'
   | 'Career history, education, and technical expertise.'
+  | 'Page sections'
+  | 'Resume overview'
   | 'How I approach software development.'
   | 'Working principles'
   | 'My workspace'

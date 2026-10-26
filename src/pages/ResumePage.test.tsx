@@ -14,6 +14,13 @@ describe('ResumePage', () => {
     );
 
     expect(screen.getByRole('heading', { level: 1, name: 'Lebenslauf' })).toBeInTheDocument();
+    expect(screen.getByRole('navigation', { name: 'Seitenabschnitte' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /Berufserfahrung/ })).toHaveAttribute(
+      'href',
+      '#experience',
+    );
+    expect(screen.getByRole('link', { name: /Ausbildung/ })).toHaveAttribute('href', '#education');
+    expect(screen.getByRole('link', { name: /Kenntnisse/ })).toHaveAttribute('href', '#skills');
     expect(
       screen.getByText(/Gesellschaft zur Förderung angewandter Informatik/),
     ).toBeInTheDocument();
