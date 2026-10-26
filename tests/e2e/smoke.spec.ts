@@ -4,7 +4,8 @@ import { expect, test } from '@playwright/test';
 test('renders the generated application shell', async ({ page }) => {
   await page.goto('/');
 
-  await expect(page.locator('h1')).toBeVisible();
+  const heading = page.locator('h1');
+  await expect(heading).toBeVisible();
   await expect(page.getByRole('navigation', { name: 'Hauptnavigation' })).toBeVisible();
   await expect(page.getByRole('link', { name: /01.*start/i })).toHaveAttribute(
     'aria-current',
@@ -13,6 +14,7 @@ test('renders the generated application shell', async ({ page }) => {
   await expect(
     page.getByRole('button', { name: /zum dunklen farbschema wechseln/i }),
   ).toBeVisible();
+  await expect(heading.locator('..')).toHaveCSS('opacity', '1');
 
   const accessibilityResults = await new AxeBuilder({ page }).analyze();
   expect(accessibilityResults.violations).toEqual([]);
