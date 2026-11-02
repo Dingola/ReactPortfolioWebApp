@@ -34,7 +34,7 @@
     "motion": "^14.3.0",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
-    "react-router-dom": "^7.18.3",
+    "react-router-dom": "^7.18.5",
     "zod": "^4.6.5"
   },
   "devDependencies": {
